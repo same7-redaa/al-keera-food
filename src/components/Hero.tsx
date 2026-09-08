@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { UtensilsCrossed, MessageCircle, Sparkles, Flame, Award, ShieldCheck, ChevronRight, ChevronLeft, RotateCw } from 'lucide-react';
+import { UtensilsCrossed, MessageCircle, Sparkles, Flame, Award, ShieldCheck } from 'lucide-react';
 
 interface HeroProps {
   onExploreMenu?: () => void;
@@ -55,12 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
     return () => clearInterval(timer);
   }, [isPaused, total]);
 
-  const nextSlide = () => setActiveSlide((prev) => (prev + 1) % total);
-  const prevSlide = () => setActiveSlide((prev) => (prev - 1 + total) % total);
-
-  const currentDish = HERO_DISHES[activeSlide];
-  
-  // Position active dish at 90 degrees (facing the text on the right)
+  // Position active dish at focus angle
   const wheelRotation = -activeSlide * angleStep;
 
   return (
@@ -240,49 +235,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                     </button>
                   );
                 })}
-              </div>
-
-            </div>
-
-            {/* Active Dish Floating Name & Roulette Spin Controls Banner */}
-            <div className="mt-4 flex flex-col items-center gap-2 max-w-sm text-center">
-              
-              {/* Active Dish Tag & Title Banner */}
-              <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-[#A48F64]/30 shadow-md animate-fadeIn">
-                <span className="bg-[#A48F64] text-white text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-md">
-                  {currentDish.tag}
-                </span>
-                <span className="text-xs sm:text-sm font-black text-[#241E17] line-clamp-1">
-                  {currentDish.title}
-                </span>
-              </div>
-
-              {/* Interactive Roulette Spin Controls */}
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={prevSlide}
-                  aria-label="الطبق السابق"
-                  className="w-8 h-8 rounded-full bg-white border border-[#A48F64]/30 shadow-xs flex items-center justify-center text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all cursor-pointer"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={nextSlide}
-                  aria-label="تدوير الروليت"
-                  className="px-3.5 py-1.5 bg-[#FAF8F5] border border-[#A48F64]/30 rounded-full text-xs font-bold text-[#8A764D] hover:bg-[#A48F64] hover:text-white transition-all flex items-center gap-1.5 shadow-xs cursor-pointer active:scale-95"
-                >
-                  <RotateCw className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '8s' }} />
-                  <span>تدوير الأطباق</span>
-                </button>
-
-                <button
-                  onClick={nextSlide}
-                  aria-label="الطبق التالي"
-                  className="w-8 h-8 rounded-full bg-white border border-[#A48F64]/30 shadow-xs flex items-center justify-center text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all cursor-pointer"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
               </div>
 
             </div>
