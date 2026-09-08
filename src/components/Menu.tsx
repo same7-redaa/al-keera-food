@@ -48,11 +48,6 @@ export const Menu: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs font-bold mb-3 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
-            <span>قائمة طعام فاخرة بوصفات سرية</span>
-          </div>
-
           <h2 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-3 tracking-tight">
             منيو <span className="gold-gradient-text">مطعم الكيرة</span>
           </h2>

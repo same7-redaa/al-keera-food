@@ -1,6 +1,6 @@
 import React from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { Sparkles, Facebook, Heart } from 'lucide-react';
+import { Facebook, Heart } from 'lucide-react';
 
 export const SocialProofGallery: React.FC = () => {
   return (
@@ -10,11 +10,6 @@ export const SocialProofGallery: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/40 text-[#8A764D] text-xs sm:text-sm font-black mb-4 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
-            <span>معرض الصور والولائم</span>
-          </div>
-
           <h2 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-4 tracking-tight">
             شوف <span className="gold-gradient-text">طواجننا ومشوياتنا على الطبيعة</span>
           </h2>

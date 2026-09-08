@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { UtensilsCrossed, MessageCircle, Sparkles } from 'lucide-react';
+import { UtensilsCrossed, MessageCircle } from 'lucide-react';
 
 interface HeroProps {
   onExploreMenu?: () => void;
@@ -61,12 +61,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           {/* Right Column: Hero Typography & Actions */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-right">
             
-            {/* Vintage Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-bold shadow-sm mb-5">
-              <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
-              <span>منذ 1998 • أكثر من 26 عاماً من الأصالة والريادة</span>
-            </div>
-
             {/* Main Headline with two lines and distinct hierarchy */}
             <h1 className="mb-6 tracking-tight flex flex-col gap-2.5 sm:gap-3.5">
               <span className="block text-4xl sm:text-6xl lg:text-7xl font-black text-[#241E17] leading-tight">

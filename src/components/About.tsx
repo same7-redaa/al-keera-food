@@ -1,6 +1,6 @@
 import React from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { Sparkles, CheckCircle2, Award, Shield } from 'lucide-react';
+import { CheckCircle2, Award, Shield } from 'lucide-react';
 
 export const About: React.FC = () => {
   const { aboutStory } = RESTAURANT_INFO;
@@ -54,12 +54,6 @@ export const About: React.FC = () => {
           {/* Left Column: Story Content */}
           <div className="lg:col-span-6 flex flex-col items-start reveal delay-100">
             
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/40 text-[#8A764D] text-xs sm:text-sm font-black mb-4 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
-              <span>{aboutStory.badge}</span>
-            </div>
-
             {/* Title */}
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#241E17] leading-snug mb-4">
               {aboutStory.title}

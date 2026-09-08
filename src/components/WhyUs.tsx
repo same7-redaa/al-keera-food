@@ -1,6 +1,6 @@
 import React from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { Award, Sparkles, ChefHat, HeartHandshake, ShieldCheck, Flame } from 'lucide-react';
+import { Award, ChefHat, HeartHandshake, ShieldCheck, Flame } from 'lucide-react';
 
 export const WhyUs: React.FC = () => {
   const getIcon = (iconName: string) => {
@@ -29,11 +29,6 @@ export const WhyUs: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 reveal">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-bold mb-4 shadow-sm">
-            <Sparkles className="w-4 h-4 text-[#A48F64]" />
-            <span>سر تميزنا وثقة عملائنا</span>
-          </div>
-
           <h2 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-4 tracking-tight">
             ليه تختار <span className="gold-gradient-text">مطعم الكيرة؟</span>
           </h2>

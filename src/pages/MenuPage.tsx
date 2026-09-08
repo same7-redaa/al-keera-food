@@ -52,11 +52,6 @@ export const MenuPage: React.FC = () => {
         
         {/* Page Main Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs font-bold mb-3 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
-            <span>قائمة طعام فاخرة 2026</span>
-          </div>
-
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#241E17] mb-3 tracking-tight">
             منيو <span className="gold-gradient-text">مطعم الكيرة</span>
           </h1>

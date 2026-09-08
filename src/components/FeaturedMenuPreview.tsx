@@ -1,7 +1,7 @@
 import React from 'react';
 import { MENU_ITEMS } from '../data/menuData';
 import { MenuCard } from './MenuCard';
-import { Sparkles, UtensilsCrossed, ArrowLeft } from 'lucide-react';
+import { UtensilsCrossed, ArrowLeft } from 'lucide-react';
 
 interface FeaturedMenuPreviewProps {
   onOpenFullMenu: () => void;
@@ -22,11 +22,6 @@ export const FeaturedMenuPreview: React.FC<FeaturedMenuPreviewProps> = ({ onOpen
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 reveal">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/40 text-[#8A764D] text-xs sm:text-sm font-black mb-4 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
-            <span>أطباق مختارة ومميزة</span>
-          </div>
-
           <h2 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-4 tracking-tight">
             أشهى أكلات <span className="gold-gradient-text">مطعم الكيرة</span>
           </h2>

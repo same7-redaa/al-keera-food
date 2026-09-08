@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { MENU_ITEMS } from '../data/menuData';
-import { Sparkles, Flame, Check, ShoppingBag, ShieldCheck, Heart } from 'lucide-react';
+import { Sparkles, Check, ShoppingBag, ShieldCheck, Heart } from 'lucide-react';
 
 export const FeaturedDish: React.FC = () => {
   const { addToCart } = useCart();
@@ -79,12 +79,6 @@ export const FeaturedDish: React.FC = () => {
           {/* Left Column: Asymmetrical Typography & Offer Details */}
           <div className="lg:col-span-6 order-1 lg:order-2 flex flex-col items-start reveal delay-100">
             
-            {/* Top Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-black mb-4 shadow-sm">
-              <Flame className="w-4 h-4 text-[#A48F64]" />
-              <span>سر الصنعة • Signature Dishes</span>
-            </div>
-
             {/* Title */}
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#241E17] leading-snug mb-3">
               طواجن ومشويات <span className="gold-gradient-text">الكيرة الأصيلة</span>

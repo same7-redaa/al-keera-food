@@ -1,6 +1,6 @@
 import React from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { MessageCircle, Phone, Clock, MapPin, Truck } from 'lucide-react';
+import { MessageCircle, Phone, Clock, MapPin } from 'lucide-react';
 
 export const OrderCTA: React.FC = () => {
   return (
@@ -11,14 +11,8 @@ export const OrderCTA: React.FC = () => {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-brand-gold/30 text-brand-goldDark text-xs sm:text-sm font-bold mb-4 shadow-sm">
-          <Truck className="w-4 h-4 text-brand-gold" />
-          <span>توصيل سريع ساخن حتى بابك</span>
-        </div>
-
         {/* Heading */}
-        <h2 className="text-3xl sm:text-5xl font-black text-brand-cream mb-3">
+        <h2 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-3">
           جعان؟ <span className="gold-gradient-text">خليك على الأصيل.</span>
         </h2>
 

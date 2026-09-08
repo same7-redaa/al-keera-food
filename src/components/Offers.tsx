@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MAIN_OFFER } from '../data/menuData';
 import { useCart } from '../context/CartContext';
-import { Tag, Check, ShoppingBag, Flame, Clock } from 'lucide-react';
+import { Tag, Check, ShoppingBag, Clock } from 'lucide-react';
 
 export const Offers: React.FC = () => {
   const { addOfferToCart } = useCart();
@@ -23,11 +23,6 @@ export const Offers: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 reveal">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-black mb-3 shadow-sm">
-            <Flame className="w-4 h-4 text-[#A48F64]" />
-            <span>عروض وتوفير حصري</span>
-          </div>
-
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#241E17] mb-3 tracking-tight">
             العروض <span className="gold-gradient-text">الملكية الخاصة</span>
           </h2>

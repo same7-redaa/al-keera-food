@@ -13,11 +13,6 @@ export const LocationHours: React.FC = () => {
         
         {/* Top Centered Header & Delivery Highlight */}
         <div className="text-center max-w-3xl mx-auto mb-10 reveal">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-bold mb-4 shadow-sm">
-            <Truck className="w-4 h-4 text-[#A48F64]" />
-            <span>فرعان لخدمتكم + توصيل ساخن وسريع حتى بابك</span>
-          </div>
-
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#241E17] mb-3">
             شرفنا في فروعنا <span className="gold-gradient-text">أو اطلب يوصلك ساخن</span>
           </h2>

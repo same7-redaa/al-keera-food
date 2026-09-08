@@ -45,11 +45,6 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
         
         {/* Page Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-bold mb-3 shadow-sm">
-            <ShoppingBag className="w-3.5 h-3.5 text-[#A48F64]" />
-            <span>مراجعة وإتمام الطلب</span>
-          </div>
-
           <h1 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-3 tracking-tight">
             سلة <span className="gold-gradient-text">الطلبات</span>
           </h1>
