@@ -18,19 +18,19 @@ const HERO_DISHES = [
 ];
 
 const DISH_STREAM = [
-  '👑 مضغوط الدجاج الملكي الفاخر',
-  '🍖 مضغوط اللحم البلدي الطازج',
-  '🔥 مبكبكة ليبية ساخنة حارة',
-  '✨ مضغوط تندوري أصيل بالتوابل',
-  '👑 خبرة 19 عاماً من الطعم الأصيل',
+  { img: '/hero-dish.png', text: 'مضغوط الدجاج الملكي' },
+  { img: '/hero-dish-2.png', text: 'مضغوط اللحم البلدي الطازج' },
+  { img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=200&auto=format&fit=crop', text: 'مبكبكة ليبية ساخنة' },
+  { img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=200&auto=format&fit=crop', text: 'مضغوط تندوري متبل' },
+  { img: '/hero-dish.png', text: 'خبرة 19 عاماً من الأصالة' },
 ];
 
 const TRUST_STREAM = [
-  '🚚 توصيل سريع ساخن في جميع أنحاء المحلة',
-  '🥩 لحم بلدي طازج يومياً 100%',
-  '🎁 دقوس حار وتومية مجاناً مع كل وجبة',
-  '⭐ الجودة والأمانة ثقافة وهوية',
-  '📍 الشعبية - بجوار مستشفى الربيع',
+  { img: '/hero-dish-2.png', text: 'لحم بلدي طازج يومياً 100%' },
+  { img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=200&auto=format&fit=crop', text: 'توصيل سريع ساخن في المحلة' },
+  { img: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=200&auto=format&fit=crop', text: 'دقوس حار وتومية مجاناً' },
+  { img: '/hero-dish.png', text: 'توابل ووصفات سرية أصلية' },
+  { img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=200&auto=format&fit=crop', text: 'كرم وضيافة خليجية أصيلة' },
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
@@ -158,28 +158,40 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
       </div>
 
-      {/* Mobile Continuous Intersecting "X" Marquee Ribbons (شريطان متقاطعان ع شكل X دون حاويات) */}
+      {/* Mobile Continuous Intersecting "X" Marquee Ribbons (شريطان متقاطعان ع شكل X مع الصور والنصوص دون حاويات) */}
       <div className="lg:hidden w-full relative py-6 my-2 overflow-hidden z-10 select-none">
         
         {/* Ribbon 1: Angled -rotate-2 (Emerald/Dark Green with Gold Hairlines) */}
-        <div className="w-[120%] -mr-[10%] transform -rotate-2 bg-[#002A23]/95 backdrop-blur-md border-y border-brand-gold/40 py-2.5 shadow-lg mb-[-12px] z-10 relative">
-          <div className="animate-marquee-infinite flex items-center gap-8 whitespace-nowrap text-xs font-black text-brand-cream">
-            {[...DISH_STREAM, ...DISH_STREAM, ...DISH_STREAM].map((text, idx) => (
-              <span key={idx} className="flex items-center gap-3">
-                <span className="text-brand-brightGold">{text}</span>
-                <span className="text-brand-gold/40 text-xs">✦</span>
+        <div className="w-[125%] -mr-[12%] transform -rotate-2 bg-[#002A23]/95 backdrop-blur-md border-y border-brand-gold/40 py-2.5 shadow-lg mb-[-12px] z-10 relative">
+          <div className="animate-marquee-infinite flex items-center gap-6 whitespace-nowrap text-xs font-black text-brand-cream">
+            {[...DISH_STREAM, ...DISH_STREAM, ...DISH_STREAM].map((item, idx) => (
+              <span key={idx} className="flex items-center gap-2.5">
+                <img
+                  src={item.img}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-6 h-6 rounded-full object-cover border border-brand-gold/60 shadow-sm flex-shrink-0"
+                />
+                <span className="text-brand-brightGold">{item.text}</span>
+                <span className="text-brand-gold/40 text-[10px]">✦</span>
               </span>
             ))}
           </div>
         </div>
 
         {/* Ribbon 2: Angled rotate-2 crossing over in an X (Radiant Gold Ribbon) */}
-        <div className="w-[120%] -mr-[10%] transform rotate-2 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold py-2 shadow-2xl z-20 relative border-y border-brand-black/20">
-          <div className="animate-marquee-reverse flex items-center gap-8 whitespace-nowrap text-xs font-black text-brand-black">
-            {[...TRUST_STREAM, ...TRUST_STREAM, ...TRUST_STREAM].map((text, idx) => (
-              <span key={idx} className="flex items-center gap-3">
-                <span>{text}</span>
-                <span className="text-brand-black/30 text-xs">✦</span>
+        <div className="w-[125%] -mr-[12%] transform rotate-2 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold py-2 shadow-2xl z-20 relative border-y border-brand-black/20">
+          <div className="animate-marquee-reverse flex items-center gap-6 whitespace-nowrap text-xs font-black text-brand-black">
+            {[...TRUST_STREAM, ...TRUST_STREAM, ...TRUST_STREAM].map((item, idx) => (
+              <span key={idx} className="flex items-center gap-2.5">
+                <img
+                  src={item.img}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-5 h-5 rounded-full object-cover border border-brand-black/30 shadow-sm flex-shrink-0"
+                />
+                <span>{item.text}</span>
+                <span className="text-brand-black/30 text-[10px]">✦</span>
               </span>
             ))}
           </div>
