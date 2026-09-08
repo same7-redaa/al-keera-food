@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { useCart } from '../context/CartContext';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { ShoppingBag, Menu as MenuIcon, X, UtensilsCrossed, Phone, MessageCircle, MapPin, Facebook, Instagram } from 'lucide-react';
+import { ShoppingBag, Menu as MenuIcon, X, UtensilsCrossed, Phone, MessageCircle, Facebook, Instagram } from 'lucide-react';
 
 interface NavbarProps {
   currentPage: 'home' | 'menu' | 'cart';
@@ -99,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           mobileMenuOpen
-            ? 'bg-[#FAF8F5] py-3.5 shadow-xl border-b border-[#A48F64]/25'
+            ? 'bg-[#FAF8F5] py-3.5 shadow-none border-b border-[#A48F64]/20'
             : isScrolled
             ? 'bg-[#FAF8F5]/95 backdrop-blur-xl py-3 shadow-md border-b border-[#A48F64]/25'
             : 'bg-transparent py-4 sm:py-5 border-b border-transparent shadow-none'
@@ -170,7 +170,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-[#241E17] hover:text-[#A48F64] rounded-xl bg-white border border-[#A48F64]/30 shadow-sm transition-colors"
+              className="lg:hidden p-2 text-[#241E17] hover:text-[#A48F64] rounded-xl bg-white border border-[#A48F64]/30 shadow-none transition-colors"
               aria-label="القائمة"
             >
               {mobileMenuOpen ? <X className="w-6 h-6 text-[#A48F64]" /> : <MenuIcon className="w-6 h-6" />}
@@ -179,12 +179,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         </div>
       </header>
 
-      {/* Fullscreen Mobile Menu Overlay */}
+      {/* Streamlined Mobile Hamburger Overlay */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-[#FAF8F5] pt-24 pb-8 px-6 flex flex-col justify-between overflow-y-auto animate-fadeIn select-none">
+        <div className="lg:hidden fixed inset-0 z-40 bg-[#FAF8F5] pt-20 pb-6 px-5 flex flex-col justify-between overflow-y-auto animate-fadeIn select-none">
           
-          {/* Menu Links */}
-          <div className="flex flex-col gap-3">
+          {/* Main Navigation Links List */}
+          <div className="flex flex-col gap-2 mt-2">
             {navLinks.map((link) => {
               const isLinkActive =
                 link.page === 'menu'
@@ -195,61 +195,32 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 <button
                   key={link.label}
                   onClick={() => handleLinkClick(link)}
-                  className={`w-full py-4 px-5 text-base font-bold text-right rounded-2xl transition-all border flex items-center justify-between shadow-sm ${
+                  className={`w-full py-3 px-4 text-sm font-black text-right rounded-xl transition-all flex items-center justify-between ${
                     isLinkActive
-                      ? 'bg-gradient-to-r from-[#A48F64] to-[#B8A378] text-white border-[#A48F64] shadow-md'
-                      : 'text-[#241E17] hover:text-[#A48F64] bg-white border-[#A48F64]/20'
+                      ? 'bg-[#A48F64] text-white shadow-sm'
+                      : 'text-[#241E17] hover:bg-[#F5EFE6] bg-white border border-[#A48F64]/20'
                   }`}
                 >
-                  <span className="text-lg">{link.label}</span>
-                  {link.isSpecial ? (
-                    <UtensilsCrossed className={`w-5 h-5 ${isLinkActive ? 'text-white' : 'text-[#A48F64]'}`} />
-                  ) : (
-                    <span className={`text-xs ${isLinkActive ? 'text-white font-black' : 'text-[#A48F64]'}`}>←</span>
-                  )}
+                  <span className="flex items-center gap-2">
+                    {link.isSpecial && <UtensilsCrossed className="w-4 h-4" />}
+                    <span>{link.label}</span>
+                  </span>
+                  <span className={`text-xs ${isLinkActive ? 'text-white' : 'text-[#A48F64]'}`}>←</span>
                 </button>
               );
             })}
-
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('cart');
-              }}
-              className={`w-full mt-1 py-4 px-5 rounded-2xl font-black text-base flex items-center justify-between shadow-lg ${
-                currentPage === 'cart'
-                  ? 'bg-[#8A764D] text-white'
-                  : 'bg-white border-2 border-[#A48F64] text-[#A48F64]'
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <ShoppingBag className="w-5 h-5" />
-                <span>صفحة السلة وإتمام الطلب</span>
-              </div>
-              {totalItems > 0 && (
-                <span className="bg-brand-redBadge text-white text-xs px-2.5 py-0.5 rounded-full font-black">
-                  {totalItems} وجبات
-                </span>
-              )}
-            </button>
           </div>
 
-          {/* Bottom Info & Socials inside Mobile Fullscreen Menu */}
-          <div className="pt-6 border-t border-[#A48F64]/20 space-y-4">
+          {/* Quick Actions Footer (Side by Side WhatsApp, Call & Socials) */}
+          <div className="pt-4 mt-4 border-t border-[#A48F64]/20 space-y-3">
             
-            <div className="flex items-center justify-between text-xs text-[#6B6255]">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#A48F64]" />
-                {RESTAURANT_INFO.address}
-              </span>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
+            {/* Quick Contact Buttons Side by Side */}
+            <div className="grid grid-cols-2 gap-2.5">
               <a
                 href={RESTAURANT_INFO.socialLinks.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-3 px-4 bg-emerald-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm"
+                className="py-2.5 px-3 bg-emerald-600 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>واتساب</span>
@@ -257,29 +228,32 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
               <a
                 href={`tel:${RESTAURANT_INFO.phone}`}
-                className="py-3 px-4 bg-white border border-[#A48F64]/40 text-[#A48F64] rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm"
+                className="py-2.5 px-3 bg-[#A48F64] text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
               >
                 <Phone className="w-4 h-4" />
-                <span>اتصال مباشر</span>
+                <span>اتصال هاتفي</span>
               </a>
             </div>
 
-            <div className="flex items-center justify-center gap-4 pt-2">
+            {/* Social Media Links */}
+            <div className="flex items-center justify-center gap-3 pt-1">
               <a
                 href={RESTAURANT_INFO.socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white border border-[#A48F64]/30 flex items-center justify-center text-[#241E17] shadow-sm hover:text-[#A48F64]"
+                aria-label="فيسبوك"
+                className="w-9 h-9 rounded-xl bg-white border border-[#A48F64]/30 flex items-center justify-center text-[#241E17] shadow-xs hover:text-[#A48F64]"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-4 h-4" />
               </a>
               <a
                 href={RESTAURANT_INFO.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white border border-[#A48F64]/30 flex items-center justify-center text-[#241E17] shadow-sm hover:text-[#A48F64]"
+                aria-label="إنستغرام"
+                className="w-9 h-9 rounded-xl bg-white border border-[#A48F64]/30 flex items-center justify-center text-[#241E17] shadow-xs hover:text-[#A48F64]"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-4 h-4" />
               </a>
             </div>
 
