@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             }}
             className="flex items-center transition-transform hover:scale-105"
           >
-            <Logo size={isScrolled ? 'sm' : 'md'} showSubtitle={!isScrolled} />
+            <Logo size={isScrolled ? 'sm' : 'md'} />
           </button>
 
           {/* Center: Desktop Navigation */}

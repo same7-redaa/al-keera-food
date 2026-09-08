@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               onClick={() => handleLinkClick('home', 'hero')}
               className="transition-transform hover:scale-105"
             >
-              <Logo size="sm" showSubtitle={false} />
+              <Logo size="sm" showSlogan={true} />
             </button>
             <div className="hidden sm:block w-px h-8 bg-[#A48F64]/30"></div>
             <span className="text-xs sm:text-sm text-[#F5EFE6]/75 font-medium">
