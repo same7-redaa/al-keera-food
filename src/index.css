@@ -129,28 +129,28 @@
   .delay-400 { transition-delay: 400ms; }
   .delay-500 { transition-delay: 500ms; }
 
-  /* Infinite Marquee Tickers for Mobile & Hero "X" Cross */
-  @keyframes marquee-rtl {
+  /* Truly Seamless Infinite Marquees (0 Gap, 0 Jump) */
+  @keyframes marquee-seamless-left {
     0% { transform: translateX(0); }
-    100% { transform: translateX(50%); }
+    100% { transform: translateX(-50%); }
   }
 
-  @keyframes marquee-ltr {
-    0% { transform: translateX(50%); }
+  @keyframes marquee-seamless-right {
+    0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
   }
 
-  .animate-marquee-infinite {
+  .animate-marquee-seamless-left {
     display: flex;
     width: max-content;
-    animation: marquee-rtl 22s linear infinite;
+    animation: marquee-seamless-left 26s linear infinite;
     will-change: transform;
   }
 
-  .animate-marquee-reverse {
+  .animate-marquee-seamless-right {
     display: flex;
     width: max-content;
-    animation: marquee-ltr 22s linear infinite;
+    animation: marquee-seamless-right 26s linear infinite;
     will-change: transform;
   }
 }

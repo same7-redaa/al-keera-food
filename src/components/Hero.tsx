@@ -158,42 +158,76 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
       </div>
 
-      {/* Mobile Continuous Intersecting "X" Marquee Ribbons (شريطان متقاطعان ع شكل X مع الصور والنصوص دون توقف وبدون فراغات) */}
-      <div className="lg:hidden w-full relative py-7 my-2 overflow-hidden z-10 select-none">
+      {/* Mobile Continuous Intersecting "X" Marquee Ribbons (شريطان متقاطعان ع شكل X بدون أي فراغ وبدون توقف) */}
+      <div className="lg:hidden w-full relative py-8 my-2 overflow-hidden z-10 select-none">
         
         {/* Ribbon 1: Angled -rotate-2 (Dark Luxury Green with Gold Accents) */}
-        <div className="w-[130%] -mr-[15%] transform -rotate-2 bg-[#002A23] backdrop-blur-md border-y border-brand-gold/40 py-2.5 shadow-lg mb-[-12px] z-10 relative">
-          <div className="animate-marquee-infinite flex items-center gap-7 whitespace-nowrap text-xs font-black text-brand-cream">
-            {[...DISH_STREAM, ...DISH_STREAM, ...DISH_STREAM, ...DISH_STREAM].map((item, idx) => (
-              <span key={idx} className="flex items-center gap-2.5 flex-shrink-0">
-                <img
-                  src={item.img}
-                  alt=""
-                  aria-hidden="true"
-                  className="w-6 h-6 rounded-full object-cover border border-brand-gold/60 shadow-sm flex-shrink-0"
-                />
-                <span className="text-brand-brightGold">{item.text}</span>
-                <span className="text-brand-gold/40 text-[10px]">✦</span>
-              </span>
-            ))}
+        <div dir="ltr" className="w-[140%] -ml-[20%] transform -rotate-2 bg-[#002A23] backdrop-blur-md border-y border-brand-gold/40 py-2.5 shadow-lg mb-[-12px] z-10 relative overflow-hidden flex">
+          <div className="animate-marquee-seamless-left flex items-center">
+            {/* Track A */}
+            <div className="flex items-center gap-7 pr-7 flex-shrink-0">
+              {DISH_STREAM.map((item, idx) => (
+                <span key={`a-${idx}`} className="flex items-center gap-2.5 flex-shrink-0" dir="rtl">
+                  <img
+                    src={item.img}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-6 h-6 rounded-full object-cover border border-brand-gold/60 shadow-sm flex-shrink-0"
+                  />
+                  <span className="text-brand-brightGold text-xs font-black">{item.text}</span>
+                  <span className="text-brand-gold/40 text-[10px]">✦</span>
+                </span>
+              ))}
+            </div>
+            {/* Track B (Identical clone for 0-gap infinite loop) */}
+            <div className="flex items-center gap-7 pr-7 flex-shrink-0" aria-hidden="true">
+              {DISH_STREAM.map((item, idx) => (
+                <span key={`b-${idx}`} className="flex items-center gap-2.5 flex-shrink-0" dir="rtl">
+                  <img
+                    src={item.img}
+                    alt=""
+                    className="w-6 h-6 rounded-full object-cover border border-brand-gold/60 shadow-sm flex-shrink-0"
+                  />
+                  <span className="text-brand-brightGold text-xs font-black">{item.text}</span>
+                  <span className="text-brand-gold/40 text-[10px]">✦</span>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Ribbon 2: Angled rotate-2 crossing over in an X (Golden Ribbon with Deep Green Text & Clear Images) */}
-        <div className="w-[130%] -mr-[15%] transform rotate-2 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold py-2.5 shadow-2xl z-20 relative border-y border-brand-black/25">
-          <div className="animate-marquee-reverse flex items-center gap-7 whitespace-nowrap text-xs font-black text-brand-black">
-            {[...TRUST_STREAM, ...TRUST_STREAM, ...TRUST_STREAM, ...TRUST_STREAM].map((item, idx) => (
-              <span key={idx} className="flex items-center gap-2.5 flex-shrink-0">
-                <img
-                  src={item.img}
-                  alt=""
-                  aria-hidden="true"
-                  className="w-6 h-6 rounded-full object-cover border border-brand-black/40 shadow-sm flex-shrink-0"
-                />
-                <span>{item.text}</span>
-                <span className="text-brand-black/35 text-[10px]">✦</span>
-              </span>
-            ))}
+        <div dir="ltr" className="w-[140%] -ml-[20%] transform rotate-2 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold py-2.5 shadow-2xl z-20 relative border-y border-brand-black/25 overflow-hidden flex">
+          <div className="animate-marquee-seamless-right flex items-center">
+            {/* Track A */}
+            <div className="flex items-center gap-7 pr-7 flex-shrink-0">
+              {TRUST_STREAM.map((item, idx) => (
+                <span key={`c-${idx}`} className="flex items-center gap-2.5 flex-shrink-0" dir="rtl">
+                  <img
+                    src={item.img}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-6 h-6 rounded-full object-cover border border-brand-black/40 shadow-sm flex-shrink-0"
+                  />
+                  <span className="text-brand-black text-xs font-black">{item.text}</span>
+                  <span className="text-brand-black/35 text-[10px]">✦</span>
+                </span>
+              ))}
+            </div>
+            {/* Track B (Identical clone for 0-gap infinite loop) */}
+            <div className="flex items-center gap-7 pr-7 flex-shrink-0" aria-hidden="true">
+              {TRUST_STREAM.map((item, idx) => (
+                <span key={`d-${idx}`} className="flex items-center gap-2.5 flex-shrink-0" dir="rtl">
+                  <img
+                    src={item.img}
+                    alt=""
+                    className="w-6 h-6 rounded-full object-cover border border-brand-black/40 shadow-sm flex-shrink-0"
+                  />
+                  <span className="text-brand-black text-xs font-black">{item.text}</span>
+                  <span className="text-brand-black/35 text-[10px]">✦</span>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
