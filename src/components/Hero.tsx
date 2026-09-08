@@ -95,9 +95,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           </a>
         </div>
 
-        {/* 4. Pure Square Photos Carousel with Auto-Flipping & Blur */}
+        {/* 4. Compact Pure Square Photos Carousel with Auto-Flipping & Blur */}
         <div
-          className="relative w-full max-w-4xl mx-auto h-44 sm:h-56 md:h-64 lg:h-72 flex items-center justify-center select-none"
+          className="relative w-full max-w-4xl mx-auto h-32 sm:h-44 md:h-52 lg:h-58 flex items-center justify-center select-none"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
@@ -109,7 +109,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
               let offset = (index - activeIndex + total) % total;
               if (offset > total / 2) offset -= total; // Normalized: -2, -1, 0, 1, 2
 
-              // Compute translate, scale, blur and styling with square proportions
+              // Compute translate, scale, blur and styling with compact proportions
               let transformStyle = '';
               let opacityStyle = 0;
               let filterStyle = 'none';
@@ -118,28 +118,28 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
               if (offset === 0) {
                 // Center active image: Sharp, prominent, soft shadow, NO border, NO text
-                transformStyle = 'translateX(0) scale(1.05)';
+                transformStyle = 'translateX(0) scale(1.04)';
                 filterStyle = 'blur(0px)';
                 opacityStyle = 1;
                 zIndexStyle = 30;
-                extraClasses = 'shadow-2xl';
+                extraClasses = 'shadow-xl';
               } else if (offset === 1) {
                 // Right image: Smaller, pushed aside with gap, blurred
-                transformStyle = 'translateX(calc(100% + 18px)) scale(0.82)';
-                filterStyle = 'blur(4px)';
+                transformStyle = 'translateX(calc(100% + 14px)) scale(0.82)';
+                filterStyle = 'blur(3.5px)';
                 opacityStyle = 0.55;
                 zIndexStyle = 15;
-                extraClasses = 'shadow-lg';
+                extraClasses = 'shadow-md';
               } else if (offset === -1) {
                 // Left image: Smaller, pushed aside with gap, blurred
-                transformStyle = 'translateX(calc(-100% - 18px)) scale(0.82)';
-                filterStyle = 'blur(4px)';
+                transformStyle = 'translateX(calc(-100% - 14px)) scale(0.82)';
+                filterStyle = 'blur(3.5px)';
                 opacityStyle = 0.55;
                 zIndexStyle = 15;
-                extraClasses = 'shadow-lg';
+                extraClasses = 'shadow-md';
               } else {
                 // Hidden outer images
-                transformStyle = `translateX(${offset > 0 ? 'calc(200% + 36px)' : 'calc(-200% - 36px)'}) scale(0.65)`;
+                transformStyle = `translateX(${offset > 0 ? 'calc(200% + 28px)' : 'calc(-200% - 28px)'}) scale(0.65)`;
                 filterStyle = 'blur(6px)';
                 opacityStyle = 0;
                 zIndexStyle = 5;
@@ -156,7 +156,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                     filter: filterStyle,
                     zIndex: zIndexStyle,
                   }}
-                  className={`absolute w-38 h-38 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-62 lg:h-62 aspect-square cursor-pointer transition-all duration-700 ease-out rounded-2xl sm:rounded-3xl overflow-hidden ${extraClasses}`}
+                  className={`absolute w-24 h-24 sm:w-34 sm:h-34 md:w-42 md:h-42 lg:w-48 lg:h-48 aspect-square cursor-pointer transition-all duration-700 ease-out rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden ${extraClasses}`}
                 >
                   <img
                     src={item.image}
