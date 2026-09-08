@@ -161,9 +161,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
           </div>
 
-          {/* Left Column: Refined Elegant Roulette Wheel (6 cols) */}
+          {/* Left Column: Refined Elegant Roulette Wheel (Shifted Upwards) */}
           <div
-            className="lg:col-span-6 xl:col-span-5 relative flex flex-col items-center justify-center select-none py-4"
+            className="lg:col-span-6 xl:col-span-5 relative flex flex-col items-center justify-center select-none py-0 -translate-y-6 sm:-translate-y-10 lg:-translate-y-14"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
