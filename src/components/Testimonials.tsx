@@ -4,7 +4,7 @@ import { Star, Quote, MapPin } from 'lucide-react';
 
 export const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="py-20 sm:py-24 relative bg-[#FAF8F5] border-y border-brand-gold/15 overflow-hidden scroll-mt-24">
+    <section id="testimonials" className="py-20 sm:py-24 relative bg-white overflow-hidden scroll-mt-24">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

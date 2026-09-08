@@ -8,6 +8,7 @@ import { About } from '../components/About';
 import { Testimonials } from '../components/Testimonials';
 import { SocialProofGallery } from '../components/SocialProofGallery';
 import { LocationHours } from '../components/LocationHours';
+import { SectionDivider } from '../components/SectionDivider';
 
 interface HomePageProps {
   onNavigateToMenu: () => void;
@@ -15,16 +16,79 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
   return (
-    <div>
+    <div className="overflow-hidden">
+      {/* 1. Hero (#FAF8F5) */}
       <Hero onExploreMenu={onNavigateToMenu} />
+
+      {/* Wave Transition: #FAF8F5 -> #FFFFFF */}
+      <div className="bg-[#FAF8F5]">
+        <SectionDivider type="wave" fillColor="#FFFFFF" />
+      </div>
+
+      {/* 2. Featured Dish (#FFFFFF) */}
       <FeaturedDish />
+
+      {/* Slant Transition: #FFFFFF -> #F6F2EA */}
+      <div className="bg-white">
+        <SectionDivider type="slant" fillColor="#F6F2EA" />
+      </div>
+
+      {/* 3. Featured Menu Preview (#F6F2EA) */}
       <FeaturedMenuPreview onOpenFullMenu={onNavigateToMenu} />
+
+      {/* Curve Transition: #F6F2EA -> #FFFFFF */}
+      <div className="bg-[#F6F2EA]">
+        <SectionDivider type="curve" fillColor="#FFFFFF" />
+      </div>
+
+      {/* 4. Why Us (#FFFFFF) */}
       <WhyUs />
+
+      {/* Split Transition: #FFFFFF -> #FAF8F5 */}
+      <div className="bg-white">
+        <SectionDivider type="split" fillColor="#FAF8F5" />
+      </div>
+
+      {/* 5. Offers (#FAF8F5) */}
       <Offers />
+
+      {/* Wave Transition: #FAF8F5 -> #F6F2EA */}
+      <div className="bg-[#FAF8F5]">
+        <SectionDivider type="wave" fillColor="#F6F2EA" />
+      </div>
+
+      {/* 6. About (#F6F2EA) */}
       <About />
+
+      {/* Slant Transition: #F6F2EA -> #FFFFFF */}
+      <div className="bg-[#F6F2EA]">
+        <SectionDivider type="slant" fillColor="#FFFFFF" />
+      </div>
+
+      {/* 7. Testimonials (#FFFFFF) */}
       <Testimonials />
+
+      {/* Curve Transition: #FFFFFF -> #FAF8F5 */}
+      <div className="bg-white">
+        <SectionDivider type="curve" fillColor="#FAF8F5" />
+      </div>
+
+      {/* 8. Social Proof Gallery (#FAF8F5) */}
       <SocialProofGallery />
+
+      {/* Split Transition: #FAF8F5 -> #FFFFFF */}
+      <div className="bg-[#FAF8F5]">
+        <SectionDivider type="split" fillColor="#FFFFFF" />
+      </div>
+
+      {/* 9. Location & Hours (#FFFFFF) */}
       <LocationHours />
+
+      {/* Wave Transition: #FFFFFF -> #1C1814 (Footer) */}
+      <div className="bg-white">
+        <SectionDivider type="wave" fillColor="#1C1814" />
+      </div>
     </div>
   );
 };
+

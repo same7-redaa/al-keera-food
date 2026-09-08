@@ -12,7 +12,7 @@ export const FeaturedMenuPreview: React.FC<FeaturedMenuPreviewProps> = ({ onOpen
   const featuredDishes = MENU_ITEMS.filter((item) => item.isPopular || item.badge === 'bestseller' || item.badge === 'signature').slice(0, 6);
 
   return (
-    <section id="featured-menu" className="py-12 sm:py-16 lg:py-20 relative bg-[#FAF8F5] overflow-hidden scroll-mt-24">
+    <section id="featured-menu" className="py-12 sm:py-16 lg:py-20 relative bg-[#F6F2EA] overflow-hidden scroll-mt-24">
       
       {/* Decorative background glow */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#A48F64]/10 rounded-full blur-3xl pointer-events-none"></div>

@@ -19,7 +19,7 @@ export const WhyUs: React.FC = () => {
   };
 
   return (
-    <section id="why-us" className="py-12 sm:py-16 lg:py-20 lg:min-h-[80vh] flex items-center relative bg-[#FAF8F5] overflow-hidden scroll-mt-24">
+    <section id="why-us" className="py-12 sm:py-16 lg:py-20 lg:min-h-[80vh] flex items-center relative bg-white overflow-hidden scroll-mt-24">
       
       {/* Background decorations */}
       <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#A48F64_1px,transparent_1px)] [background-size:32px_32px]"></div>

@@ -6,7 +6,7 @@ export const About: React.FC = () => {
   const { aboutStory } = RESTAURANT_INFO;
 
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] flex items-center relative bg-[#FAF8F5] overflow-hidden scroll-mt-24">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] flex items-center relative bg-[#F6F2EA] overflow-hidden scroll-mt-24">
       
       {/* Background Lights */}
       <div className="absolute top-1/3 -right-20 w-80 h-80 bg-[#A48F64]/10 rounded-full blur-3xl pointer-events-none"></div>

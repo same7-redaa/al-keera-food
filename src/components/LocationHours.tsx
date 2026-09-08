@@ -6,7 +6,7 @@ export const LocationHours: React.FC = () => {
   const [activeBranch, setActiveBranch] = useState<number>(0);
 
   return (
-    <section id="location" className="py-16 sm:py-20 lg:py-24 relative bg-[#FAF8F5] overflow-hidden border-t border-[#A48F64]/20 scroll-mt-24">
+    <section id="location" className="py-16 sm:py-20 lg:py-24 relative bg-white overflow-hidden scroll-mt-24">
       
       {/* Decorative Golden Ambient Gradients */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#A48F64]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>

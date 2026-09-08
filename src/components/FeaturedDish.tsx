@@ -20,7 +20,7 @@ export const FeaturedDish: React.FC = () => {
   };
 
   return (
-    <section id="featured" className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] flex items-center relative bg-[#FAF8F5] overflow-hidden border-y border-[#A48F64]/20 scroll-mt-24">
+    <section id="featured" className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] flex items-center relative bg-white overflow-hidden scroll-mt-24">
       {/* Visual background atmospheric lights */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#A48F64]/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-[#C5AF84]/15 rounded-full blur-3xl pointer-events-none"></div>

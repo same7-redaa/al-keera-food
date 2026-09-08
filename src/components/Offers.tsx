@@ -14,7 +14,7 @@ export const Offers: React.FC = () => {
   };
 
   return (
-    <section id="offers" className="py-12 sm:py-16 lg:py-20 lg:min-h-[80vh] flex items-center relative bg-[#FAF8F5] overflow-hidden border-y border-[#A48F64]/20 scroll-mt-24">
+    <section id="offers" className="py-12 sm:py-16 lg:py-20 lg:min-h-[80vh] flex items-center relative bg-[#FAF8F5] overflow-hidden scroll-mt-24">
       
       {/* Background Lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#A48F64]/10 rounded-full blur-[130px] pointer-events-none"></div>
