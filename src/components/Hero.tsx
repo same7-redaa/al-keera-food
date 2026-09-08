@@ -59,7 +59,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   const wheelRotation = -activeSlide * angleStep;
 
   return (
-    <section id="hero" className="relative min-h-[92vh] lg:min-h-[96vh] flex items-center pt-20 sm:pt-24 pb-12 sm:pb-16 overflow-hidden bg-[#FAF8F5]">
+    <section id="hero" className="relative min-h-[92vh] lg:min-h-[96vh] flex items-center pt-[88px] sm:pt-24 pb-12 sm:pb-16 overflow-hidden bg-[#FAF8F5]">
       
       {/* Background Atmosphere Lighting */}
       <div className="absolute inset-0 z-0 pointer-events-none">
