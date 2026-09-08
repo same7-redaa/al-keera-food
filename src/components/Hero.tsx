@@ -1,50 +1,35 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { UtensilsCrossed, MessageCircle, Sparkles } from 'lucide-react';
+import { UtensilsCrossed, MessageCircle } from 'lucide-react';
 
 interface HeroProps {
   onExploreMenu?: () => void;
 }
 
-const HERO_CAROUSEL_DISHES = [
+const HERO_CAROUSEL_IMAGES = [
   {
     id: 1,
-    title: 'طاجن ورق عنب بالكوارع',
-    subtitle: 'تسبيكة السمن البلدي ودبس الرمان',
-    price: '260 ج',
-    badge: 'الأكثر شهرة',
+    alt: 'طاجن ورق عنب بالكوارع',
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 2,
-    title: 'مشكل كباب وكفتة على الفحم',
-    subtitle: 'بتلو بلدي مع أرز بالمكسرات',
-    price: '220 ج',
-    badge: 'مشويات على الفحم',
+    alt: 'مشكل كباب وكفتة على الفحم',
     image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 3,
-    title: 'صينية الكيرة الملكية',
-    subtitle: 'وليمة عزومات متكاملة لـ 5 أفراد',
-    price: '1450 ج',
-    badge: 'صواني الولائم',
+    alt: 'صينية الكيرة الملكية',
     image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 4,
-    title: 'طاجن عكاوي بالبصل القاورما',
-    subtitle: 'عكاوي بتلو دايبة في الفخار',
-    price: '240 ج',
-    badge: 'طواجن فخار',
+    alt: 'طاجن عكاوي بالبصل القاورما',
     image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 5,
-    title: 'حمام بلدي محشي وممبار',
-    subtitle: 'سمن بلدي فلاحي وخلطة زمان',
-    price: '135 ج',
-    badge: 'محاشي وحمام',
+    alt: 'حمام بلدي محشي وممبار',
     image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=800&auto=format&fit=crop',
   },
 ];
@@ -53,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const total = HERO_CAROUSEL_DISHES.length;
+  const total = HERO_CAROUSEL_IMAGES.length;
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % total);
@@ -116,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           </a>
         </div>
 
-        {/* 4. Auto-Flipping Carousel without arrows or dots - Sharp Active Card + Blurred Smaller Background Cards */}
+        {/* 4. Pure Borderless Photos Carousel with Auto-Flipping & Blur */}
         <div
           className="relative w-full max-w-4xl mx-auto h-48 sm:h-60 md:h-68 lg:h-74 flex items-center justify-center select-none"
           onMouseEnter={() => setIsPaused(true)}
@@ -124,9 +109,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
         >
-          {/* Cards Track Container with zero overlap, clear margins, and background blur */}
+          {/* Images Track Container */}
           <div className="relative w-full h-full flex items-center justify-center overflow-visible">
-            {HERO_CAROUSEL_DISHES.map((dish, index) => {
+            {HERO_CAROUSEL_IMAGES.map((item, index) => {
               let offset = (index - activeIndex + total) % total;
               if (offset > total / 2) offset -= total; // Normalized: -2, -1, 0, 1, 2
 
@@ -138,28 +123,28 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
               let extraClasses = '';
 
               if (offset === 0) {
-                // Center active card: Completely sharp, prominent, full size with golden ring
+                // Center active image: Sharp, prominent, soft shadow, NO border, NO text
                 transformStyle = 'translateX(0) scale(1.05)';
                 filterStyle = 'blur(0px)';
                 opacityStyle = 1;
                 zIndexStyle = 30;
-                extraClasses = 'ring-2 ring-[#A48F64] shadow-2xl';
+                extraClasses = 'shadow-2xl';
               } else if (offset === 1) {
-                // Right card: Smaller, pushed aside with visible gap, blurred and lowered opacity
+                // Right image: Smaller, pushed aside with gap, blurred
                 transformStyle = 'translateX(calc(100% + 20px)) scale(0.8)';
-                filterStyle = 'blur(3.5px)';
-                opacityStyle = 0.5;
+                filterStyle = 'blur(4px)';
+                opacityStyle = 0.55;
                 zIndexStyle = 15;
-                extraClasses = 'shadow-md';
+                extraClasses = 'shadow-lg';
               } else if (offset === -1) {
-                // Left card: Smaller, pushed aside with visible gap, blurred and lowered opacity
+                // Left image: Smaller, pushed aside with gap, blurred
                 transformStyle = 'translateX(calc(-100% - 20px)) scale(0.8)';
-                filterStyle = 'blur(3.5px)';
-                opacityStyle = 0.5;
+                filterStyle = 'blur(4px)';
+                opacityStyle = 0.55;
                 zIndexStyle = 15;
-                extraClasses = 'shadow-md';
+                extraClasses = 'shadow-lg';
               } else {
-                // Far outer cards: hidden/offscreen
+                // Hidden outer images
                 transformStyle = `translateX(${offset > 0 ? 'calc(200% + 40px)' : 'calc(-200% - 40px)'}) scale(0.65)`;
                 filterStyle = 'blur(6px)';
                 opacityStyle = 0;
@@ -169,7 +154,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
               return (
                 <div
-                  key={dish.id}
+                  key={item.id}
                   onClick={() => setActiveIndex(index)}
                   style={{
                     transform: transformStyle,
@@ -177,53 +162,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                     filter: filterStyle,
                     zIndex: zIndexStyle,
                   }}
-                  className={`absolute w-36 sm:w-44 md:w-52 lg:w-56 h-42 sm:h-52 md:h-60 lg:h-66 cursor-pointer transition-all duration-700 ease-out p-1 ${extraClasses}`}
+                  className={`absolute w-36 sm:w-44 md:w-52 lg:w-56 h-42 sm:h-52 md:h-60 lg:h-66 cursor-pointer transition-all duration-700 ease-out rounded-2xl sm:rounded-3xl overflow-hidden ${extraClasses}`}
                 >
-                  {/* Inner Card Frame */}
-                  <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-[#A48F64]/40 group">
-                    
-                    {/* Dish Image */}
-                    <img
-                      src={dish.image}
-                      alt={dish.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
-
-                    {/* Top Pill / Badge */}
-                    <div className="absolute top-2 inset-x-2 sm:top-2.5 sm:inset-x-2.5 flex items-center justify-between">
-                      <span className="bg-[#A48F64] text-white text-[8.5px] sm:text-[9.5px] font-black px-2 py-0.5 rounded-full shadow-xs flex items-center gap-0.5">
-                        <Sparkles className="w-2 h-2 text-white" />
-                        <span>{dish.badge}</span>
-                      </span>
-
-                      <span className="bg-black/50 backdrop-blur-md text-white text-[8.5px] sm:text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border border-white/20">
-                        {index + 1} / {total}
-                      </span>
-                    </div>
-
-                    {/* Bottom Floating Info */}
-                    <div className="absolute bottom-0 inset-x-0 p-2.5 sm:p-3.5 text-right">
-                      <h3 className="text-xs sm:text-sm md:text-base font-black text-white leading-tight mb-0.5 drop-shadow-sm line-clamp-1">
-                        {dish.title}
-                      </h3>
-                      <p className="text-[9px] sm:text-[11px] text-white/80 line-clamp-1 mb-1.5">
-                        {dish.subtitle}
-                      </p>
-
-                      <div className="flex items-center justify-between pt-1 border-t border-white/20">
-                        <span className="text-[11px] sm:text-xs font-black text-[#D4C39E]">
-                          {dish.price}
-                        </span>
-                        <span className="text-[9px] sm:text-[10px] font-bold text-white/90 bg-white/20 backdrop-blur-sm px-1.5 py-0.5 rounded-md">
-                          اطلب
-                        </span>
-                      </div>
-                    </div>
-
-                  </div>
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    className="w-full h-full object-cover select-none"
+                    draggable={false}
+                  />
                 </div>
               );
             })}
