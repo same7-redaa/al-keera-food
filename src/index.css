@@ -163,11 +163,11 @@
   }
 
   /* Authentic Background Pattern Texture Overlay with Subtle Transparency */
-  section, footer, .section-divider-wrapper {
+  section, footer, .section-divider-wrapper, .page-bg-pattern {
     position: relative;
   }
 
-  section::before, footer::before, .section-divider-wrapper::before {
+  section::before, footer::before, .section-divider-wrapper::before, .page-bg-pattern::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -178,5 +178,10 @@
     opacity: 0.10;
     pointer-events: none;
     z-index: 0;
+  }
+
+  /* Higher transparency (even softer) for Hero section */
+  section#hero::before {
+    opacity: 0.04;
   }
 }

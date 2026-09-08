@@ -35,7 +35,7 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] pt-24 sm:pt-28 pb-20 relative overflow-hidden">
+    <div className="min-h-screen bg-[#FAF8F5] pt-24 sm:pt-28 pb-20 relative overflow-hidden page-bg-pattern">
       
       {/* Background Ambience */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#A48F64]/10 rounded-full blur-[120px] pointer-events-none"></div>
