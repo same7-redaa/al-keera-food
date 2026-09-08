@@ -25,14 +25,13 @@ export const LocationHours: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 mb-8">
           
           {/* 1. Location Card (Both Branches) */}
-          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#A48F64]/25 shadow-sm hover:shadow-xl hover:border-[#A48F64]/60 transition-all duration-300 flex flex-col justify-between text-center sm:text-right reveal delay-100">
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#A48F64]/25 shadow-sm hover:shadow-xl hover:border-[#A48F64]/60 transition-all duration-300 flex flex-col justify-between text-right reveal delay-100">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#F5EFE6] border border-[#A48F64]/30 flex items-center justify-center text-[#A48F64]">
-                  <MapPin className="w-6 h-6" />
+                <div className="w-11 h-11 rounded-2xl bg-[#F5EFE6] border border-[#A48F64]/30 flex items-center justify-center text-[#A48F64]">
+                  <MapPin className="w-5 h-5" />
                 </div>
-                <span className="bg-emerald-50 text-emerald-700 border border-emerald-300 text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span className="bg-[#FAF8F5] text-[#8A764D] border border-[#A48F64]/30 text-xs font-black px-3 py-1 rounded-full">
                   فرعان بالمحلة
                 </span>
               </div>
@@ -41,15 +40,15 @@ export const LocationHours: React.FC = () => {
                 فروع مطعم الكيرة
               </h3>
 
-              <div className="space-y-3 mb-4 text-xs sm:text-sm text-[#4A4035]">
-                <div className="p-2.5 rounded-xl bg-[#FAF8F5] border border-[#A48F64]/20">
-                  <span className="text-[#A48F64] font-bold block mb-1">📍 فرع 1 (المشحمة):</span>
-                  <span className="leading-relaxed">بجوار البنزينة واولاد رجب أعلى سنتر النصر أمام موسى للسيارات</span>
+              <div className="space-y-2.5 mb-4 text-xs sm:text-sm text-[#241E17]">
+                <div className="p-3 rounded-2xl bg-[#FAF8F5] border border-[#A48F64]/20">
+                  <span className="text-[#A48F64] font-black block mb-0.5">فرع المشحمة:</span>
+                  <span className="text-[#5C5245] leading-relaxed">بجوار البنزينة وأولاد رجب، أعلى سنتر النصر</span>
                 </div>
 
-                <div className="p-2.5 rounded-xl bg-[#FAF8F5] border border-[#A48F64]/20">
-                  <span className="text-[#A48F64] font-bold block mb-1">📍 فرع 2 (ش 6 أكتوبر):</span>
-                  <span className="leading-relaxed">أمام القصر (المستشفى العام) بالقرب من مستشفى حياطة ومسجد قادوس</span>
+                <div className="p-3 rounded-2xl bg-[#FAF8F5] border border-[#A48F64]/20">
+                  <span className="text-[#A48F64] font-black block mb-0.5">فرع ش 6 أكتوبر:</span>
+                  <span className="text-[#5C5245] leading-relaxed">أمام القصر (المستشفى العام) بالقرب من مستشفى حياطة</span>
                 </div>
               </div>
             </div>
@@ -66,56 +65,56 @@ export const LocationHours: React.FC = () => {
           </div>
 
           {/* 2. Working Hours Card */}
-          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#A48F64]/25 shadow-sm hover:shadow-xl hover:border-[#A48F64]/60 transition-all duration-300 flex flex-col justify-between text-center sm:text-right reveal delay-200">
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#A48F64]/25 shadow-sm hover:shadow-xl hover:border-[#A48F64]/60 transition-all duration-300 flex flex-col justify-between text-right reveal delay-200">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#F5EFE6] border border-[#A48F64]/30 flex items-center justify-center text-[#A48F64]">
-                  <Clock className="w-6 h-6" />
+                <div className="w-11 h-11 rounded-2xl bg-[#F5EFE6] border border-[#A48F64]/30 flex items-center justify-center text-[#A48F64]">
+                  <Clock className="w-5 h-5" />
                 </div>
-                <span className="text-[11px] font-bold text-[#6B6255] bg-[#FAF8F5] px-2.5 py-1 rounded-full border border-[#A48F64]/20">
+                <span className="text-xs font-black text-[#8A764D] bg-[#FAF8F5] px-3 py-1 rounded-full border border-[#A48F64]/30">
                   طوال أيام الأسبوع
                 </span>
               </div>
 
-              <h3 className="text-lg font-black text-[#241E17] mb-1.5">
-                ساعات العمل والخدمة
+              <h3 className="text-lg font-black text-[#241E17] mb-2">
+                مواعيد العمل
               </h3>
-              <p className="text-base sm:text-lg font-black text-[#A48F64] mb-1">
+              <p className="text-xl sm:text-2xl font-black text-[#A48F64] mb-1.5">
                 {RESTAURANT_INFO.openingHours.start} - {RESTAURANT_INFO.openingHours.end}
               </p>
-              <p className="text-xs text-[#6B6255]">
-                من الظهر وحتى 2:00 بعد منتصف الليل متواصل
+              <p className="text-xs sm:text-sm text-[#5C5245] font-medium leading-relaxed">
+                خدمة الصالة، التيك أواي، وتوصيل الطلبات متواصل يومياً.
               </p>
             </div>
 
-            <div className="pt-4 border-t border-[#A48F64]/15 flex items-center justify-center sm:justify-start gap-2 text-xs text-[#6B6255]">
+            <div className="pt-4 border-t border-[#A48F64]/15 flex items-center justify-start gap-2 text-xs text-[#5C5245]">
               <Flame className="w-4 h-4 text-[#A48F64] flex-shrink-0" />
-              <span>شواء طازج وطواجن فخار تسوية فورية</span>
+              <span>طواجن فخار ومشويات تسوية فورية</span>
             </div>
           </div>
 
           {/* 3. Delivery & Direct Ordering Card */}
-          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#A48F64]/40 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-center sm:text-right reveal delay-300">
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#A48F64]/40 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-right reveal delay-300">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-300 flex items-center justify-center text-emerald-700">
-                  <Truck className="w-6 h-6" />
+                <div className="w-11 h-11 rounded-2xl bg-[#F5EFE6] border border-[#A48F64]/30 flex items-center justify-center text-[#A48F64]">
+                  <Truck className="w-5 h-5" />
                 </div>
-                <span className="bg-[#FAF8F5] text-[#8A764D] text-[11px] font-black px-2.5 py-1 rounded-full border border-[#A48F64]/30">
-                  دليفري ساخن وسريع
+                <span className="bg-[#FAF8F5] text-[#8A764D] text-xs font-black px-3 py-1 rounded-full border border-[#A48F64]/30">
+                  توصيل سريع
                 </span>
               </div>
 
-              <h3 className="text-lg font-black text-[#241E17] mb-1.5">
-                خدمة الطلبات والتوصيل
+              <h3 className="text-lg font-black text-[#241E17] mb-2">
+                خدمة التوصيل والطلبات
               </h3>
-              <p className="text-xs sm:text-sm text-[#6B6255] font-medium mb-3">
-                تغليف حراري محكم يحافظ على سخونة المشويات والطواجن حتى بابك.
+              <p className="text-xs sm:text-sm text-[#5C5245] font-medium mb-3 leading-relaxed">
+                تغليف حراري محكم يحافظ على سخونة الأكل حتى بابك.
               </p>
               
-              <div className="text-xs text-[#8A764D] font-bold mb-4 flex items-center justify-center sm:justify-start gap-2">
-                <Phone className="w-3.5 h-3.5" />
-                <span>الخط الأرضي الموحد: {RESTAURANT_INFO.phoneDisplay}</span>
+              <div className="text-sm text-[#8A764D] font-black mb-4 flex items-center justify-start gap-2">
+                <Phone className="w-4 h-4 text-[#A48F64]" />
+                <span>الخط الموحد: {RESTAURANT_INFO.phoneDisplay}</span>
               </div>
             </div>
 
