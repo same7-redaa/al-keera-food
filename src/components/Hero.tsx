@@ -92,9 +92,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
             </span>
           </h1>
 
-          {/* 2. Centered Subtitle */}
-          <p className="text-xs sm:text-sm lg:text-base text-[#4A4035] max-w-xl mx-auto leading-relaxed line-clamp-2 sm:line-clamp-none font-normal">
-            لحوم بلدية طازجة 100% متبلة ومشوية على الفحم، وطواجن فخار متسبكة بالسمن البلدي.. <span className="text-[#A48F64] font-bold">حدوتة حلوة منا فينا!</span>
+          {/* 2. Centered Subtitle (2 Shortened Formatted Lines) */}
+          <p className="text-xs sm:text-sm lg:text-base text-[#4A4035] max-w-xl mx-auto leading-relaxed font-normal flex flex-col gap-0.5">
+            <span className="block">مشويات على الفحم وطواجن فخار بالسمن البلدي..</span>
+            <span className="block text-[#A48F64] font-bold">طعم زمان الأصيل، حدوتة حلوة منا فينا!</span>
           </p>
         </div>
 
