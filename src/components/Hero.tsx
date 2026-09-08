@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { UtensilsCrossed, MessageCircle, Sparkles, Flame, Award, ShieldCheck, ChevronRight, ChevronLeft } from 'lucide-react';
+import { UtensilsCrossed, MessageCircle, Sparkles, Flame, Award, ShieldCheck, ChevronRight, ChevronLeft, RotateCw } from 'lucide-react';
 
 interface HeroProps {
   onExploreMenu?: () => void;
@@ -39,28 +39,32 @@ const HERO_DISHES = [
   },
 ];
 
-// Orbital Arc Angles (degrees) for the 5 dishes along a semi-circular arc
-const ARC_ANGLES = [-70, -35, 0, 35, 70];
-
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-switch dish every 3.5 seconds
+  const total = HERO_DISHES.length;
+  const angleStep = 360 / total; // 72 degrees
+
+  // Auto-spin roulette wheel every 3.5 seconds
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % HERO_DISHES.length);
+      setActiveSlide((prev) => (prev + 1) % total);
     }, 3500);
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, [isPaused, total]);
+
+  const nextSlide = () => setActiveSlide((prev) => (prev + 1) % total);
+  const prevSlide = () => setActiveSlide((prev) => (prev - 1 + total) % total);
 
   const currentDish = HERO_DISHES[activeSlide];
+  const wheelRotation = -activeSlide * angleStep;
 
   return (
-    <section id="hero" className="relative min-h-[92vh] lg:min-h-[95vh] flex items-center pt-20 sm:pt-24 pb-12 sm:pb-16 overflow-hidden bg-[#FAF8F5]">
+    <section id="hero" className="relative min-h-[92vh] lg:min-h-[96vh] flex items-center pt-20 sm:pt-24 pb-12 sm:pb-16 overflow-hidden bg-[#FAF8F5]">
       
-      {/* Background Ambient Atmosphere Lights */}
+      {/* Background Atmosphere Lighting */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-10 right-1/4 w-[500px] h-[500px] bg-[#A48F64]/10 rounded-full blur-[140px]"></div>
         <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-[#C5AF84]/12 rounded-full blur-[120px]"></div>
@@ -69,11 +73,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         
-        {/* Split Grid: Content on Right + Circular Semi-Circle Arc Showcase on Left */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Split Grid: Content on Right + Roulette Wheel on Left */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           
-          {/* Right Column: High-Impact Typography & CTAs (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-right">
+          {/* Right Column: High-Impact Typography & CTAs (6 or 7 cols) */}
+          <div className="lg:col-span-6 xl:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-right">
             
             {/* Top Heritage Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#A48F64]/30 shadow-xs mb-4 sm:mb-6">
@@ -160,128 +164,125 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
           </div>
 
-          {/* Left Column: Orbital Semi-Circle Showcase (5 cols) */}
+          {/* Left Column: Rotating Roulette Wheel of Circular Dishes (5 or 6 cols) */}
           <div
-            className="lg:col-span-5 relative flex items-center justify-center select-none py-4 sm:py-6"
+            className="lg:col-span-6 xl:col-span-5 relative flex flex-col items-center justify-center select-none py-6"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
             
-            {/* Ambient Background Glowing Orb */}
+            {/* Ambient Lighting Halo */}
             <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-[#A48F64]/25 via-[#C5AF84]/15 to-transparent blur-3xl pointer-events-none"></div>
 
-            {/* Orbital Stage Container */}
-            <div className="relative w-[310px] h-[310px] sm:w-[390px] sm:h-[390px] lg:w-[430px] lg:h-[430px] flex items-center justify-center">
+            {/* Roulette Wheel Stage Container */}
+            <div className="relative w-[310px] h-[310px] sm:w-[390px] sm:h-[390px] lg:w-[440px] lg:h-[440px] flex items-center justify-center">
               
-              {/* Outer Semi-Circular Arc Line with Gold Accent */}
-              <div className="absolute inset-0 rounded-full border border-dashed border-[#A48F64]/35 pointer-events-none"></div>
+              {/* Outer Decorative Track Rings */}
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-[#A48F64]/30 pointer-events-none animate-[spin_60s_linear_infinite]"></div>
+              <div className="absolute inset-6 sm:inset-8 rounded-full border border-[#A48F64]/20 pointer-events-none"></div>
 
-              {/* Surrounding Circular Dishes along the Semi-Circular Arc */}
-              {HERO_DISHES.map((dish, idx) => {
-                const angle = ARC_ANGLES[idx];
-                // Trigonometric position on the circular arc (Radius ~ 44% of container)
-                const rad = (angle * Math.PI) / 180;
-                // For a right-facing semi-circle or curved arc
-                const xPercent = Math.sin(rad) * 44;
-                const yPercent = -Math.cos(rad) * 44;
-                const isActive = activeSlide === idx;
+              {/* The Spinning Roulette Wheel Track */}
+              <div
+                style={{
+                  transform: `rotate(${wheelRotation}deg)`,
+                  transition: 'transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                }}
+                className="absolute inset-0 flex items-center justify-center will-change-transform"
+              >
+                {HERO_DISHES.map((dish, idx) => {
+                  const angle = idx * angleStep;
+                  const rad = (angle * Math.PI) / 180;
+                  // Radius ~ 37% of the wheel width
+                  const xPercent = Math.sin(rad) * 37;
+                  const yPercent = -Math.cos(rad) * 37;
+                  const isActive = activeSlide === idx;
 
-                return (
-                  <button
-                    key={dish.id}
-                    onClick={() => setActiveSlide(idx)}
-                    aria-label={dish.title}
-                    style={{
-                      transform: `translate(${xPercent}%, ${yPercent}%)`,
-                    }}
-                    className={`absolute z-30 transition-all duration-500 ease-out cursor-pointer group ${
-                      isActive
-                        ? 'scale-120 sm:scale-125 z-40'
-                        : 'scale-90 sm:scale-95 opacity-75 hover:opacity-100 hover:scale-110'
-                    }`}
-                  >
-                    <div
-                      className={`relative w-12 h-12 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full overflow-hidden bg-white shadow-lg transition-all duration-300 ${
-                        isActive
-                          ? 'ring-3 sm:ring-4 ring-[#A48F64] shadow-gold-glow'
-                          : 'ring-2 ring-white/90 hover:ring-[#A48F64]/60'
-                      }`}
+                  return (
+                    <button
+                      key={dish.id}
+                      onClick={() => setActiveSlide(idx)}
+                      aria-label={dish.title}
+                      style={{
+                        transform: `translate(${xPercent}%, ${yPercent}%)`,
+                      }}
+                      className="absolute z-20 cursor-pointer group focus:outline-none"
                     >
-                      <img
-                        src={dish.image}
-                        alt={dish.title}
-                        className="w-full h-full object-cover select-none group-hover:scale-110 transition-transform duration-500"
-                        draggable={false}
-                      />
-                    </div>
+                      {/* Dish Card: Counter-rotated so image stays right side up */}
+                      <div
+                        style={{
+                          transform: `rotate(${-wheelRotation}deg)`,
+                          transition: 'transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        }}
+                        className={`relative w-20 h-20 sm:w-26 sm:h-26 lg:w-30 lg:h-30 rounded-full overflow-hidden bg-white transition-all duration-500 ${
+                          isActive
+                            ? 'scale-120 sm:scale-125 z-40 ring-4 ring-[#A48F64] shadow-gold-glow border-2 border-white'
+                            : 'scale-90 sm:scale-95 opacity-80 hover:opacity-100 hover:scale-105 ring-2 ring-[#A48F64]/40 shadow-lg'
+                        }`}
+                      >
+                        <img
+                          src={dish.image}
+                          alt={dish.title}
+                          className="w-full h-full object-cover select-none group-hover:scale-110 transition-transform duration-500"
+                          draggable={false}
+                        />
 
-                    {/* Active Indicator Pulse Dot */}
-                    {isActive && (
-                      <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#A48F64] border-2 border-white rounded-full animate-ping"></span>
-                    )}
-                  </button>
-                );
-              })}
+                        {/* Subtle inner shadow overlay */}
+                        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-black/10"></div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
 
-              {/* Central Main Featured Circular Plate */}
-              <div className="relative z-20 w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-white border-4 sm:border-[5px] border-[#A48F64] shadow-2xl group">
-                
-                {/* Crossfading Dish Images in Main Circular Plate */}
-                {HERO_DISHES.map((dish, idx) => (
-                  <div
-                    key={dish.id}
-                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                      activeSlide === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
-                    }`}
-                  >
-                    <img
-                      src={dish.image}
-                      alt={dish.title}
-                      className="w-full h-full object-cover select-none group-hover:scale-105 transition-transform duration-700"
-                      draggable={false}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-                  </div>
-                ))}
+              {/* Central Luxury Gold Emblem Hub */}
+              <div className="relative z-30 w-22 h-22 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-white/95 backdrop-blur-md border-2 sm:border-3 border-[#A48F64] shadow-xl flex flex-col items-center justify-center p-2 text-center pointer-events-none">
+                <span className="text-[10px] sm:text-xs font-bold text-[#A48F64] mb-0.5">مطعم</span>
+                <span className="text-sm sm:text-base lg:text-lg font-black text-[#241E17] leading-tight">الكيرة</span>
+                <div className="w-6 h-0.5 bg-[#A48F64] my-0.5 rounded-full"></div>
+                <span className="text-[9px] sm:text-[10px] font-bold text-[#6D6457]">منذ 1998</span>
+              </div>
 
-                {/* Floating Badge on Main Plate */}
-                <div className="absolute top-3 inset-x-0 flex justify-center z-30">
-                  <span className="bg-[#A48F64]/95 backdrop-blur-md text-white text-[10px] sm:text-xs font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1 border border-white/20">
-                    <Sparkles className="w-2.5 h-2.5 text-white" />
-                    <span>{currentDish.tag}</span>
-                  </span>
-                </div>
+            </div>
 
-                {/* Navigation Arrows on Plate */}
+            {/* Active Dish Floating Name & Controls Banner below the Roulette */}
+            <div className="mt-4 flex flex-col items-center gap-2 max-w-sm text-center">
+              
+              {/* Active Dish Tag & Title */}
+              <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-[#A48F64]/30 shadow-md animate-fadeIn">
+                <span className="bg-[#A48F64] text-white text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-md">
+                  {currentDish.tag}
+                </span>
+                <span className="text-xs sm:text-sm font-black text-[#241E17] line-clamp-1">
+                  {currentDish.title}
+                </span>
+              </div>
+
+              {/* Roulette Interactive Spin Buttons */}
+              <div className="flex items-center gap-3">
                 <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveSlide((prev) => (prev - 1 + HERO_DISHES.length) % HERO_DISHES.length);
-                  }}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#A48F64] transition-colors"
+                  onClick={prevSlide}
                   aria-label="الطبق السابق"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveSlide((prev) => (prev + 1) % HERO_DISHES.length);
-                  }}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#A48F64] transition-colors"
-                  aria-label="الطبق التالي"
+                  className="w-8 h-8 rounded-full bg-white border border-[#A48F64]/30 shadow-xs flex items-center justify-center text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all cursor-pointer"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
 
-                {/* Bottom Title on Plate */}
-                <div className="absolute bottom-2.5 inset-x-3 text-center z-30">
-                  <p className="text-white text-xs sm:text-sm font-black leading-tight drop-shadow-md line-clamp-1">
-                    {currentDish.title}
-                  </p>
-                </div>
+                <button
+                  onClick={nextSlide}
+                  aria-label="تدوير الروليت"
+                  className="px-3 py-1 bg-[#FAF8F5] border border-[#A48F64]/30 rounded-full text-xs font-bold text-[#8A764D] hover:bg-[#A48F64] hover:text-white transition-all flex items-center gap-1.5 shadow-xs cursor-pointer active:scale-95"
+                >
+                  <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '8s' }} />
+                  <span>تدوير الأطباق</span>
+                </button>
 
+                <button
+                  onClick={nextSlide}
+                  aria-label="الطبق التالي"
+                  className="w-8 h-8 rounded-full bg-white border border-[#A48F64]/30 shadow-xs flex items-center justify-center text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all cursor-pointer"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
               </div>
 
             </div>
