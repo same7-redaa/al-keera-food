@@ -25,25 +25,22 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ isLoading }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] bg-[#FAF8F5] flex flex-col items-center justify-center transition-opacity duration-500 select-none ${
+      className={`fixed inset-0 z-[100] bg-[#FAF8F5] flex flex-col items-center justify-center transition-opacity duration-500 select-none page-bg-pattern ${
         isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
       {/* Background subtle radial atmosphere */}
       <div className="absolute inset-0 bg-radial-gradient from-white via-[#FAF8F5] to-[#FAF8F5] pointer-events-none"></div>
       
-      {/* Center Logo & Animation */}
+      {/* Center Logo & Animation (No glowing halo) */}
       <div className="relative z-10 flex flex-col items-center gap-6">
-        <div className="relative group">
-          {/* Pulsing golden halo */}
-          <div className="absolute -inset-4 bg-gradient-to-tr from-[#A48F64]/20 via-[#C5AF84]/30 to-transparent rounded-full blur-xl animate-pulse"></div>
-          
+        <div className="relative">
           <img
             src="/logo.png"
             alt="مطعم الكيرة - المحلة الكبرى"
             loading="eager"
             decoding="sync"
-            className="w-52 sm:w-64 h-auto object-contain drop-shadow-[0_4px_16px_rgba(164,143,100,0.25)] animate-float"
+            className="w-52 sm:w-64 h-auto object-contain animate-float"
           />
         </div>
 
