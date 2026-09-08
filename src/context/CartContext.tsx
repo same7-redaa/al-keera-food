@@ -165,8 +165,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     });
 
-    const portionText = selectedPortion ? ` (${selectedPortion.label})` : '';
-    showToastNotification(`تمت إضافة ${item.name}${portionText} إلى سلتك`, 'حدوتة حلوة 🔥');
+    showToastNotification('تمت الإضافة للسلة');
   };
 
   const addOfferToCart = (offer: OfferItem, eventOrCoords?: ClickPosition) => {
@@ -195,7 +194,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     });
 
-    showToastNotification(`تمت إضافة ${offer.title} لسلتك بنجاح`, 'عرض ملكي توفير! 🎁');
+    showToastNotification('تمت الإضافة للسلة');
   };
 
   const removeFromCart = (cartItemId: string) => {

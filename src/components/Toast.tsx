@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
-import { X, Check, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 export const Toast: React.FC = () => {
   const { toast, hideToast } = useCart();
@@ -20,14 +20,18 @@ export const Toast: React.FC = () => {
         {/* Atmosphere glow */}
         <div className="absolute top-0 right-0 w-24 h-full bg-[#A48F64]/15 rounded-full blur-md pointer-events-none"></div>
 
-        {/* Check Icon */}
-        <div className="relative z-10 w-6 h-6 rounded-full bg-[#A48F64]/20 border border-[#A48F64]/30 flex items-center justify-center text-[#C5AF84] flex-shrink-0">
-          <Check className="w-3.5 h-3.5" />
+        {/* Restaurant Logo Icon */}
+        <div className="relative z-10 w-6 h-6 rounded-full bg-white/10 border border-[#A48F64]/40 flex items-center justify-center flex-shrink-0 p-0.5 overflow-hidden">
+          <img
+            src="/logo.png"
+            alt="الكيرة"
+            className="w-full h-full object-contain"
+          />
         </div>
 
         {/* Concise Message (Single Line) */}
-        <span className="relative z-10 text-xs sm:text-sm font-bold text-white whitespace-nowrap truncate max-w-[180px] sm:max-w-xs">
-          {toast.message}
+        <span className="relative z-10 text-xs sm:text-sm font-bold text-white whitespace-nowrap">
+          {toast.message || 'تمت الإضافة للسلة'}
         </span>
 
         {/* Small View Cart Button */}
@@ -40,15 +44,6 @@ export const Toast: React.FC = () => {
         >
           <span>عرض السلة</span>
           <ArrowLeft className="w-3 h-3" />
-        </button>
-
-        {/* Close Button */}
-        <button
-          onClick={hideToast}
-          className="relative z-10 text-stone-400 hover:text-white p-0.5 transition-colors"
-          aria-label="إغلاق التنبيه"
-        >
-          <X className="w-3.5 h-3.5" />
         </button>
       </div>
     </div>
