@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { UtensilsCrossed, MessageCircle, ChevronRight, ChevronLeft, Sparkles } from 'lucide-react';
+import { UtensilsCrossed, MessageCircle, Sparkles } from 'lucide-react';
 
 interface HeroProps {
   onExploreMenu?: () => void;
@@ -59,10 +59,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
     setActiveIndex((prev) => (prev + 1) % total);
   }, [total]);
 
-  const prevSlide = useCallback(() => {
-    setActiveIndex((prev) => (prev - 1 + total) % total);
-  }, [total]);
-
   // Automatic smooth flipping every 3.5 seconds
   useEffect(() => {
     if (isPaused) return;
@@ -71,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   }, [isPaused, nextSlide]);
 
   return (
-    <section id="hero" className="relative h-[100dvh] min-h-[560px] max-h-[100dvh] flex flex-col justify-between pt-16 sm:pt-20 pb-2 sm:pb-4 overflow-hidden bg-[#FAF8F5]">
+    <section id="hero" className="relative h-[100dvh] min-h-[560px] max-h-[100dvh] flex flex-col justify-between pt-16 sm:pt-20 pb-3 sm:pb-5 overflow-hidden bg-[#FAF8F5]">
       
       {/* Background Atmosphere Glow */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -120,67 +116,54 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           </a>
         </div>
 
-        {/* 4. Separated Card Carousel beneath buttons (Zero Overlap with clear gaps on all sides) */}
+        {/* 4. Auto-Flipping Carousel without arrows or dots - Sharp Active Card + Blurred Smaller Background Cards */}
         <div
-          className="relative w-full max-w-4xl mx-auto h-48 sm:h-60 md:h-68 lg:h-74 flex items-center justify-center select-none px-8 sm:px-12"
+          className="relative w-full max-w-4xl mx-auto h-48 sm:h-60 md:h-68 lg:h-74 flex items-center justify-center select-none"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
         >
-          {/* Left Arrow Navigation Button */}
-          <button
-            onClick={prevSlide}
-            aria-label="الطبق السابق"
-            className="absolute left-1 sm:left-2 md:left-4 z-40 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-md border border-[#A48F64]/30 shadow-md text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer"
-          >
-            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-
-          {/* Right Arrow Navigation Button */}
-          <button
-            onClick={nextSlide}
-            aria-label="الطبق التالي"
-            className="absolute right-1 sm:right-2 md:right-4 z-40 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-md border border-[#A48F64]/30 shadow-md text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer"
-          >
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-
-          {/* Cards Track Container with zero overlap and clear margins on all sides */}
+          {/* Cards Track Container with zero overlap, clear margins, and background blur */}
           <div className="relative w-full h-full flex items-center justify-center overflow-visible">
             {HERO_CAROUSEL_DISHES.map((dish, index) => {
               let offset = (index - activeIndex + total) % total;
               if (offset > total / 2) offset -= total; // Normalized: -2, -1, 0, 1, 2
 
-              // Compute translate and styling with guaranteed clear gap from all sides
+              // Compute translate, scale, blur and styling
               let transformStyle = '';
               let opacityStyle = 0;
+              let filterStyle = 'none';
               let zIndexStyle = 10;
               let extraClasses = '';
 
               if (offset === 0) {
-                // Center active card
-                transformStyle = 'translateX(0) scale(1)';
+                // Center active card: Completely sharp, prominent, full size with golden ring
+                transformStyle = 'translateX(0) scale(1.05)';
+                filterStyle = 'blur(0px)';
                 opacityStyle = 1;
                 zIndexStyle = 30;
                 extraClasses = 'ring-2 ring-[#A48F64] shadow-2xl';
               } else if (offset === 1) {
-                // Right card with guaranteed 16px/24px gap
-                transformStyle = 'translateX(calc(100% + 18px)) scale(0.9)';
-                opacityStyle = 0.75;
-                zIndexStyle = 20;
-                extraClasses = 'hover:opacity-100 shadow-lg';
+                // Right card: Smaller, pushed aside with visible gap, blurred and lowered opacity
+                transformStyle = 'translateX(calc(100% + 20px)) scale(0.8)';
+                filterStyle = 'blur(3.5px)';
+                opacityStyle = 0.5;
+                zIndexStyle = 15;
+                extraClasses = 'shadow-md';
               } else if (offset === -1) {
-                // Left card with guaranteed 16px/24px gap
-                transformStyle = 'translateX(calc(-100% - 18px)) scale(0.9)';
-                opacityStyle = 0.75;
-                zIndexStyle = 20;
-                extraClasses = 'hover:opacity-100 shadow-lg';
+                // Left card: Smaller, pushed aside with visible gap, blurred and lowered opacity
+                transformStyle = 'translateX(calc(-100% - 20px)) scale(0.8)';
+                filterStyle = 'blur(3.5px)';
+                opacityStyle = 0.5;
+                zIndexStyle = 15;
+                extraClasses = 'shadow-md';
               } else {
-                // Hidden outer cards
-                transformStyle = `translateX(${offset > 0 ? 'calc(200% + 36px)' : 'calc(-200% - 36px)'}) scale(0.8)`;
+                // Far outer cards: hidden/offscreen
+                transformStyle = `translateX(${offset > 0 ? 'calc(200% + 40px)' : 'calc(-200% - 40px)'}) scale(0.65)`;
+                filterStyle = 'blur(6px)';
                 opacityStyle = 0;
-                zIndexStyle = 10;
+                zIndexStyle = 5;
                 extraClasses = 'pointer-events-none';
               }
 
@@ -191,11 +174,12 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                   style={{
                     transform: transformStyle,
                     opacity: opacityStyle,
+                    filter: filterStyle,
                     zIndex: zIndexStyle,
                   }}
-                  className={`absolute w-36 sm:w-44 md:w-52 lg:w-56 h-42 sm:h-52 md:h-60 lg:h-66 cursor-pointer transition-all duration-500 ease-out p-1 ${extraClasses}`}
+                  className={`absolute w-36 sm:w-44 md:w-52 lg:w-56 h-42 sm:h-52 md:h-60 lg:h-66 cursor-pointer transition-all duration-700 ease-out p-1 ${extraClasses}`}
                 >
-                  {/* Inner Card Frame with rounded corners and spacing on all 4 sides */}
+                  {/* Inner Card Frame */}
                   <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-[#A48F64]/40 group">
                     
                     {/* Dish Image */}
@@ -208,14 +192,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
 
-                    {/* Top Pill / Badge with Counter */}
+                    {/* Top Pill / Badge */}
                     <div className="absolute top-2 inset-x-2 sm:top-2.5 sm:inset-x-2.5 flex items-center justify-between">
                       <span className="bg-[#A48F64] text-white text-[8.5px] sm:text-[9.5px] font-black px-2 py-0.5 rounded-full shadow-xs flex items-center gap-0.5">
                         <Sparkles className="w-2 h-2 text-white" />
                         <span>{dish.badge}</span>
                       </span>
 
-                      {/* Index Counter */}
                       <span className="bg-black/50 backdrop-blur-md text-white text-[8.5px] sm:text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border border-white/20">
                         {index + 1} / {total}
                       </span>
@@ -246,22 +229,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
             })}
           </div>
 
-        </div>
-
-        {/* Carousel Progress Dots */}
-        <div className="flex items-center justify-center gap-1.5">
-          {HERO_CAROUSEL_DISHES.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              aria-label={`الطبق ${idx + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                activeIndex === idx
-                  ? 'w-5 bg-[#A48F64]'
-                  : 'w-1.5 bg-[#A48F64]/30 hover:bg-[#A48F64]/60'
-              }`}
-            />
-          ))}
         </div>
 
       </div>
