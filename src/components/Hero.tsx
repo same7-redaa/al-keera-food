@@ -9,28 +9,28 @@ interface HeroProps {
 const HERO_CAROUSEL_IMAGES = [
   {
     id: 1,
-    alt: 'طاجن ورق عنب بالكوارع',
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop',
+    alt: 'أطباق مطعم الكيرة 1',
+    image: 'https://scontent.fcai30-1.fna.fbcdn.net/v/t39.30808-6/572406025_1257907669700998_8662075163554351659_n.jpg?stp=dst-jpg_tt6&cstp=mx1200x1200&ctp=s1200x1200&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=KM7PJhQG2x0Q7kNvwGnGDY0&_nc_oc=AdqEGHSCdg9p3MHFiwuOCIwBTB0WabeVJo6BBOFmr9gMRiPJUCjSoE5zdclEeNNTxGc&_nc_zt=23&_nc_ht=scontent.fcai30-1.fna&_nc_gid=UnksXvPkCW0o1fpiPZgaLA&_nc_ss=7b2a8&oh=00_AQKuyGh9t_1OQzNc2j4-RuzTUF1TbFgsg5SlFyd6M8DHrg&oe=6AA64ABA',
   },
   {
     id: 2,
-    alt: 'مشكل كباب وكفتة على الفحم',
-    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop',
+    alt: 'أطباق مطعم الكيرة 2',
+    image: 'https://scontent.fcai30-1.fna.fbcdn.net/v/t39.30808-6/576995723_1272081948283570_466983060474021685_n.jpg?stp=dst-jpg_tt6&cstp=mx992x987&ctp=s992x987&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=aSNJtzbPPXcQ7kNvwGT4ZxK&_nc_oc=AdqO-Ohl2InJmtPicTvfp99fLY-_V3pqk7CPGMMMFEzzWZXeM56swQWghutWxl-CrUE&_nc_zt=23&_nc_ht=scontent.fcai30-1.fna&_nc_gid=PgKq-LTsfAx5Lk9NGV6gHA&_nc_ss=7b2a8&oh=00_AQI4W233Fq_fWIvubQHVpVR9OxZ7VFivMoaHx5U8IM6zTw&oe=6AA62F3A',
   },
   {
     id: 3,
-    alt: 'صينية الكيرة الملكية',
-    image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=800&auto=format&fit=crop',
+    alt: 'أطباق مطعم الكيرة 3',
+    image: 'https://scontent.fcai30-1.fna.fbcdn.net/v/t39.30808-6/578791319_1272083424950089_7033212010989144411_n.jpg?stp=dst-jpg_tt6&cstp=mx1200x1200&ctp=s1200x1200&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=DQNElv7YGFEQ7kNvwHqS7Gh&_nc_oc=AdoSms0aEApiaKD9nZtXrghLq1ee1t6EMiDW0Yhr9j8C5KWoCkMoMBBCziAakTt9j8c&_nc_zt=23&_nc_ht=scontent.fcai30-1.fna&_nc_gid=-km24shtMls4OZdd2bO46g&_nc_ss=7b2a8&oh=00_AQJTrZTe-m8WS6ce3t4rDyEiFCa4Yl8D7ws2vwmk4X1EiA&oe=6AA64ABA',
   },
   {
     id: 4,
-    alt: 'طاجن عكاوي بالبصل القاورما',
-    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=800&auto=format&fit=crop',
+    alt: 'أطباق مطعم الكيرة 4',
+    image: 'https://scontent.fcai30-1.fna.fbcdn.net/v/t39.30808-6/585191118_1277524707739294_2329457397649780619_n.jpg?stp=dst-jpg_tt6&cstp=mx810x960&ctp=s810x960&_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ItiDM8rNBuQQ7kNvwE-4wuy&_nc_oc=Adpnoy-FEQTyrBDAgrsR-hzqmk6DKOyDQKk_r4PZKndznZz60jV769QTayzLbBLgfvU&_nc_zt=23&_nc_ht=scontent.fcai30-1.fna&_nc_gid=KT1fiWIMJges0SXybdf5HA&_nc_ss=7b2a8&oh=00_AQIBDrqXMDo9DOqB93YlDUo0gZSRwud30OyTmTWDzUQb0A&oe=6AA61852',
   },
   {
     id: 5,
-    alt: 'حمام بلدي محشي وممبار',
-    image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=800&auto=format&fit=crop',
+    alt: 'أطباق مطعم الكيرة 5',
+    image: 'https://scontent.fcai30-1.fna.fbcdn.net/v/t39.30808-6/584533002_1277526104405821_7204356795495579078_n.jpg?stp=dst-jpg_tt6&cstp=mx1200x1200&ctp=s1200x1200&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=KCcbU4Duwc0Q7kNvwEdceUj&_nc_oc=Adr6TIixQqjG_LWxBpSIZvK-rpJ01S3nL7nCUXp6u_LEOnrT1Y0n4nXctiZMKKZf7WI&_nc_zt=23&_nc_ht=scontent.fcai30-1.fna&_nc_gid=tscOh9PbiqSJqoFmx-uT_A&_nc_ss=7b2a8&oh=00_AQJc_Sum4d8PcU_GOj_5b3HULDAUUgHcz8-qTXttB8ewCQ&oe=6AA62073',
   },
 ];
 
@@ -101,9 +101,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           </a>
         </div>
 
-        {/* 4. Pure Borderless Photos Carousel with Auto-Flipping & Blur */}
+        {/* 4. Pure Square Photos Carousel with Auto-Flipping & Blur */}
         <div
-          className="relative w-full max-w-4xl mx-auto h-48 sm:h-60 md:h-68 lg:h-74 flex items-center justify-center select-none"
+          className="relative w-full max-w-4xl mx-auto h-44 sm:h-56 md:h-64 lg:h-72 flex items-center justify-center select-none"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
@@ -115,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
               let offset = (index - activeIndex + total) % total;
               if (offset > total / 2) offset -= total; // Normalized: -2, -1, 0, 1, 2
 
-              // Compute translate, scale, blur and styling
+              // Compute translate, scale, blur and styling with square proportions
               let transformStyle = '';
               let opacityStyle = 0;
               let filterStyle = 'none';
@@ -131,21 +131,21 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                 extraClasses = 'shadow-2xl';
               } else if (offset === 1) {
                 // Right image: Smaller, pushed aside with gap, blurred
-                transformStyle = 'translateX(calc(100% + 20px)) scale(0.8)';
+                transformStyle = 'translateX(calc(100% + 18px)) scale(0.82)';
                 filterStyle = 'blur(4px)';
                 opacityStyle = 0.55;
                 zIndexStyle = 15;
                 extraClasses = 'shadow-lg';
               } else if (offset === -1) {
                 // Left image: Smaller, pushed aside with gap, blurred
-                transformStyle = 'translateX(calc(-100% - 20px)) scale(0.8)';
+                transformStyle = 'translateX(calc(-100% - 18px)) scale(0.82)';
                 filterStyle = 'blur(4px)';
                 opacityStyle = 0.55;
                 zIndexStyle = 15;
                 extraClasses = 'shadow-lg';
               } else {
                 // Hidden outer images
-                transformStyle = `translateX(${offset > 0 ? 'calc(200% + 40px)' : 'calc(-200% - 40px)'}) scale(0.65)`;
+                transformStyle = `translateX(${offset > 0 ? 'calc(200% + 36px)' : 'calc(-200% - 36px)'}) scale(0.65)`;
                 filterStyle = 'blur(6px)';
                 opacityStyle = 0;
                 zIndexStyle = 5;
@@ -162,7 +162,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                     filter: filterStyle,
                     zIndex: zIndexStyle,
                   }}
-                  className={`absolute w-36 sm:w-44 md:w-52 lg:w-56 h-42 sm:h-52 md:h-60 lg:h-66 cursor-pointer transition-all duration-700 ease-out rounded-2xl sm:rounded-3xl overflow-hidden ${extraClasses}`}
+                  className={`absolute w-38 h-38 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-62 lg:h-62 aspect-square cursor-pointer transition-all duration-700 ease-out rounded-2xl sm:rounded-3xl overflow-hidden ${extraClasses}`}
                 >
                   <img
                     src={item.image}
