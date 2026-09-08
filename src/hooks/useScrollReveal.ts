@@ -21,19 +21,24 @@ export const useScrollReveal = (dependency?: any) => {
         });
       },
       {
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.01,
+        rootMargin: '120px 0px 60px 0px',
       }
     );
 
-    // Give DOM a frame to settle
-    const timeoutId = setTimeout(() => {
-      const elements = document.querySelectorAll('.reveal, .reveal-scale');
-      elements.forEach((el) => observer.observe(el));
-    }, 80);
+    // Eagerly observe immediately without delay
+    const elements = document.querySelectorAll('.reveal, .reveal-scale');
+    elements.forEach((el) => {
+      // If already in top viewport, activate immediately
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 100) {
+        el.classList.add('reveal-active');
+      } else {
+        observer.observe(el);
+      }
+    });
 
     return () => {
-      clearTimeout(timeoutId);
       observer.disconnect();
     };
   }, [dependency]);
