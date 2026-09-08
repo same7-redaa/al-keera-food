@@ -179,14 +179,14 @@
     background-repeat: repeat;
     background-size: 600px auto;
     background-position: center;
-    opacity: 0.10;
+    opacity: 0.15;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* Higher transparency (even softer) for Hero section */
+  /* Higher transparency for Hero section */
   section#hero::before {
-    opacity: 0.04;
+    opacity: 0.05;
   }
 
   /* Playful Cart Pop Bounce on Dish Arrival */
