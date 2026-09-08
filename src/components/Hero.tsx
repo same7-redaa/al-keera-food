@@ -17,10 +17,18 @@ const HERO_DISHES = [
   },
 ];
 
+const TICKER_ITEMS = [
+  { image: '/hero-dish.png', title: 'مضغوط الدجاج الملكي', tag: 'الأكثر طلباً ⭐' },
+  { image: '/hero-dish-2.png', title: 'مضغوط اللحم البلدي', tag: 'طازج يومياً 👑' },
+  { image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=300&auto=format&fit=crop', title: 'مبكبكة ليبية ساخنة', tag: 'أصلية 🔥' },
+  { image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=300&auto=format&fit=crop', title: 'مضغوط تندوري متبل', tag: 'توابل خاصة ✨' },
+  { image: '/hero-dish.png', title: 'دقوس وتومية مجاناً', tag: 'هدية كل وجبة 🎁' },
+];
+
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   const [currentDish, setCurrentDish] = useState(0);
 
-  // Automatically alternate dishes every 4.5 seconds
+  // Automatically alternate dishes on desktop every 4.5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentDish((prev) => (prev + 1) % HERO_DISHES.length);
@@ -29,7 +37,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-24 sm:pt-28 pb-16 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden">
       {/* Background with layered dark green & warm food lighting */}
       <div className="absolute inset-0 z-0">
         <img
@@ -42,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#D8D923_1px,transparent_1px)] [background-size:24px_24px]"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Right Column: Hero Typography & Actions */}
@@ -92,14 +100,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
           </div>
 
-          {/* Left Column: Alternating Dish Showcase with Blurred Background & Tight Sizing */}
-          <div className="lg:col-span-5 relative flex flex-col items-center justify-center">
+          {/* Desktop Left Column: Alternating Dish Showcase with Blurred Background */}
+          <div className="hidden lg:flex lg:col-span-5 relative flex-col items-center justify-center">
             
             {/* Outer Wrapper for Dish & Effects */}
-            <div className="relative w-full max-w-[340px] sm:max-w-[390px] lg:max-w-[430px] flex flex-col items-center">
+            <div className="relative w-full max-w-[430px] flex flex-col items-center">
               
               {/* Radial Golden & Amber Backlight Glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[350px] h-[280px] sm:h-[350px] bg-gradient-to-tr from-brand-gold/35 via-amber-500/25 to-brand-primary/20 rounded-full blur-[70px] pointer-events-none"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-to-tr from-brand-gold/35 via-amber-500/25 to-brand-primary/20 rounded-full blur-[70px] pointer-events-none"></div>
 
               {/* Dish Visual Container with Automatic Crossfade Transition */}
               <div className="relative w-full aspect-square flex items-center justify-center select-none">
@@ -140,6 +148,34 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
         </div>
 
+      </div>
+
+      {/* Mobile Continuous Infinite Running Marquee Ticker (شريط تمرير صغير لا يتوقف) */}
+      <div className="lg:hidden w-full mt-8 pt-4 pb-2 border-y border-brand-gold/20 bg-brand-primary/40 backdrop-blur-md overflow-hidden relative z-10">
+        <div className="animate-marquee-infinite flex items-center gap-3">
+          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-brand-card/90 border border-brand-gold/30 shadow-sm flex-shrink-0"
+            >
+              <div className="w-10 h-10 rounded-xl overflow-hidden bg-brand-deep border border-brand-gold/30 flex-shrink-0 flex items-center justify-center">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col text-right whitespace-nowrap">
+                <span className="text-xs font-black text-brand-cream leading-tight">
+                  {item.title}
+                </span>
+                <span className="text-[10px] text-brand-brightGold font-medium">
+                  {item.tag}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

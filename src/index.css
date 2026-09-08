@@ -128,4 +128,16 @@
   .delay-300 { transition-delay: 300ms; }
   .delay-400 { transition-delay: 400ms; }
   .delay-500 { transition-delay: 500ms; }
+
+  /* Infinite Marquee Ticker for Mobile & Hero */
+  @keyframes marquee-rtl {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(50%); }
+  }
+
+  .animate-marquee-infinite {
+    display: flex;
+    width: max-content;
+    animation: marquee-rtl 22s linear infinite;
+  }
 }
