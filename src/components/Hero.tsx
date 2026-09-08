@@ -119,9 +119,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           </a>
         </div>
 
-        {/* 4. 3D Cover-Flow / Card Carousel beneath buttons */}
+        {/* 4. Separated Card Carousel beneath buttons (Zero Overlap with clear gaps on all sides) */}
         <div
-          className="relative w-full max-w-3xl mx-auto h-48 sm:h-60 md:h-68 lg:h-74 flex items-center justify-center select-none"
+          className="relative w-full max-w-4xl mx-auto h-48 sm:h-60 md:h-68 lg:h-74 flex items-center justify-center select-none px-8 sm:px-12"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
@@ -131,7 +131,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           <button
             onClick={prevSlide}
             aria-label="الطبق السابق"
-            className="absolute left-0 sm:left-2 z-40 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur-md border border-[#A48F64]/30 shadow-md text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all flex items-center justify-center"
+            className="absolute left-1 sm:left-2 md:left-4 z-40 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-md border border-[#A48F64]/30 shadow-md text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer"
           >
             <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
@@ -140,62 +140,62 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           <button
             onClick={nextSlide}
             aria-label="الطبق التالي"
-            className="absolute right-0 sm:right-2 z-40 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur-md border border-[#A48F64]/30 shadow-md text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all flex items-center justify-center"
+            className="absolute right-1 sm:right-2 md:right-4 z-40 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-md border border-[#A48F64]/30 shadow-md text-[#241E17] hover:text-[#A48F64] hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer"
           >
             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
-          {/* Cards 3D Stack */}
-          <div className="relative w-full h-full flex items-center justify-center perspective-[1000px]">
+          {/* Cards Track Container with zero overlap and clear margins on all sides */}
+          <div className="relative w-full h-full flex items-center justify-center overflow-visible">
             {HERO_CAROUSEL_DISHES.map((dish, index) => {
               let offset = (index - activeIndex + total) % total;
               if (offset > total / 2) offset -= total; // Normalized: -2, -1, 0, 1, 2
 
-              const isVisible = Math.abs(offset) <= 2;
-
-              if (!isVisible) return null;
-
-              // Calculate 3D transformation properties based on offset
-              let transformStyles = '';
-              let zIndex = 10;
-              let opacity = 0.4;
+              // Compute translate and styling with guaranteed clear gap from all sides
+              let transformStyle = '';
+              let opacityStyle = 0;
+              let zIndexStyle = 10;
+              let extraClasses = '';
 
               if (offset === 0) {
-                // Active Center Card
-                transformStyles = 'translate-x-0 scale-100 sm:scale-105';
-                zIndex = 30;
-                opacity = 1;
+                // Center active card
+                transformStyle = 'translateX(0) scale(1)';
+                opacityStyle = 1;
+                zIndexStyle = 30;
+                extraClasses = 'ring-2 ring-[#A48F64] shadow-2xl';
               } else if (offset === 1) {
-                // Immediate Right Card
-                transformStyles = 'translate-x-[55%] sm:translate-x-[75%] md:translate-x-[85%] scale-85 -rotate-y-6';
-                zIndex = 20;
-                opacity = 0.75;
+                // Right card with guaranteed 16px/24px gap
+                transformStyle = 'translateX(calc(100% + 18px)) scale(0.9)';
+                opacityStyle = 0.75;
+                zIndexStyle = 20;
+                extraClasses = 'hover:opacity-100 shadow-lg';
               } else if (offset === -1) {
-                // Immediate Left Card
-                transformStyles = '-translate-x-[55%] sm:-translate-x-[75%] md:-translate-x-[85%] scale-85 rotate-y-6';
-                zIndex = 20;
-                opacity = 0.75;
-              } else if (offset === 2) {
-                // Outer Right Card
-                transformStyles = 'translate-x-[95%] sm:translate-x-[130%] md:translate-x-[150%] scale-70 -rotate-y-12';
-                zIndex = 10;
-                opacity = 0.35;
-              } else if (offset === -2) {
-                // Outer Left Card
-                transformStyles = '-translate-x-[95%] sm:-translate-x-[130%] md:-translate-x-[150%] scale-70 rotate-y-12';
-                zIndex = 10;
-                opacity = 0.35;
+                // Left card with guaranteed 16px/24px gap
+                transformStyle = 'translateX(calc(-100% - 18px)) scale(0.9)';
+                opacityStyle = 0.75;
+                zIndexStyle = 20;
+                extraClasses = 'hover:opacity-100 shadow-lg';
+              } else {
+                // Hidden outer cards
+                transformStyle = `translateX(${offset > 0 ? 'calc(200% + 36px)' : 'calc(-200% - 36px)'}) scale(0.8)`;
+                opacityStyle = 0;
+                zIndexStyle = 10;
+                extraClasses = 'pointer-events-none';
               }
 
               return (
                 <div
                   key={dish.id}
                   onClick={() => setActiveIndex(index)}
-                  style={{ zIndex, opacity }}
-                  className={`absolute w-38 sm:w-48 md:w-56 lg:w-60 h-44 sm:h-54 md:h-62 lg:h-68 cursor-pointer transition-all duration-700 ease-out transform ${transformStyles}`}
+                  style={{
+                    transform: transformStyle,
+                    opacity: opacityStyle,
+                    zIndex: zIndexStyle,
+                  }}
+                  className={`absolute w-36 sm:w-44 md:w-52 lg:w-56 h-42 sm:h-52 md:h-60 lg:h-66 cursor-pointer transition-all duration-500 ease-out p-1 ${extraClasses}`}
                 >
-                  {/* Card Container with custom rounded corners */}
-                  <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-[#A48F64]/40 shadow-xl group">
+                  {/* Inner Card Frame with rounded corners and spacing on all 4 sides */}
+                  <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-[#A48F64]/40 group">
                     
                     {/* Dish Image */}
                     <img
