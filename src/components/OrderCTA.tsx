@@ -37,7 +37,7 @@ export const OrderCTA: React.FC = () => {
             className="flex-1 min-w-[190px] py-3.5 px-6 bg-[#A48F64] hover:bg-[#8A764D] text-white font-bold text-sm rounded-2xl transition-all duration-300 shadow-md flex items-center justify-center gap-2 active:scale-95"
           >
             <Phone className="w-4 h-4" />
-            <span>اتصل بنا: {RESTAURANT_INFO.phone}</span>
+            <span>اتصال هاتفي</span>
           </a>
         </div>
 

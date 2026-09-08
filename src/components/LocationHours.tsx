@@ -115,24 +115,24 @@ export const LocationHours: React.FC = () => {
                 </div>
               </div>
 
-              {/* Quick Action Buttons */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              {/* Quick Action Buttons Side by Side */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
                 <a
                   href={`https://maps.google.com/?q=${encodeURIComponent(RESTAURANT_INFO.branches[0].mapQuery)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-3 px-4 bg-[#FAF8F5] hover:bg-[#F5EFE6] border border-[#A48F64]/30 text-[#8A764D] font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-xs active:scale-98"
+                  className="py-3 px-3 bg-[#FAF8F5] hover:bg-[#F5EFE6] border border-[#A48F64]/30 text-[#8A764D] font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-xs active:scale-98"
                 >
                   <Navigation className="w-4 h-4 text-[#A48F64]" />
-                  <span>الاتجاهات على الخريطة</span>
+                  <span>الاتجاهات</span>
                 </a>
 
                 <a
                   href={`tel:${RESTAURANT_INFO.phone}`}
-                  className="py-3 px-4 bg-[#A48F64] hover:bg-[#8A764D] text-white font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm active:scale-98"
+                  className="py-3 px-3 bg-[#A48F64] hover:bg-[#8A764D] text-white font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm active:scale-98"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>اتصال: {RESTAURANT_INFO.phoneDisplay}</span>
+                  <span>اتصال</span>
                 </a>
               </div>
 
@@ -209,24 +209,24 @@ export const LocationHours: React.FC = () => {
                 </div>
               </div>
 
-              {/* Quick Action Buttons */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              {/* Quick Action Buttons Side by Side */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
                 <a
                   href={`https://maps.google.com/?q=${encodeURIComponent(RESTAURANT_INFO.branches[1].mapQuery)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-3 px-4 bg-[#FAF8F5] hover:bg-[#F5EFE6] border border-[#A48F64]/30 text-[#8A764D] font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-xs active:scale-98"
+                  className="py-3 px-3 bg-[#FAF8F5] hover:bg-[#F5EFE6] border border-[#A48F64]/30 text-[#8A764D] font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-xs active:scale-98"
                 >
                   <Navigation className="w-4 h-4 text-[#A48F64]" />
-                  <span>الاتجاهات على الخريطة</span>
+                  <span>الاتجاهات</span>
                 </a>
 
                 <a
                   href={`tel:${RESTAURANT_INFO.mobile1}`}
-                  className="py-3 px-4 bg-[#A48F64] hover:bg-[#8A764D] text-white font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm active:scale-98"
+                  className="py-3 px-3 bg-[#A48F64] hover:bg-[#8A764D] text-white font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm active:scale-98"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>اتصال: {RESTAURANT_INFO.mobile1}</span>
+                  <span>اتصال</span>
                 </a>
               </div>
 
@@ -252,23 +252,23 @@ export const LocationHours: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 w-full md:w-auto">
+          <div className="flex items-center justify-center gap-3 w-full md:w-auto">
             <a
               href={RESTAURANT_INFO.socialLinks.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="py-3 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-md active:scale-95 whitespace-nowrap"
+              className="flex-1 md:flex-none py-3 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-md active:scale-95 whitespace-nowrap"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>طلب مباشر عبر واتساب</span>
+              <span>واتساب</span>
             </a>
 
             <a
               href={`tel:${RESTAURANT_INFO.phone}`}
-              className="py-3 px-6 bg-[#A48F64] hover:bg-[#8A764D] text-white font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-md active:scale-95 whitespace-nowrap"
+              className="flex-1 md:flex-none py-3 px-6 bg-[#A48F64] hover:bg-[#8A764D] text-white font-black text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-md active:scale-95 whitespace-nowrap"
             >
               <Phone className="w-4 h-4" />
-              <span>الخط الساخن: {RESTAURANT_INFO.phoneDisplay}</span>
+              <span>اتصال هاتفي</span>
             </a>
           </div>
         </div>
