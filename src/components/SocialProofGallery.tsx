@@ -9,13 +9,13 @@ export const SocialProofGallery: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <h2 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-4 tracking-tight">
-            شوف <span className="gold-gradient-text">طواجننا ومشوياتنا على الطبيعة</span>
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <h2 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-3 tracking-tight">
+            أطباقنا <span className="gold-gradient-text">على الطبيعة</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#5C5245]">
-            أطباقنا الحقيقية بتصوير طبيعي يوضح تسبيكة طواجن الفخار ولمعان الشواء على الفحم.
+          <p className="text-sm sm:text-base text-[#5C5245]">
+            تصوير واقعي يوضح تسبيكة طواجن الفخار ولمعان المشويات على الفحم.
           </p>
         </div>
 
