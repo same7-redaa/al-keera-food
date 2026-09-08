@@ -39,23 +39,28 @@ const HERO_DISHES = [
   },
 ];
 
+// Orbital Arc Angles (degrees) for the 5 dishes along a semi-circular arc
+const ARC_ANGLES = [-70, -35, 0, 35, 70];
+
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-slide every 4 seconds
+  // Auto-switch dish every 3.5 seconds
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % HERO_DISHES.length);
-    }, 4000);
+    }, 3500);
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused]);
 
   const currentDish = HERO_DISHES[activeSlide];
 
   return (
     <section id="hero" className="relative min-h-[92vh] lg:min-h-[95vh] flex items-center pt-20 sm:pt-24 pb-12 sm:pb-16 overflow-hidden bg-[#FAF8F5]">
       
-      {/* Background Atmosphere Lights */}
+      {/* Background Ambient Atmosphere Lights */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-10 right-1/4 w-[500px] h-[500px] bg-[#A48F64]/10 rounded-full blur-[140px]"></div>
         <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-[#C5AF84]/12 rounded-full blur-[120px]"></div>
@@ -64,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         
-        {/* Split Hero 2-Column Grid */}
+        {/* Split Grid: Content on Right + Circular Semi-Circle Arc Showcase on Left */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Right Column: High-Impact Typography & CTAs (7 cols) */}
@@ -155,78 +160,126 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
           </div>
 
-          {/* Left Column: Grand Cinematic Visual Card (5 cols) */}
-          <div className="lg:col-span-5 relative">
+          {/* Left Column: Orbital Semi-Circle Showcase (5 cols) */}
+          <div
+            className="lg:col-span-5 relative flex items-center justify-center select-none py-4 sm:py-6"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             
-            {/* Ambient Backlight Halo */}
-            <div className="absolute -inset-2 bg-gradient-to-tr from-[#A48F64]/30 via-[#C5AF84]/20 to-transparent rounded-[2.5rem] blur-xl"></div>
+            {/* Ambient Background Glowing Orb */}
+            <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-[#A48F64]/25 via-[#C5AF84]/15 to-transparent blur-3xl pointer-events-none"></div>
 
-            {/* Main Visual Display Card */}
-            <div className="relative bg-white rounded-3xl sm:rounded-[2rem] overflow-hidden border border-[#A48F64]/30 shadow-2xl group">
+            {/* Orbital Stage Container */}
+            <div className="relative w-[310px] h-[310px] sm:w-[390px] sm:h-[390px] lg:w-[430px] lg:h-[430px] flex items-center justify-center">
               
-              {/* Image Showcase with Auto-Transition */}
-              <div className="relative aspect-square sm:aspect-[4/3] lg:aspect-square w-full overflow-hidden bg-[#241E17]">
+              {/* Outer Semi-Circular Arc Line with Gold Accent */}
+              <div className="absolute inset-0 rounded-full border border-dashed border-[#A48F64]/35 pointer-events-none"></div>
+
+              {/* Surrounding Circular Dishes along the Semi-Circular Arc */}
+              {HERO_DISHES.map((dish, idx) => {
+                const angle = ARC_ANGLES[idx];
+                // Trigonometric position on the circular arc (Radius ~ 44% of container)
+                const rad = (angle * Math.PI) / 180;
+                // For a right-facing semi-circle or curved arc
+                const xPercent = Math.sin(rad) * 44;
+                const yPercent = -Math.cos(rad) * 44;
+                const isActive = activeSlide === idx;
+
+                return (
+                  <button
+                    key={dish.id}
+                    onClick={() => setActiveSlide(idx)}
+                    aria-label={dish.title}
+                    style={{
+                      transform: `translate(${xPercent}%, ${yPercent}%)`,
+                    }}
+                    className={`absolute z-30 transition-all duration-500 ease-out cursor-pointer group ${
+                      isActive
+                        ? 'scale-120 sm:scale-125 z-40'
+                        : 'scale-90 sm:scale-95 opacity-75 hover:opacity-100 hover:scale-110'
+                    }`}
+                  >
+                    <div
+                      className={`relative w-12 h-12 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full overflow-hidden bg-white shadow-lg transition-all duration-300 ${
+                        isActive
+                          ? 'ring-3 sm:ring-4 ring-[#A48F64] shadow-gold-glow'
+                          : 'ring-2 ring-white/90 hover:ring-[#A48F64]/60'
+                      }`}
+                    >
+                      <img
+                        src={dish.image}
+                        alt={dish.title}
+                        className="w-full h-full object-cover select-none group-hover:scale-110 transition-transform duration-500"
+                        draggable={false}
+                      />
+                    </div>
+
+                    {/* Active Indicator Pulse Dot */}
+                    {isActive && (
+                      <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#A48F64] border-2 border-white rounded-full animate-ping"></span>
+                    )}
+                  </button>
+                );
+              })}
+
+              {/* Central Main Featured Circular Plate */}
+              <div className="relative z-20 w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-white border-4 sm:border-[5px] border-[#A48F64] shadow-2xl group">
+                
+                {/* Crossfading Dish Images in Main Circular Plate */}
                 {HERO_DISHES.map((dish, idx) => (
                   <div
                     key={dish.id}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                      activeSlide === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                      activeSlide === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
                     }`}
                   >
                     <img
                       src={dish.image}
                       alt={dish.title}
-                      className="w-full h-full object-cover select-none"
+                      className="w-full h-full object-cover select-none group-hover:scale-105 transition-transform duration-700"
+                      draggable={false}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
                   </div>
                 ))}
 
-                {/* Floating Tag */}
-                <div className="absolute top-3.5 right-3.5 z-20">
-                  <span className="bg-[#A48F64] text-white text-xs font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-white" />
+                {/* Floating Badge on Main Plate */}
+                <div className="absolute top-3 inset-x-0 flex justify-center z-30">
+                  <span className="bg-[#A48F64]/95 backdrop-blur-md text-white text-[10px] sm:text-xs font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1 border border-white/20">
+                    <Sparkles className="w-2.5 h-2.5 text-white" />
                     <span>{currentDish.tag}</span>
                   </span>
                 </div>
 
-                {/* Left/Right Click Nav Arrows */}
+                {/* Navigation Arrows on Plate */}
                 <button
-                  onClick={() => setActiveSlide((prev) => (prev - 1 + HERO_DISHES.length) % HERO_DISHES.length)}
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#A48F64] transition-colors"
-                  aria-label="السابق"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveSlide((prev) => (prev - 1 + HERO_DISHES.length) % HERO_DISHES.length);
+                  }}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#A48F64] transition-colors"
+                  aria-label="الطبق السابق"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
+
                 <button
-                  onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_DISHES.length)}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#A48F64] transition-colors"
-                  aria-label="التالي"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveSlide((prev) => (prev + 1) % HERO_DISHES.length);
+                  }}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#A48F64] transition-colors"
+                  aria-label="الطبق التالي"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
 
-                {/* Bottom Caption on Image */}
-                <div className="absolute bottom-3 inset-x-3 z-20 text-right">
-                  <p className="text-white text-sm sm:text-base font-black leading-tight drop-shadow-md line-clamp-1 mb-2">
+                {/* Bottom Title on Plate */}
+                <div className="absolute bottom-2.5 inset-x-3 text-center z-30">
+                  <p className="text-white text-xs sm:text-sm font-black leading-tight drop-shadow-md line-clamp-1">
                     {currentDish.title}
                   </p>
-
-                  {/* Thumbnail Switcher Dots/Thumbnails */}
-                  <div className="flex items-center gap-1.5">
-                    {HERO_DISHES.map((d, idx) => (
-                      <button
-                        key={d.id}
-                        onClick={() => setActiveSlide(idx)}
-                        aria-label={d.title}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                          activeSlide === idx
-                            ? 'w-6 bg-[#D4C39E]'
-                            : 'w-2 bg-white/40 hover:bg-white/70'
-                        }`}
-                      />
-                    ))}
-                  </div>
                 </div>
 
               </div>
