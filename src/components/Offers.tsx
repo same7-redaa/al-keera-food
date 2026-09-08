@@ -7,8 +7,8 @@ export const Offers: React.FC = () => {
   const { addOfferToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
 
-  const handleAddOffer = () => {
-    addOfferToCart(MAIN_OFFER);
+  const handleAddOffer = (e: React.MouseEvent) => {
+    addOfferToCart(MAIN_OFFER, e);
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 1500);
   };

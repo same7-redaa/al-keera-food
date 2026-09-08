@@ -13,8 +13,8 @@ export const FeaturedDish: React.FC = () => {
 
   const currentItem = selectedVariant === 'tajine' ? tajineItem : grillItem;
 
-  const handleAdd = () => {
-    addToCart(currentItem);
+  const handleAdd = (e: React.MouseEvent) => {
+    addToCart(currentItem, undefined, 1, e);
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 1500);
   };

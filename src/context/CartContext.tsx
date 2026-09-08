@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { CartItem, MenuItem, OfferItem, PortionOption } from '../types/menu';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
+import { FlyToCartOverlay, FlyingDish } from '../components/FlyToCartOverlay';
 
 interface ToastState {
   show: boolean;
@@ -8,10 +9,12 @@ interface ToastState {
   title?: string;
 }
 
+export type ClickPosition = React.MouseEvent | { x: number; y: number };
+
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (item: MenuItem, portion?: PortionOption, quantity?: number) => void;
-  addOfferToCart: (offer: OfferItem) => void;
+  addToCart: (item: MenuItem, portion?: PortionOption, quantity?: number, eventOrCoords?: ClickPosition) => void;
+  addOfferToCart: (offer: OfferItem, eventOrCoords?: ClickPosition) => void;
   removeFromCart: (cartItemId: string) => void;
   updateQuantity: (cartItemId: string, newQuantity: number) => void;
   clearCart: () => void;
@@ -55,6 +58,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [orderNotes, setOrderNotes] = useState('');
+  const [flyingDishes, setFlyingDishes] = useState<FlyingDish[]>([]);
 
   const [toast, setToast] = useState<ToastState>({
     show: false,
@@ -81,10 +85,65 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setToast((prev) => ({ ...prev, show: false }));
   };
 
-  const addToCart = (item: MenuItem, portion?: PortionOption, quantity: number = 1) => {
+  const triggerFlyAnimation = (image: string, eventOrCoords?: ClickPosition) => {
+    try {
+      const cartBtn = document.getElementById('navbar-cart-btn') || document.querySelector('[aria-label="السلة"]');
+      let endX = window.innerWidth - 60;
+      let endY = 32;
+
+      if (cartBtn) {
+        const rect = cartBtn.getBoundingClientRect();
+        endX = rect.left + rect.width / 2;
+        endY = rect.top + rect.height / 2;
+      }
+
+      let startX = window.innerWidth / 2;
+      let startY = window.innerHeight / 2;
+
+      if (eventOrCoords) {
+        if ('clientX' in eventOrCoords) {
+          startX = eventOrCoords.clientX;
+          startY = eventOrCoords.clientY;
+        } else if ('x' in eventOrCoords) {
+          startX = eventOrCoords.x;
+          startY = eventOrCoords.y;
+        }
+      }
+
+      const id = `${Date.now()}-${Math.random()}`;
+      setFlyingDishes((prev) => [...prev, { id, image, startX, startY, endX, endY }]);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleFlyingAnimationEnd = (id: string) => {
+    setFlyingDishes((prev) => prev.filter((d) => d.id !== id));
+    
+    // Playful Pop Bounce on the cart button when the dish arrives
+    const cartBtn = document.getElementById('navbar-cart-btn') || document.querySelector('[aria-label="السلة"]');
+    if (cartBtn) {
+      cartBtn.classList.remove('animate-cart-pop');
+      void cartBtn.offsetWidth; // Trigger DOM reflow
+      cartBtn.classList.add('animate-cart-pop');
+      setTimeout(() => {
+        cartBtn.classList.remove('animate-cart-pop');
+      }, 550);
+    }
+  };
+
+  const addToCart = (
+    item: MenuItem,
+    portion?: PortionOption,
+    quantity: number = 1,
+    eventOrCoords?: ClickPosition
+  ) => {
     const selectedPortion = portion || (item.portions && item.portions.length > 0 ? item.portions[0] : undefined);
     const unitPrice = selectedPortion ? selectedPortion.price : item.basePrice;
     const cartItemId = selectedPortion ? `${item.id}-${selectedPortion.label}` : item.id;
+
+    // Trigger floating circular dish animation into cart
+    triggerFlyAnimation(item.image, eventOrCoords);
 
     setCart((prevCart) => {
       const existingIndex = prevCart.findIndex((ci) => ci.id === cartItemId);
@@ -107,11 +166,15 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     const portionText = selectedPortion ? ` (${selectedPortion.label})` : '';
-    showToastNotification(`تمت إضافة ${item.name}${portionText} إلى سلة طلباتك`, 'حدوتة حلوة 🔥');
+    showToastNotification(`تمت إضافة ${item.name}${portionText} إلى سلتك`, 'حدوتة حلوة 🔥');
   };
 
-  const addOfferToCart = (offer: OfferItem) => {
+  const addOfferToCart = (offer: OfferItem, eventOrCoords?: ClickPosition) => {
     const cartItemId = offer.id;
+
+    // Trigger floating circular dish animation into cart
+    triggerFlyAnimation(offer.image, eventOrCoords);
+
     setCart((prevCart) => {
       const existingIndex = prevCart.findIndex((ci) => ci.id === cartItemId);
       if (existingIndex > -1) {
@@ -132,7 +195,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     });
 
-    showToastNotification(`تمت إضافة ${offer.title} بسعر خاص ${offer.discountedPrice} ج`, 'عرض ملكي توفير! 🎁');
+    showToastNotification(`تمت إضافة ${offer.title} لسلتك بنجاح`, 'عرض ملكي توفير! 🎁');
   };
 
   const removeFromCart = (cartItemId: string) => {
@@ -240,6 +303,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }}
     >
       {children}
+      <FlyToCartOverlay
+        flyingDishes={flyingDishes}
+        onAnimationEnd={handleFlyingAnimationEnd}
+      />
     </CartContext.Provider>
   );
 };

@@ -17,8 +17,8 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
 
   const currentPrice = selectedPortion ? selectedPortion.price : item.basePrice;
 
-  const handleAddToCart = () => {
-    addToCart(item, selectedPortion, quantity);
+  const handleAddToCart = (e: React.MouseEvent) => {
+    addToCart(item, selectedPortion, quantity, e);
     setIsAdded(true);
     setTimeout(() => {
       setIsAdded(false);

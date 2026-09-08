@@ -145,6 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           {/* Left: Cart & Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
             <button
+              id="navbar-cart-btn"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onNavigate('cart');
