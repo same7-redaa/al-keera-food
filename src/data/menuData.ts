@@ -242,6 +242,21 @@ export const MENU_ITEMS: MenuItem[] = [
     badgeText: 'مقرمش وساخن',
     rating: 4.9,
   },
+  {
+    id: 'mahshi-mixed-variety',
+    name: 'سرفيس مشكل محاشي بلدي',
+    description: 'تشكيلة محاشي مشكلة (ورق عنب، كوسة، فلفل، باذنجان) متسبكة بالسمن الفلاحي والشوربة الدسمة.',
+    category: 'mahshi',
+    basePrice: 110,
+    portions: [
+      { label: 'سرفيس وسط', name: 'سرفيس محاشي وسط', price: 110 },
+      { label: 'سرفيس عائلي', name: 'سرفيس محاشي عائلي', price: 210 },
+    ],
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop',
+    badge: 'signature',
+    badgeText: 'لمّة زمان',
+    rating: 4.9,
+  },
 
   // 5. الشوربات والمقبلات
   {

@@ -105,7 +105,7 @@ export const Menu: React.FC = () => {
 
         {/* Menu Grid */}
         {filteredItems.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
             {filteredItems.map((item) => (
               <MenuCard key={item.id} item={item} />
             ))}
