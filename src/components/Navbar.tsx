@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -25,8 +25,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentPage]);
 
   // Real-time ScrollSpy to highlight the active section
   useEffect(() => {
@@ -98,10 +99,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           mobileMenuOpen
-            ? 'bg-[#FAF8F5] py-4 shadow-xl border-b border-[#A48F64]/25'
-            : isScrolled || currentPage !== 'home'
-            ? 'bg-[#FAF8F5]/92 backdrop-blur-xl py-3 shadow-md border-b border-[#A48F64]/25'
-            : 'bg-[#FAF8F5]/60 backdrop-blur-md py-4 border-b border-[#A48F64]/15'
+            ? 'bg-[#FAF8F5] py-3.5 shadow-xl border-b border-[#A48F64]/25'
+            : isScrolled
+            ? 'bg-[#FAF8F5]/95 backdrop-blur-xl py-3 shadow-md border-b border-[#A48F64]/25'
+            : 'bg-transparent py-4 sm:py-5 border-b border-transparent shadow-none'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
