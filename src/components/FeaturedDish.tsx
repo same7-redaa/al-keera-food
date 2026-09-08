@@ -1,0 +1,184 @@
+import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
+import { MENU_ITEMS } from '../data/menuData';
+import { Sparkles, Flame, Check, ShoppingBag, ShieldCheck, Heart } from 'lucide-react';
+
+export const FeaturedDish: React.FC = () => {
+  const { addToCart } = useCart();
+  const [selectedVariant, setSelectedVariant] = useState<'meat' | 'chicken'>('meat');
+  const [isAdded, setIsAdded] = useState(false);
+
+  const meatItem = MENU_ITEMS.find((i) => i.id === 'madghoot-mugalgal-meat') || MENU_ITEMS[4];
+  const chickenItem = MENU_ITEMS.find((i) => i.id === 'madghoot-original') || MENU_ITEMS[0];
+
+  const currentItem = selectedVariant === 'meat' ? meatItem : chickenItem;
+
+  const handleAdd = () => {
+    addToCart(currentItem);
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 1500);
+  };
+
+  return (
+    <section id="featured" className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] flex items-center relative bg-brand-primary/50 overflow-hidden border-y border-brand-gold/20 scroll-mt-24">
+      {/* Visual background atmospheric lights */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-brand-gold/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-secondary/40 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          {/* Right Column: High-Impact Dish Image */}
+          <div className="lg:col-span-6 relative order-2 lg:order-1 reveal-scale">
+            <div className="relative mx-auto max-w-lg lg:max-w-none">
+              
+              {/* Golden circular backdrop glow */}
+              <div className="absolute inset-0 rounded-full bg-radial-gradient from-brand-gold/20 via-brand-secondary/20 to-transparent blur-2xl transform scale-90"></div>
+
+              {/* Dish Frame */}
+              <div className="relative rounded-3xl overflow-hidden glass-card p-3 sm:p-4 border-2 border-brand-gold/40 shadow-2xl group">
+                <div className="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden">
+                  <img
+                    src={
+                      selectedVariant === 'meat'
+                        ? 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop'
+                        : 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=1000&auto=format&fit=crop'
+                    }
+                    alt="طبق مضغوط الليبي الأشهر"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-transparent to-transparent"></div>
+
+                  {/* Floating floating signature badge */}
+                  <div className="absolute top-4 right-4 bg-brand-brightGold text-brand-black font-black text-xs px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-brand-black" />
+                    <span>تتبيلة حصرية 19 عاماً</span>
+                  </div>
+
+                  {/* Price Tag in Image */}
+                  <div className="absolute bottom-4 left-4 bg-brand-deep/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-brand-gold/30">
+                    <span className="text-xs text-brand-cream/70 block">السعر</span>
+                    <span className="text-2xl font-black text-brand-brightGold">
+                      {currentItem.basePrice} <span className="text-xs text-brand-cream font-medium">جنيه</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating review snippet */}
+              <div className="absolute -bottom-5 right-2 sm:right-6 bg-brand-card border border-brand-gold/40 rounded-2xl p-3 shadow-xl backdrop-blur-md flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-brightGold">
+                  <Heart className="w-5 h-5 fill-brand-brightGold" />
+                </div>
+                <div>
+                  <div className="text-xs text-brand-cream/60">تفضيل الزوار</div>
+                  <div className="text-sm font-bold text-brand-cream">أكثر من 40,000 طبق تم تقديمه</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Left Column: Asymmetrical Typography & Offer Details */}
+          <div className="lg:col-span-6 order-1 lg:order-2 flex flex-col items-start reveal delay-100">
+            
+            {/* Top Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-brand-brightGold text-xs sm:text-sm font-black mb-4">
+              <Flame className="w-4 h-4 text-amber-400" />
+              <span>طبقنا الأشهر • Signature Dish</span>
+            </div>
+
+            {/* Title */}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-cream leading-snug mb-3">
+              مضغوط <span className="gold-gradient-text">الليبي الملكي</span>
+            </h2>
+
+            {/* Description */}
+            <p className="text-base sm:text-lg text-brand-cream/85 leading-relaxed mb-6 font-normal">
+              وصفة أصلية تجمع بين الأرز البسمتي المتبل بدقة، مع اللحم البلدي الطازج أو الدجاج الطري، 
+              وتوليفة التوابل السرية التي صنعت شهرتنا في المحلة الكبرى منذ أكثر من 19 عاماً.
+            </p>
+
+            {/* Variant Switcher */}
+            <div className="w-full bg-brand-card/90 p-3 rounded-2xl border border-brand-gold/20 mb-6">
+              <span className="text-xs text-brand-cream/70 block mb-2 font-medium">اختر نوع الطبق:</span>
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onClick={() => setSelectedVariant('meat')}
+                  className={`py-3 px-4 rounded-xl font-bold text-sm transition-all flex flex-col items-center gap-1 ${
+                    selectedVariant === 'meat'
+                      ? 'bg-brand-gold text-brand-black shadow-gold-glow'
+                      : 'bg-brand-deep/80 text-brand-cream/80 hover:text-brand-brightGold'
+                  }`}
+                >
+                  <span>لحم بلدي مقلقل</span>
+                  <span className="text-xs opacity-85">310 جنيه</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedVariant('chicken')}
+                  className={`py-3 px-4 rounded-xl font-bold text-sm transition-all flex flex-col items-center gap-1 ${
+                    selectedVariant === 'chicken'
+                      ? 'bg-brand-gold text-brand-black shadow-gold-glow'
+                      : 'bg-brand-deep/80 text-brand-cream/80 hover:text-brand-brightGold'
+                  }`}
+                >
+                  <span>دجاج أوريجنال ربع</span>
+                  <span className="text-xs opacity-85">170 جنيه</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Feature Highlights */}
+            <div className="grid grid-cols-2 gap-3 w-full mb-8 text-xs sm:text-sm text-brand-cream/80">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
+                <span>مطهو بقدر الضغط المحكم</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
+                <span>عصارة بهارات غنية ومتغلغلة</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
+                <span>دقوس وتومية مجاناً</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
+                <span>أرز بسمتي طويل الحبة فاخر</span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 w-full">
+              <button
+                onClick={handleAdd}
+                className={`flex-1 py-4 px-8 rounded-2xl font-black text-base sm:text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-gold-lg active:scale-95 ${
+                  isAdded
+                    ? 'bg-emerald-600 text-white'
+                    : 'bg-gradient-to-r from-brand-gold to-brand-brightGold text-brand-black hover:shadow-gold-glow hover:scale-105'
+                }`}
+              >
+                {isAdded ? (
+                  <>
+                    <Check className="w-6 h-6" />
+                    <span>تمت إضافة الطبق لسلتك!</span>
+                  </>
+                ) : (
+                  <>
+                    <ShoppingBag className="w-6 h-6" />
+                    <span>اطلب الطبق الأشهر الآن</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
