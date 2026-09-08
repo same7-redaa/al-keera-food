@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { UtensilsCrossed, MessageCircle, Sparkles, Flame, Award, ShieldCheck } from 'lucide-react';
+import { UtensilsCrossed, MessageCircle, Sparkles } from 'lucide-react';
 
 interface HeroProps {
   onExploreMenu?: () => void;
@@ -93,22 +93,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                 أصل المشويات والطواجن الفخار
               </span>
             </h1>
-
-            {/* Quality Highlights Chips */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3 mb-6 sm:mb-8">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#A48F64]/20 text-xs sm:text-sm font-bold text-[#241E17] shadow-xs">
-                <Flame className="w-3.5 h-3.5 text-amber-600" />
-                <span>مشويات ع الفحم</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#A48F64]/20 text-xs sm:text-sm font-bold text-[#241E17] shadow-xs">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>لحوم بلدية 100%</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#A48F64]/20 text-xs sm:text-sm font-bold text-[#241E17] shadow-xs">
-                <Award className="w-3.5 h-3.5 text-[#A48F64]" />
-                <span>سمن بلدي فلاحي</span>
-              </span>
-            </div>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto mb-8 sm:mb-10">
