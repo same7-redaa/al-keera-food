@@ -170,10 +170,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-[#241E17] hover:text-[#A48F64] rounded-xl bg-white border border-[#A48F64]/30 shadow-none transition-colors"
+              className="lg:hidden p-1.5 text-[#241E17] hover:text-[#A48F64] transition-colors focus:outline-none flex items-center justify-center"
               aria-label="القائمة"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[#A48F64]" /> : <MenuIcon className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-7 h-7 text-[#A48F64]" /> : <MenuIcon className="w-7 h-7" />}
             </button>
           </div>
         </div>
