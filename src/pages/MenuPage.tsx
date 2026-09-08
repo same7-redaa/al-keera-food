@@ -15,19 +15,19 @@ export const MenuPage: React.FC = () => {
   const getCategoryIcon = (iconName: string) => {
     switch (iconName) {
       case 'Flame':
-        return <Flame className="w-4 h-4" />;
+        return <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5" />;
       case 'Soup':
-        return <Soup className="w-4 h-4" />;
+        return <Soup className="w-3 h-3 sm:w-3.5 sm:h-3.5" />;
       case 'Crown':
-        return <Crown className="w-4 h-4" />;
+        return <Crown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />;
       case 'UtensilsCrossed':
-        return <UtensilsCrossed className="w-4 h-4" />;
+        return <UtensilsCrossed className="w-3 h-3 sm:w-3.5 sm:h-3.5" />;
       case 'Salad':
-        return <Salad className="w-4 h-4" />;
+        return <Salad className="w-3 h-3 sm:w-3.5 sm:h-3.5" />;
       case 'CupSoda':
-        return <CupSoda className="w-4 h-4" />;
+        return <CupSoda className="w-3 h-3 sm:w-3.5 sm:h-3.5" />;
       default:
-        return <Sparkles className="w-4 h-4" />;
+        return <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />;
     }
   };
 
@@ -51,36 +51,36 @@ export const MenuPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Main Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-primary/80 border border-brand-gold/30 text-brand-brightGold text-xs sm:text-sm font-bold mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/80 border border-brand-gold/30 text-brand-brightGold text-xs font-bold mb-3">
+            <Sparkles className="w-3 h-3" />
             <span>قائمة طعام فاخرة 2026</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-brand-cream mb-4 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-brand-cream mb-3 tracking-tight">
             منيو <span className="gold-gradient-text">مطعم الكيرة</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-brand-cream/80">
+          <p className="text-xs sm:text-base text-brand-cream/80 max-w-2xl mx-auto">
             تصفح جميع المشويات على الفحم، طواجن الفخار البلدي، صواني العزومات، المحاشي والمقبلات واطلب مباشرة عبر واتساب.
           </p>
         </div>
 
-        {/* Category Tabs & Search */}
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 mb-10">
+        {/* Slim Category Bar & Compact Search */}
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 mb-8 bg-brand-card/60 backdrop-blur-md p-1.5 sm:p-2 rounded-2xl border border-brand-gold/20 shadow-lg">
           
-          {/* Category Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
+          {/* Category Tabs (Ultra Slim & Compact) */}
+          <div className="flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
             {CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat.id;
               return (
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id as CategoryType)}
-                  className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-colors duration-200 border ${
+                  className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all duration-200 border ${
                     isActive
-                      ? 'bg-gradient-to-r from-brand-gold to-brand-brightGold text-brand-black border-brand-brightGold shadow-md font-black'
-                      : 'bg-brand-card/90 text-brand-cream/80 hover:text-brand-brightGold hover:bg-brand-primary/80 border-brand-gold/20'
+                      ? 'bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold text-brand-black border-brand-brightGold shadow-sm font-black'
+                      : 'bg-brand-deep/80 text-brand-cream/80 hover:text-brand-brightGold hover:bg-brand-primary/60 border-brand-gold/15'
                   }`}
                 >
                   {getCategoryIcon(cat.icon)}
@@ -90,20 +90,20 @@ export const MenuPage: React.FC = () => {
             })}
           </div>
 
-          {/* Search Bar */}
-          <div className="relative min-w-[240px] sm:min-w-[280px]">
-            <Search className="w-4 h-4 text-brand-cream/50 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          {/* Compact Search Bar */}
+          <div className="relative min-w-[200px] sm:min-w-[240px] flex-shrink-0">
+            <Search className="w-3.5 h-3.5 text-brand-cream/50 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="ابحث في قائمة المشويات والطواجن..."
-              className="w-full bg-brand-card/90 border border-brand-gold/25 focus:border-brand-gold rounded-2xl py-2.5 pr-10 pl-4 text-xs sm:text-sm text-brand-cream placeholder:text-brand-cream/40 focus:outline-none focus:ring-1 focus:ring-brand-gold transition-all"
+              placeholder="بحث في المنيو..."
+              className="w-full bg-brand-deep/90 border border-brand-gold/20 focus:border-brand-gold rounded-xl py-1.5 pr-8 pl-3 text-xs text-brand-cream placeholder:text-brand-cream/40 focus:outline-none focus:ring-1 focus:ring-brand-gold/50 transition-all"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-brand-cream/60 hover:text-brand-brightGold"
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] text-brand-cream/60 hover:text-brand-brightGold"
               >
                 مسح
               </button>
