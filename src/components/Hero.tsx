@@ -161,29 +161,29 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
           </div>
 
-          {/* Left Column: Big Grand Roulette Wheel with Extra Large Dishes (6 cols) */}
+          {/* Left Column: Refined Elegant Roulette Wheel (6 cols) */}
           <div
-            className="lg:col-span-6 xl:col-span-5 relative flex flex-col items-center justify-center select-none py-6"
+            className="lg:col-span-6 xl:col-span-5 relative flex flex-col items-center justify-center select-none py-4"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
             
             {/* Ambient Lighting Halo */}
-            <div className="absolute w-80 h-80 sm:w-[500px] sm:h-[500px] rounded-full bg-gradient-to-tr from-[#A48F64]/25 via-[#C5AF84]/15 to-transparent blur-3xl pointer-events-none"></div>
+            <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-[#A48F64]/20 via-[#C5AF84]/10 to-transparent blur-3xl pointer-events-none"></div>
 
-            {/* Big Grand Roulette Wheel Stage Container */}
-            <div className="relative w-[340px] h-[340px] sm:w-[470px] sm:h-[470px] lg:w-[530px] lg:h-[530px] flex items-center justify-center">
+            {/* Roulette Wheel Stage Container */}
+            <div className="relative w-[270px] h-[270px] sm:w-[350px] sm:h-[350px] lg:w-[400px] lg:h-[400px] flex items-center justify-center">
               
-              {/* Outer Big Orbit Track Line */}
-              <div className="absolute inset-4 sm:inset-6 rounded-full border-2 border-dashed border-[#A48F64]/35 pointer-events-none animate-[spin_80s_linear_infinite]"></div>
-              <div className="absolute inset-14 sm:inset-20 rounded-full border border-[#A48F64]/20 pointer-events-none"></div>
+              {/* Outer Orbit Track Line */}
+              <div className="absolute inset-2 sm:inset-3 rounded-full border-2 border-dashed border-[#A48F64]/30 pointer-events-none animate-[spin_80s_linear_infinite]"></div>
+              <div className="absolute inset-10 sm:inset-14 rounded-full border border-[#A48F64]/15 pointer-events-none"></div>
 
-              {/* Minimal delicate center hub in background */}
-              <div className="absolute z-10 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#FAF8F5] border border-[#A48F64]/30 shadow-xs flex items-center justify-center pointer-events-none">
-                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#A48F64]" />
+              {/* Minimal center spark */}
+              <div className="absolute z-10 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#FAF8F5] border border-[#A48F64]/25 shadow-xs flex items-center justify-center pointer-events-none">
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A48F64]" />
               </div>
 
-              {/* The Spinning Roulette Track carrying ALL 5 Large Circular Dishes (Highest z-index, zero obstructions) */}
+              {/* The Spinning Roulette Track carrying ALL 5 Circular Dishes */}
               <div
                 style={{
                   transform: `rotate(${wheelRotation}deg)`,
@@ -196,8 +196,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                   const rad = (angle * Math.PI) / 180;
                   
                   // Radius placed on the orbit track
-                  const xPercent = Math.sin(rad) * 44;
-                  const yPercent = -Math.cos(rad) * 44;
+                  const xPercent = Math.sin(rad) * 42;
+                  const yPercent = -Math.cos(rad) * 42;
                   const isActive = activeSlide === idx;
 
                   return (
@@ -210,16 +210,16 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                       }}
                       className="absolute z-30 cursor-pointer group focus:outline-none"
                     >
-                      {/* Large Circular Dish Card: Counter-rotated so the food photo always stays upright */}
+                      {/* Circular Dish Card: Counter-rotated so the food photo always stays upright */}
                       <div
                         style={{
                           transform: `rotate(${-wheelRotation}deg)`,
                           transition: 'transform 0.9s cubic-bezier(0.34, 1.4, 0.64, 1)',
                         }}
-                        className={`relative w-26 h-26 sm:w-34 sm:h-34 lg:w-42 lg:h-42 rounded-full overflow-hidden bg-white transition-all duration-500 ${
+                        className={`relative w-16 h-16 sm:w-22 sm:h-22 md:w-26 md:h-26 lg:w-28 lg:h-28 rounded-full overflow-hidden bg-white transition-all duration-500 ${
                           isActive
-                            ? 'scale-115 sm:scale-120 z-50 ring-4 sm:ring-[6px] ring-[#A48F64] shadow-2xl border-3 border-white'
-                            : 'scale-90 sm:scale-95 opacity-90 hover:opacity-100 hover:scale-105 ring-2 ring-[#A48F64]/40 shadow-xl border border-white'
+                            ? 'scale-115 sm:scale-120 z-50 ring-3 sm:ring-4 ring-[#A48F64] shadow-xl border-2 border-white'
+                            : 'scale-90 sm:scale-95 opacity-85 hover:opacity-100 hover:scale-105 ring-2 ring-[#A48F64]/30 shadow-md border border-white'
                         }`}
                       >
                         <img
