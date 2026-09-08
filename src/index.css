@@ -163,11 +163,11 @@
   }
 
   /* Authentic Background Pattern Texture Overlay with Subtle Transparency */
-  section, footer {
+  section, footer, .section-divider-wrapper {
     position: relative;
   }
 
-  section::before, footer::before {
+  section::before, footer::before, .section-divider-wrapper::before {
     content: '';
     position: absolute;
     inset: 0;

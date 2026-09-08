@@ -21,7 +21,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       <Hero onExploreMenu={onNavigateToMenu} />
 
       {/* Wave Transition: #FAF8F5 -> #FFFFFF */}
-      <div className="bg-[#FAF8F5]">
+      <div className="bg-[#FAF8F5] section-divider-wrapper">
         <SectionDivider type="wave" fillColor="#FFFFFF" />
       </div>
 
@@ -29,7 +29,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       <FeaturedDish />
 
       {/* Slant Transition: #FFFFFF -> #F6F2EA */}
-      <div className="bg-white">
+      <div className="bg-white section-divider-wrapper">
         <SectionDivider type="slant" fillColor="#F6F2EA" />
       </div>
 
@@ -37,7 +37,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       <FeaturedMenuPreview onOpenFullMenu={onNavigateToMenu} />
 
       {/* Curve Transition: #F6F2EA -> #FFFFFF */}
-      <div className="bg-[#F6F2EA]">
+      <div className="bg-[#F6F2EA] section-divider-wrapper">
         <SectionDivider type="curve" fillColor="#FFFFFF" />
       </div>
 
@@ -45,7 +45,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       <WhyUs />
 
       {/* Split Transition: #FFFFFF -> #FAF8F5 */}
-      <div className="bg-white">
+      <div className="bg-white section-divider-wrapper">
         <SectionDivider type="split" fillColor="#FAF8F5" />
       </div>
 
@@ -53,7 +53,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       <Offers />
 
       {/* Wave Transition: #FAF8F5 -> #F6F2EA */}
-      <div className="bg-[#FAF8F5]">
+      <div className="bg-[#FAF8F5] section-divider-wrapper">
         <SectionDivider type="wave" fillColor="#F6F2EA" />
       </div>
 
@@ -61,7 +61,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       <About />
 
       {/* Slant Transition: #F6F2EA -> #FFFFFF */}
-      <div className="bg-[#F6F2EA]">
+      <div className="bg-[#F6F2EA] section-divider-wrapper">
         <SectionDivider type="slant" fillColor="#FFFFFF" />
       </div>
 
@@ -69,7 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       <Testimonials />
 
       {/* Curve Transition: #FFFFFF -> #FAF8F5 */}
-      <div className="bg-white">
+      <div className="bg-white section-divider-wrapper">
         <SectionDivider type="curve" fillColor="#FAF8F5" />
       </div>
 
@@ -77,7 +77,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       <SocialProofGallery />
 
       {/* Split Transition: #FAF8F5 -> #FFFFFF */}
-      <div className="bg-[#FAF8F5]">
+      <div className="bg-[#FAF8F5] section-divider-wrapper">
         <SectionDivider type="split" fillColor="#FFFFFF" />
       </div>
 
@@ -85,7 +85,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       <LocationHours />
 
       {/* Wave Transition: #FFFFFF -> #1C1814 (Footer) */}
-      <div className="bg-white">
+      <div className="bg-white section-divider-wrapper">
         <SectionDivider type="wave" fillColor="#1C1814" />
       </div>
     </div>
