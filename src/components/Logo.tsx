@@ -38,6 +38,8 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md' }) => {
         <img
           src="/logo.png"
           alt="مضغوط الليبي - المحلة"
+          loading="eager"
+          decoding="async"
           className={`${current.img} w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]`}
         />
         

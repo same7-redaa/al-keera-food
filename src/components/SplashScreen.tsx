@@ -41,6 +41,8 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ isLoading }) => {
           <img
             src="/logo.png"
             alt="مضغوط الليبي"
+            loading="eager"
+            decoding="sync"
             className="w-52 sm:w-64 h-auto object-contain drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] animate-float"
           />
         </div>
