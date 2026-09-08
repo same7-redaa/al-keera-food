@@ -61,20 +61,20 @@ export const MenuPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Slim Category Bar & Compact Search */}
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 mb-8 bg-white/95 backdrop-blur-md p-1.5 sm:p-2 rounded-2xl border border-[#A48F64]/25 shadow-sm">
+        {/* Category Tabs & Search Bar */}
+        <div className="mb-8 bg-white/95 backdrop-blur-md p-2 sm:p-2.5 rounded-2xl sm:rounded-3xl border border-[#A48F64]/25 shadow-sm flex flex-col gap-3">
           
-          {/* Category Tabs (Ultra Slim & Compact) */}
-          <div className="flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
+          {/* Category Tabs: all visible on desktop, smooth horizontal scroll on mobile */}
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto lg:overflow-visible flex-nowrap lg:flex-wrap justify-start lg:justify-center w-full scrollbar-none py-1">
             {CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat.id;
               return (
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id as CategoryType)}
-                  className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all duration-200 border ${
+                  className={`flex items-center gap-1.5 px-3 sm:px-3.5 lg:px-4 py-2 rounded-xl text-xs sm:text-xs lg:text-sm font-black whitespace-nowrap transition-all duration-200 border flex-shrink-0 ${
                     isActive
-                      ? 'bg-[#A48F64] text-white border-[#A48F64] shadow-sm font-black'
+                      ? 'bg-[#A48F64] text-white border-[#A48F64] shadow-sm'
                       : 'bg-[#FAF8F5] text-[#241E17] hover:text-[#A48F64] hover:bg-[#F5EFE6] border-[#A48F64]/20'
                   }`}
                 >
@@ -85,20 +85,20 @@ export const MenuPage: React.FC = () => {
             })}
           </div>
 
-          {/* Compact Search Bar */}
-          <div className="relative min-w-[200px] sm:min-w-[240px] flex-shrink-0">
-            <Search className="w-3.5 h-3.5 text-[#6B6255] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          {/* Search Bar */}
+          <div className="relative max-w-md mx-auto w-full pt-1 border-t border-[#A48F64]/15">
+            <Search className="w-4 h-4 text-[#6B6255] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="بحث في المنيو..."
-              className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-1.5 pr-8 pl-3 text-xs text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/50 transition-all"
+              placeholder="ابحث عن أكلتك المفضلة بالاسم أو المكونات..."
+              className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-2 pr-9 pl-3 text-xs sm:text-sm text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/50 transition-all text-center sm:text-right"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] text-[#6B6255] hover:text-[#A48F64]"
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-[#6B6255] hover:text-[#A48F64]"
               >
                 مسح
               </button>
