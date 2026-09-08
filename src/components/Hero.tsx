@@ -9,28 +9,30 @@ interface HeroProps {
 const HERO_DISHES = [
   {
     src: '/hero-dish.png',
-    title: 'مضغوط الدجاج الملكي',
+    title: 'صواني ومشويات الكيرة على الفحم',
   },
   {
     src: '/hero-dish-2.png',
-    title: 'مضغوط اللحم البلدي الفاخر',
+    title: 'طواجن الفخار واللحم البلدي الفاخر',
   },
 ];
 
 const DISH_STREAM = [
-  { img: '/hero-dish.png', text: 'مضغوط الدجاج الملكي' },
-  { img: '/hero-dish-2.png', text: 'مضغوط اللحم البلدي الطازج' },
-  { img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=200&auto=format&fit=crop', text: 'مبكبكة ليبية ساخنة' },
-  { img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=200&auto=format&fit=crop', text: 'مضغوط تندوري متبل' },
-  { img: '/hero-dish.png', text: 'خبرة 19 عاماً من الأصالة' },
+  { img: '/hero-dish.png', text: 'طاجن ورق عنب بالكوارع المسبك' },
+  { img: '/hero-dish-2.png', text: 'كباب وكفتة مشوية على الفحم' },
+  { img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=200&auto=format&fit=crop', text: 'صينية الكيرة الملكية الفاخرة' },
+  { img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=200&auto=format&fit=crop', text: 'حمام بلدي محشي وممبار' },
+  { img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=200&auto=format&fit=crop', text: 'طاجن عكاوي بالبصل القاورما' },
+  { img: '/logo.png', text: 'خبرة أكثر من 26 عاماً بالمحلة' },
 ];
 
 const TRUST_STREAM = [
+  { img: '/logo.png', text: 'حدوتة حلوة منا فينا!' },
   { img: '/hero-dish-2.png', text: 'لحم بلدي طازج يومياً 100%' },
-  { img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=200&auto=format&fit=crop', text: 'توصيل سريع ساخن في المحلة' },
-  { img: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=200&auto=format&fit=crop', text: 'دقوس حار وتومية مجاناً' },
-  { img: '/hero-dish.png', text: 'توابل ووصفات سرية أصلية' },
-  { img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=200&auto=format&fit=crop', text: 'كرم وضيافة خليجية أصيلة' },
+  { img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=200&auto=format&fit=crop', text: 'فرع المشحمة • فرع 6 أكتوبر' },
+  { img: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=200&auto=format&fit=crop', text: 'دليفري ساخن: 0402222636' },
+  { img: '/hero-dish.png', text: 'طواجن فخار وسمن بلدي فلاحي' },
+  { img: '/logo.png', text: '+102 ألف متابع ومحب للكيرة' },
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
@@ -49,9 +51,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
       {/* Background with layered dark green & warm food lighting */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920&auto=format&fit=crop"
-          alt="مضغوط لحم بلدي وأرز بسمتي خليجي"
-          className="w-full h-full object-cover object-center filter brightness-[0.22] contrast-125"
+          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1920&auto=format&fit=crop"
+          alt="مطعم الكيرة - مشويات وطواجن فخار"
+          className="w-full h-full object-cover object-center filter brightness-[0.20] contrast-125"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/85 to-transparent"></div>
         <div className="absolute inset-0 bg-radial-gradient from-brand-primary/40 via-transparent to-brand-deep/90"></div>
@@ -67,22 +69,22 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
             {/* Vintage Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/90 border border-brand-gold/40 text-brand-brightGold text-xs sm:text-sm font-bold shadow-gold-glow mb-5 backdrop-blur-md">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>منذ 2007 • 19 سنة من الخبرة والأصالة</span>
+              <span>منذ 1998 • أكثر من 26 عاماً من الأصالة والريادة</span>
             </div>
 
             {/* Main Headline with two lines and distinct hierarchy */}
             <h1 className="mb-6 tracking-tight flex flex-col gap-2.5 sm:gap-3.5">
               <span className="block text-4xl sm:text-6xl lg:text-7xl font-black text-brand-cream leading-tight">
-                أصل <span className="gold-gradient-text drop-shadow-[0_4px_20px_rgba(216,217,35,0.35)]">المضغوط</span>
+                حدوتة <span className="gold-gradient-text drop-shadow-[0_4px_20px_rgba(216,217,35,0.35)]">الكيرة</span>
               </span>
               <span className="block text-xl sm:text-3xl lg:text-4xl font-bold text-brand-cream/85">
-                والأكل العربي الخليجي
+                أصل المشويات والطواجن الفخار
               </span>
             </h1>
 
             {/* Concise Subtitle */}
             <p className="text-base sm:text-xl text-brand-cream/85 max-w-xl leading-relaxed mb-8 font-normal">
-              وصفات أصلية وتوابل سرية من قلب الخليج، مع لحم بلدي طازج يومياً.. <span className="text-brand-brightGold font-medium">الجودة والأمانة ثقافة وهوية.</span>
+              لحوم بلدية طازجة 100% متبلة على أصولها ومشوية على الفحم، وطواجن فخار متسبكة بالسمن البلدي.. <span className="text-brand-brightGold font-medium">حدوتة حلوة منا فينا!</span>
             </p>
 
             {/* Action Buttons */}
@@ -92,7 +94,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                 className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold text-brand-black font-black text-sm sm:text-base rounded-2xl shadow-gold-lg hover:shadow-gold-glow hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2.5 shine-effect"
               >
                 <UtensilsCrossed className="w-4 h-4" />
-                <span>المنيو الكامل</span>
+                <span>المنيو والأسعار</span>
               </button>
 
               <a
@@ -142,7 +144,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                       {/* Crisp Foreground Dish */}
                       <img
                         src={dish.src}
-                        alt="طبق مضغوط أصيل فاخر"
+                        alt="طبق مشويات وطواجن الكيرة"
                         className="relative w-full h-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)] animate-float"
                       />
                     </div>
@@ -158,7 +160,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
       </div>
 
-      {/* Mobile Continuous Intersecting "X" Marquee Ribbons (شريطان متقاطعان ع شكل X بدون أي فراغ وبدون توقف) */}
+      {/* Mobile Continuous Intersecting "X" Marquee Ribbons */}
       <div className="lg:hidden w-full relative py-8 my-2 overflow-hidden z-10 select-none">
         
         {/* Ribbon 1: Angled -rotate-2 (Dark Luxury Green with Gold Accents) */}
@@ -235,4 +237,3 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
     </section>
   );
 };
-

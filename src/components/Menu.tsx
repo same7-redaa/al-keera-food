@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { CATEGORIES, MENU_ITEMS } from '../data/menuData';
 import { CategoryType, MenuItem } from '../types/menu';
 import { MenuCard } from './MenuCard';
-import { Sparkles, Search, Flame, Soup, Salad, CupSoda, Gift } from 'lucide-react';
+import { Sparkles, Search, Flame, Soup, Salad, CupSoda, Gift, Crown, UtensilsCrossed } from 'lucide-react';
 
 export const Menu: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryType>('all');
@@ -14,6 +14,10 @@ export const Menu: React.FC = () => {
         return <Flame className="w-4 h-4" />;
       case 'Soup':
         return <Soup className="w-4 h-4" />;
+      case 'Crown':
+        return <Crown className="w-4 h-4" />;
+      case 'UtensilsCrossed':
+        return <UtensilsCrossed className="w-4 h-4" />;
       case 'Salad':
         return <Salad className="w-4 h-4" />;
       case 'CupSoda':
@@ -50,11 +54,11 @@ export const Menu: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-brand-cream mb-4 tracking-tight">
-            منيو <span className="gold-gradient-text">المطعم</span>
+            منيو <span className="gold-gradient-text">مطعم الكيرة</span>
           </h2>
 
           <p className="text-base sm:text-lg text-brand-cream/80">
-            اختياراتنا الأصيلة لعشاق الأكل العربي والخليجي والمبكبكة الليبية المحضرة بكل حب وإتقان.
+            اختياراتنا الأصيلة من المشويات على الفحم وطواجن الفخار البلدي وصواني العزومات المحضرة بكل حب وإتقان.
           </p>
         </div>
 
@@ -66,15 +70,15 @@ export const Menu: React.FC = () => {
             </div>
             <div>
               <span className="font-bold text-brand-brightGold text-sm sm:text-base block">
-                هدية مضغوط الليبي مع كل طلب!
+                كرم وضيافة الكيرة مع كل طلب!
               </span>
               <span className="text-xs sm:text-sm text-brand-cream/90">
-                جميع الوجبات الرئيسية يخرج معها مجاناً علب دقوس حار أصلي وتومية كريمية فاخرة.
+                جميع المشويات والطواجن يخرج معها مجاناً طحينة سمسم فاخرة وسلطة خضراء وعيش بلدي ساخن.
               </span>
             </div>
           </div>
           <div className="bg-brand-deep/80 text-brand-cream px-3 py-1.5 rounded-lg border border-brand-gold/20 text-xs font-bold whitespace-nowrap">
-            100% كرم الضيافة العربي
+            100% لحم بلدي طازج
           </div>
         </div>
 

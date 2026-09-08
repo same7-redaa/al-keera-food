@@ -35,11 +35,11 @@ export const WhyUs: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-brand-cream mb-4 tracking-tight">
-            ليه تختار <span className="gold-gradient-text">مضغوط الليبي؟</span>
+            ليه تختار <span className="gold-gradient-text">مطعم الكيرة؟</span>
           </h2>
 
           <p className="text-base sm:text-lg text-brand-cream/80">
-            أكثر من مجرد وجبة.. نحن نقدم تجربة كرم وضيافة عربية أصيلة مبنية على 19 عاماً من الثقة والأمانة.
+            أكثر من مجرد أكل.. نحن نقدم تجربة كرم وضيافة مصرية أصيلة مبنية على أكثر من 26 عاماً من الثقة والريادة في المحلة الكبرى.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export const WhyUs: React.FC = () => {
               {/* Bottom decorative bar */}
               <div className="mt-6 pt-4 border-t border-brand-gold/10 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-brand-brightGold"></span>
-                <span className="text-[11px] text-brand-cream/60 font-medium">معايير جودة صارمة</span>
+                <span className="text-[11px] text-brand-cream/60 font-medium">لحوم بلدية 100%</span>
               </div>
             </div>
           ))}

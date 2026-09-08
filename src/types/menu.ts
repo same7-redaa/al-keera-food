@@ -1,4 +1,4 @@
-export type CategoryType = 'all' | 'madghoot' | 'mbakbaka' | 'sides' | 'drinks';
+export type CategoryType = 'all' | 'grills' | 'tajines' | 'platters' | 'mahshi' | 'sides' | 'drinks';
 
 export interface PortionOption {
   label: string;
@@ -10,7 +10,7 @@ export interface MenuItem {
   id: string;
   name: string;
   description: string;
-  category: 'madghoot' | 'mbakbaka' | 'sides' | 'drinks';
+  category: 'grills' | 'tajines' | 'platters' | 'mahshi' | 'sides' | 'drinks';
   basePrice: number;
   portions?: PortionOption[];
   image: string;

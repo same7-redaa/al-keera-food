@@ -37,7 +37,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md' }) => {
         {/* Authentic Restaurant Logo Image */}
         <img
           src="/logo.png"
-          alt="مضغوط الليبي - المحلة"
+          alt="مطعم الكيرة - المحلة الكبرى"
           loading="eager"
           decoding="async"
           className={`${current.img} w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]`}

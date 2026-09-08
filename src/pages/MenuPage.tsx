@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { CATEGORIES, MENU_ITEMS } from '../data/menuData';
 import { CategoryType, MenuItem } from '../types/menu';
 import { MenuCard } from '../components/MenuCard';
-import { Sparkles, Search, Flame, Soup, Salad, CupSoda, Gift } from 'lucide-react';
+import { Sparkles, Search, Flame, Soup, Salad, CupSoda, Gift, Crown, UtensilsCrossed } from 'lucide-react';
 
 export const MenuPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryType>('all');
@@ -18,6 +18,10 @@ export const MenuPage: React.FC = () => {
         return <Flame className="w-4 h-4" />;
       case 'Soup':
         return <Soup className="w-4 h-4" />;
+      case 'Crown':
+        return <Crown className="w-4 h-4" />;
+      case 'UtensilsCrossed':
+        return <UtensilsCrossed className="w-4 h-4" />;
       case 'Salad':
         return <Salad className="w-4 h-4" />;
       case 'CupSoda':
@@ -54,11 +58,11 @@ export const MenuPage: React.FC = () => {
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-brand-cream mb-4 tracking-tight">
-            منيو <span className="gold-gradient-text">مضغوط الليبي</span>
+            منيو <span className="gold-gradient-text">مطعم الكيرة</span>
           </h1>
 
           <p className="text-base sm:text-lg text-brand-cream/80">
-            تصفح جميع وجبات المضغوط، المبكبكة الليبية، المقبلات والإضافات، والمشروبات واطلب مباشرة عبر واتساب.
+            تصفح جميع المشويات على الفحم، طواجن الفخار البلدي، صواني العزومات، المحاشي والمقبلات واطلب مباشرة عبر واتساب.
           </p>
         </div>
 
@@ -70,15 +74,15 @@ export const MenuPage: React.FC = () => {
             </div>
             <div>
               <span className="font-bold text-brand-brightGold text-sm sm:text-base block">
-                هدية مضغوط الليبي مع كل وجبة رئيسية!
+                كرم وضيافة الكيرة مع كل وجبة رئيسية!
               </span>
               <span className="text-xs sm:text-sm text-brand-cream/90">
-                جميع الوجبات يخرج معها مجاناً علب دقوس حار أصلي وتومية كريمية فاخرة.
+                جميع المشويات والطواجن يخرج معها مجاناً طحينة سمسم فاخرة وسلطة خضراء وعيش بلدي ساخن.
               </span>
             </div>
           </div>
           <div className="bg-brand-deep/80 text-brand-cream px-3.5 py-1.5 rounded-lg border border-brand-gold/20 text-xs font-bold whitespace-nowrap">
-            100% كرم الضيافة العربي
+            100% لحم بلدي طازج
           </div>
         </div>
 
@@ -113,7 +117,7 @@ export const MenuPage: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="ابحث في قائمة الطعام..."
+              placeholder="ابحث في قائمة المشويات والطواجن..."
               className="w-full bg-brand-card/90 border border-brand-gold/25 focus:border-brand-gold rounded-2xl py-2.5 pr-10 pl-4 text-xs sm:text-sm text-brand-cream placeholder:text-brand-cream/40 focus:outline-none focus:ring-1 focus:ring-brand-gold transition-all"
             />
             {searchQuery && (

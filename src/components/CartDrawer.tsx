@@ -87,7 +87,7 @@ export const CartDrawer: React.FC = () => {
                 </div>
                 <h4 className="text-lg font-bold text-brand-cream mb-2">السلة فارغة حالياً</h4>
                 <p className="text-xs sm:text-sm text-brand-cream/60 max-w-xs mb-6">
-                  استكشف المنيو واطلب أشهى وجبات المضغوط والمبكبكة الطازجة!
+                  استكشف المنيو واطلب أشهى مشويات الفحم وطواجن الفخار البلدي!
                 </p>
                 <button
                   onClick={() => setIsCartOpen(false)}
@@ -101,7 +101,7 @@ export const CartDrawer: React.FC = () => {
                 {/* Free gifts notice */}
                 <div className="p-3 bg-brand-primary/50 border border-brand-gold/30 rounded-2xl flex items-center gap-2.5 text-xs text-brand-brightGold">
                   <Gift className="w-4 h-4 flex-shrink-0" />
-                  <span>جميع الوجبات يخرج معها مجاناً دقوس وتومية!</span>
+                  <span>يخرج مع الوجبات طحينة وسلطة وعيش بلدي ساخن مجاناً!</span>
                 </div>
 
                 {/* Items List */}
@@ -138,7 +138,7 @@ export const CartDrawer: React.FC = () => {
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
                             className="w-6 h-6 flex items-center justify-center text-brand-cream hover:text-brand-brightGold"
                           >
-                            <Minus className="w-3 h-3" />
+                            <Minus className="w-3.5 h-3.5" />
                           </button>
                           <span className="w-5 text-center text-xs font-bold text-brand-cream">
                             {item.quantity}
@@ -147,7 +147,7 @@ export const CartDrawer: React.FC = () => {
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                             className="w-6 h-6 flex items-center justify-center text-brand-cream hover:text-brand-brightGold"
                           >
-                            <Plus className="w-3 h-3" />
+                            <Plus className="w-3.5 h-3.5" />
                           </button>
                         </div>
 

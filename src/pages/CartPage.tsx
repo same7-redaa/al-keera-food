@@ -55,7 +55,7 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
           </h1>
 
           <p className="text-xs sm:text-sm text-brand-cream/75">
-            راجع وجباتك المختارة، حدد تفاصيل التوصيل، وأرسل طلبك مباشرة إلى واتساب المطعم.
+            راجع وجباتك المختارة من مشويات وطواجن الكيرة، حدد بيانات التوصيل، وأرسل طلبك مباشرة إلى واتساب المطعم.
           </p>
         </div>
 
@@ -67,14 +67,14 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
             </div>
             <h3 className="text-xl font-bold text-brand-cream mb-2">السلة فارغة حالياً</h3>
             <p className="text-xs sm:text-sm text-brand-cream/65 max-w-sm mb-8 leading-relaxed">
-              لم تقم بإضافة أي وجبات بعد. تصفح المنيو واختر وجبتك المفضلة من المضغوط والمبكبكة الطازجة!
+              لم تقم بإضافة أي وجبات بعد. تصفح المنيو واختر وجبتك المفضلة من المشويات على الفحم وطواجن الفخار البلدي!
             </p>
             <button
               onClick={onNavigateToMenu}
               className="py-3.5 px-8 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold text-brand-black font-black text-sm rounded-xl shadow-gold-lg hover:shadow-gold-glow hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
             >
               <UtensilsCrossed className="w-4 h-4" />
-              <span>تصفح المنيو الآن</span>
+              <span>تصفح منيو الكيرة الآن</span>
             </button>
           </div>
         ) : (
@@ -102,7 +102,7 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
               {/* Complimentary Gift Notice */}
               <div className="p-3.5 bg-brand-primary/60 border border-brand-gold/30 rounded-2xl flex items-center gap-3 text-xs text-brand-brightGold shadow-sm">
                 <Gift className="w-4 h-4 flex-shrink-0" />
-                <span>جميع الوجبات يخرج معها مجاناً علب دقوس حار وتومية كريمية!</span>
+                <span>جميع المشويات والطواجن يخرج معها مجاناً طحينة وسلطات وعيش بلدي ساخن!</span>
               </div>
 
               {/* Items Card List */}
@@ -200,7 +200,7 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
                       }`}
                     >
                       <Truck className="w-4 h-4" />
-                      <span>توصيل (+15 ج)</span>
+                      <span>توصيل دليفري (+15 ج)</span>
                     </button>
 
                     <button
@@ -261,7 +261,7 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
                       type="text"
                       value={orderNotes}
                       onChange={(e) => setOrderNotes(e.target.value)}
-                      placeholder="أي ملاحظات خاصة؟ (شطة إضافية، تسوية، الخ)"
+                      placeholder="أي ملاحظات خاصة؟ (درجة التسوية، إضافات، الخ)"
                       className="w-full bg-brand-deep border border-brand-gold/20 focus:border-brand-gold rounded-xl py-2.5 pr-10 pl-3 text-xs sm:text-sm text-brand-cream placeholder:text-brand-cream/40 focus:outline-none"
                     />
                   </div>

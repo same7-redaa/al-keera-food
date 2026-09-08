@@ -1,13 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { CartItem, MenuItem, PortionOption, OfferItem } from '../types/menu';
+import { CartItem, MenuItem, OfferItem, PortionOption } from '../types/menu';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
+
+interface ToastState {
+  show: boolean;
+  message: string;
+  title?: string;
+}
 
 interface CartContextType {
   cart: CartItem[];
   addToCart: (item: MenuItem, portion?: PortionOption, quantity?: number) => void;
   addOfferToCart: (offer: OfferItem) => void;
   removeFromCart: (cartItemId: string) => void;
-  updateQuantity: (cartItemId: string, quantity: number) => void;
+  updateQuantity: (cartItemId: string, newQuantity: number) => void;
   clearCart: () => void;
   isCartOpen: boolean;
   setIsCartOpen: (open: boolean) => void;
@@ -27,7 +33,7 @@ interface CartContextType {
   orderNotes: string;
   setOrderNotes: (notes: string) => void;
   sendWhatsAppOrder: () => void;
-  toast: { show: boolean; message: string; title?: string };
+  toast: ToastState;
   hideToast: () => void;
 }
 
@@ -36,7 +42,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
     try {
-      const saved = localStorage.getItem('madghoot_cart');
+      const saved = localStorage.getItem('elkeera_cart');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -49,7 +55,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [orderNotes, setOrderNotes] = useState('');
-  const [toast, setToast] = useState<{ show: boolean; message: string; title?: string }>({
+
+  const [toast, setToast] = useState<ToastState>({
     show: false,
     message: '',
     title: '',
@@ -57,7 +64,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('madghoot_cart', JSON.stringify(cart));
+      localStorage.setItem('elkeera_cart', JSON.stringify(cart));
     } catch (e) {
       console.error(e);
     }
@@ -100,7 +107,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     const portionText = selectedPortion ? ` (${selectedPortion.label})` : '';
-    showToastNotification(`تمت إضافة ${item.name}${portionText} إلى سلة طلباتك`, 'أصالة وجودة 🔥');
+    showToastNotification(`تمت إضافة ${item.name}${portionText} إلى سلة طلباتك`, 'حدوتة حلوة 🔥');
   };
 
   const addOfferToCart = (offer: OfferItem) => {
@@ -125,7 +132,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     });
 
-    showToastNotification(`تمت إضافة ${offer.title} بسعر خاص ${offer.discountedPrice} ج`, 'عرض حصري توفير! 🎁');
+    showToastNotification(`تمت إضافة ${offer.title} بسعر خاص ${offer.discountedPrice} ج`, 'عرض ملكي توفير! 🎁');
   };
 
   const removeFromCart = (cartItemId: string) => {
@@ -161,7 +168,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return;
     }
 
-    let message = `🍽️ *طلب جديد من موقع مضغوط الليبي - المحلة*\n`;
+    let message = `🍽️ *طلب جديد من موقع مطعم الكيرة - المحلة الكبرى*\n`;
     message += `----------------------------------------\n`;
     
     if (customerName.trim()) {
@@ -171,7 +178,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       message += `📞 *رقم الهاتف:* ${customerPhone.trim()}\n`;
     }
     
-    message += `🛵 *نوع الاستلام:* ${orderType === 'delivery' ? 'توصيل دليفري إلى المنزل' : 'استلام من الفرع (الشعبية)'}\n`;
+    message += `🛵 *نوع الاستلام:* ${orderType === 'delivery' ? 'توصيل دليفري إلى المنزل' : 'استلام من الفرع (المشحمة / 6 أكتوبر)'}\n`;
     
     if (orderType === 'delivery' && customerAddress.trim()) {
       message += `📍 *عنوان التوصيل:* ${customerAddress.trim()}\n`;
@@ -183,7 +190,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       message += `${index + 1}. *${item.name}${portionText}* × ${item.quantity} = ${item.unitPrice * item.quantity} ج\n`;
     });
 
-    message += `\n🎁 *ملاحظة الجودة:* جميع الوجبات يخرج معها مجاناً دقوس وتومية.\n`;
+    message += `\n🎁 *خدمة الضيافة:* يخرج مع الوجبات طحينة وسلطة وعيش بلدي ساخن.\n`;
 
     if (orderNotes.trim()) {
       message += `\n📝 *ملاحظات وإضافات خاصة:* ${orderNotes.trim()}\n`;

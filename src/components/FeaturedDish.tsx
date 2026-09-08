@@ -5,13 +5,13 @@ import { Sparkles, Flame, Check, ShoppingBag, ShieldCheck, Heart } from 'lucide-
 
 export const FeaturedDish: React.FC = () => {
   const { addToCart } = useCart();
-  const [selectedVariant, setSelectedVariant] = useState<'meat' | 'chicken'>('meat');
+  const [selectedVariant, setSelectedVariant] = useState<'tajine' | 'grill'>('tajine');
   const [isAdded, setIsAdded] = useState(false);
 
-  const meatItem = MENU_ITEMS.find((i) => i.id === 'madghoot-mugalgal-meat') || MENU_ITEMS[4];
-  const chickenItem = MENU_ITEMS.find((i) => i.id === 'madghoot-original') || MENU_ITEMS[0];
+  const tajineItem = MENU_ITEMS.find((i) => i.id === 'tajine-warak-enab-kaware') || MENU_ITEMS[5];
+  const grillItem = MENU_ITEMS.find((i) => i.id === 'grill-mix-kebab-kofta') || MENU_ITEMS[0];
 
-  const currentItem = selectedVariant === 'meat' ? meatItem : chickenItem;
+  const currentItem = selectedVariant === 'tajine' ? tajineItem : grillItem;
 
   const handleAdd = () => {
     addToCart(currentItem);
@@ -40,19 +40,19 @@ export const FeaturedDish: React.FC = () => {
                 <div className="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden">
                   <img
                     src={
-                      selectedVariant === 'meat'
-                        ? 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop'
-                        : 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=1000&auto=format&fit=crop'
+                      selectedVariant === 'tajine'
+                        ? 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop'
+                        : 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop'
                     }
-                    alt="طبق مضغوط الليبي الأشهر"
+                    alt="طواجن ومشويات الكيرة بالمحلة"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-transparent to-transparent"></div>
 
-                  {/* Floating floating signature badge */}
+                  {/* Floating signature badge */}
                   <div className="absolute top-4 right-4 bg-brand-brightGold text-brand-black font-black text-xs px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
                     <Sparkles className="w-4 h-4 text-brand-black" />
-                    <span>تتبيلة حصرية 19 عاماً</span>
+                    <span>خلطة الكيرة السرية منذ 1998</span>
                   </div>
 
                   {/* Price Tag in Image */}
@@ -71,8 +71,8 @@ export const FeaturedDish: React.FC = () => {
                   <Heart className="w-5 h-5 fill-brand-brightGold" />
                 </div>
                 <div>
-                  <div className="text-xs text-brand-cream/60">تفضيل الزوار</div>
-                  <div className="text-sm font-bold text-brand-cream">أكثر من 40,000 طبق تم تقديمه</div>
+                  <div className="text-xs text-brand-cream/60">الأعلى طلباً بالمحلة</div>
+                  <div className="text-sm font-bold text-brand-cream">+50,000 طاجن وسرفيس مشوي</div>
                 </div>
               </div>
 
@@ -85,48 +85,47 @@ export const FeaturedDish: React.FC = () => {
             {/* Top Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-brand-brightGold text-xs sm:text-sm font-black mb-4">
               <Flame className="w-4 h-4 text-amber-400" />
-              <span>طبقنا الأشهر • Signature Dish</span>
+              <span>سر الصنعة • Signature Dishes</span>
             </div>
 
             {/* Title */}
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-cream leading-snug mb-3">
-              مضغوط <span className="gold-gradient-text">الليبي الملكي</span>
+              طواجن ومشويات <span className="gold-gradient-text">الكيرة الأصيلة</span>
             </h2>
 
             {/* Description */}
             <p className="text-base sm:text-lg text-brand-cream/85 leading-relaxed mb-6 font-normal">
-              وصفة أصلية تجمع بين الأرز البسمتي المتبل بدقة، مع اللحم البلدي الطازج أو الدجاج الطري، 
-              وتوليفة التوابل السرية التي صنعت شهرتنا في المحلة الكبرى منذ أكثر من 19 عاماً.
+              طواجن فخار متسبكة على نار هادية بالسمن البلدي الفلاحي، أو مشويات على الفحم متبلة بخلطة زمان الخاصة التي يعشقها أهل المحلة الكبرى منذ أكثر من 26 عاماً.
             </p>
 
             {/* Variant Switcher */}
             <div className="w-full bg-brand-card/90 p-3 rounded-2xl border border-brand-gold/20 mb-6">
-              <span className="text-xs text-brand-cream/70 block mb-2 font-medium">اختر نوع الطبق:</span>
+              <span className="text-xs text-brand-cream/70 block mb-2 font-medium">اختر طبقك المفضل:</span>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
-                  onClick={() => setSelectedVariant('meat')}
+                  onClick={() => setSelectedVariant('tajine')}
                   className={`py-3 px-4 rounded-xl font-bold text-sm transition-all flex flex-col items-center gap-1 ${
-                    selectedVariant === 'meat'
+                    selectedVariant === 'tajine'
                       ? 'bg-brand-gold text-brand-black shadow-gold-glow'
                       : 'bg-brand-deep/80 text-brand-cream/80 hover:text-brand-brightGold'
                   }`}
                 >
-                  <span>لحم بلدي مقلقل</span>
-                  <span className="text-xs opacity-85">310 جنيه</span>
+                  <span>طاجن ورق عنب بالكوارع</span>
+                  <span className="text-xs opacity-85">260 جنيه</span>
                 </button>
 
                 <button
                   type="button"
-                  onClick={() => setSelectedVariant('chicken')}
+                  onClick={() => setSelectedVariant('grill')}
                   className={`py-3 px-4 rounded-xl font-bold text-sm transition-all flex flex-col items-center gap-1 ${
-                    selectedVariant === 'chicken'
+                    selectedVariant === 'grill'
                       ? 'bg-brand-gold text-brand-black shadow-gold-glow'
                       : 'bg-brand-deep/80 text-brand-cream/80 hover:text-brand-brightGold'
                   }`}
                 >
-                  <span>دجاج أوريجنال ربع</span>
-                  <span className="text-xs opacity-85">170 جنيه</span>
+                  <span>مشكل كباب وكفتة</span>
+                  <span className="text-xs opacity-85">220 جنيه</span>
                 </button>
               </div>
             </div>
@@ -135,19 +134,19 @@ export const FeaturedDish: React.FC = () => {
             <div className="grid grid-cols-2 gap-3 w-full mb-8 text-xs sm:text-sm text-brand-cream/80">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
-                <span>مطهو بقدر الضغط المحكم</span>
+                <span>لحم بلدي طازج يومياً 100%</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
-                <span>عصارة بهارات غنية ومتغلغلة</span>
+                <span>سمن بلدي فلاحي صافي</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
-                <span>دقوس وتومية مجاناً</span>
+                <span>طحينة وسلطات وعيش ساخن</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
-                <span>أرز بسمتي طويل الحبة فاخر</span>
+                <span>توصيل سريع ساخن في المحلة</span>
               </div>
             </div>
 
@@ -169,7 +168,7 @@ export const FeaturedDish: React.FC = () => {
                 ) : (
                   <>
                     <ShoppingBag className="w-6 h-6" />
-                    <span>اطلب الطبق الأشهر الآن</span>
+                    <span>اطلب طبقك المفضل الآن</span>
                   </>
                 )}
               </button>

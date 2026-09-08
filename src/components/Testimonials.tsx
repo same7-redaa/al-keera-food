@@ -15,11 +15,11 @@ export const Testimonials: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-brand-cream mb-4 tracking-tight">
-            ماذا يقول <span className="gold-gradient-text">عشاق المضغوط؟</span>
+            ماذا يقول <span className="gold-gradient-text">عشاق مطعم الكيرة؟</span>
           </h2>
 
           <p className="text-base sm:text-lg text-brand-cream/80">
-            فخورون بثقة آلاف العائلات والزبائن اليوميين الذين اختارونا ليكون طعامهم المفضل.
+            فخورون بثقة أكثر من 102 ألف متابع وزبون يختارون طواجننا ومشوياتنا دائماً.
           </p>
         </div>
 

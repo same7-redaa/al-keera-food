@@ -42,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </button>
             <div className="hidden sm:block w-px h-8 bg-brand-gold/30"></div>
             <span className="text-xs sm:text-sm text-brand-cream/70 font-medium">
-              أصل المضغوط والأكل العربي الخليجي • خبرة 19 سنة
+              أصل المشويات على الفحم والطواجن الفخار • خبرة أكثر من 26 سنة بالمحلة
             </span>
           </div>
 
@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               onClick={() => handleLinkClick('menu')}
               className="text-brand-brightGold hover:text-white transition-colors"
             >
-              المنيو
+              المنيو والأسعار
             </button>
             <button
               onClick={() => handleLinkClick('cart')}
@@ -76,13 +76,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               onClick={() => handleLinkClick('home', 'about')}
               className="hover:text-brand-brightGold transition-colors"
             >
-              عن المطعم
+              عن الكيرة
             </button>
             <button
               onClick={() => handleLinkClick('home', 'location')}
               className="hover:text-brand-brightGold transition-colors"
             >
-              زورنا
+              فروعنا
             </button>
           </nav>
 
@@ -94,7 +94,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-xl bg-brand-primary border border-brand-gold/30 flex items-center justify-center text-brand-cream hover:text-brand-brightGold hover:bg-brand-secondary transition-all"
               aria-label="فيسبوك"
-              title="صفحة الفيسبوك"
+              title="صفحة الفيسبوك (+102K متابع)"
             >
               <Facebook className="w-4 h-4" />
             </a>
@@ -127,17 +127,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Bottom Clean Meta Row */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-cream/60 text-center sm:text-right">
           
-          {/* Address */}
+          {/* Address & Branches */}
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-brand-cream/75">
             <span className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-brand-brightGold" />
-              {RESTAURANT_INFO.address}
+              المحلة الكبرى: فرع المشحمة & فرع ش 6 أكتوبر (المستشفى العام)
             </span>
           </div>
 
           {/* Copyright */}
           <div>
-            © {currentYear} مضغوط الليبي - المحلة. جميع الحقوق محفوظة.
+            © {currentYear} مطعم الكيرة - المحلة الكبرى. جميع الحقوق محفوظة.
           </div>
 
         </div>

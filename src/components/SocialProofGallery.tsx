@@ -16,11 +16,11 @@ export const SocialProofGallery: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-brand-cream mb-4 tracking-tight">
-            شوف <span className="gold-gradient-text">أكلنا على الطبيعة</span>
+            شوف <span className="gold-gradient-text">طواجننا ومشوياتنا على الطبيعة</span>
           </h2>
 
           <p className="text-base sm:text-lg text-brand-cream/80">
-            أطباقنا الحقيقية بتصوير طبيعي يوضح تفاصيل الطهي وتغلغل البهارات ولمعان الأرز البسمتي.
+            أطباقنا الحقيقية بتصوير طبيعي يوضح تسبيكة طواجن الفخار ولمعان الشواء على الفحم.
           </p>
         </div>
 
@@ -52,7 +52,7 @@ export const SocialProofGallery: React.FC = () => {
                 <div className="flex items-center gap-4 text-xs text-brand-cream/70 pt-2 border-t border-brand-gold/20">
                   <span className="flex items-center gap-1 text-brand-brightGold">
                     <Heart className="w-3.5 h-3.5 fill-brand-brightGold" />
-                    أعلى تقييم
+                    الأعلى تقييماً بالمحلة
                   </span>
                   <span>طازج ومحضر يومياً</span>
                 </div>
@@ -69,10 +69,10 @@ export const SocialProofGallery: React.FC = () => {
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold text-brand-cream">
-                تابع يومياتنا وعروضنا الحصرية على فيسبوك
+                انضم لعائلة الكيرة على فيسبوك
               </h3>
               <p className="text-xs sm:text-sm text-brand-cream/70">
-                أكثر من 46 ألف متابع لعائلة مضغوط الليبي في المحلة الكبرى.
+                أكثر من 102 ألف متابع وعاشق لمشويات وطواجن الكيرة في المحلة الكبرى.
               </p>
             </div>
           </div>
@@ -84,7 +84,7 @@ export const SocialProofGallery: React.FC = () => {
             className="py-3 px-8 bg-[#1877F2] hover:bg-[#166fe5] text-white font-bold text-sm rounded-2xl transition-all duration-300 shadow-md flex items-center gap-2 whitespace-nowrap active:scale-95"
           >
             <Facebook className="w-4 h-4" />
-            <span>تابعنا على فيسبوك</span>
+            <span>صفحتنا على فيسبوك (+102K)</span>
           </a>
         </div>
 

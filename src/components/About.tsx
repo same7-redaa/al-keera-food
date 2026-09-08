@@ -23,7 +23,7 @@ export const About: React.FC = () => {
                 <div className="h-80 sm:h-96 rounded-2xl overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop"
-                    alt="تحضير أطباق المضغوط الفاخرة"
+                    alt="تحضير مشويات وطواجن الكيرة"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/80 via-transparent to-transparent"></div>
@@ -34,8 +34,8 @@ export const About: React.FC = () => {
               <div className="absolute -bottom-8 -left-6 sm:-left-8 w-44 sm:w-56 rounded-2xl overflow-hidden glass-card p-2 border border-brand-gold/40 shadow-2xl hidden sm:block">
                 <div className="h-36 sm:h-44 rounded-xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=600&auto=format&fit=crop"
-                    alt="مبكبكة ليبية ساخنة"
+                    src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop"
+                    alt="طاجن ورق عنب بالكوارع الفاخر"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -44,7 +44,7 @@ export const About: React.FC = () => {
               {/* Experience Stamp */}
               <div className="absolute -top-6 -right-6 bg-gradient-to-br from-brand-gold to-brand-brightGold text-brand-black p-4 rounded-3xl shadow-xl border-2 border-brand-cream/30 flex flex-col items-center text-center animate-float">
                 <Award className="w-7 h-7 mb-1" />
-                <span className="text-2xl font-black leading-none">+19</span>
+                <span className="text-2xl font-black leading-none">+26</span>
                 <span className="text-[10px] font-bold mt-0.5">عاماً من الخبرة</span>
               </div>
 
@@ -91,7 +91,7 @@ export const About: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-sm font-bold text-brand-cream">وعد الجودة والأمانة</h4>
-                <p className="text-xs text-brand-cream/70">كل طبق يخرج من مطبخنا نعده بأعلى معايير النظافة والاهتمام كأنه يُقدم لعائلتنا الخاصة.</p>
+                <p className="text-xs text-brand-cream/70">كل صينية وطاجن يخرج من مطبخنا نعده بأعلى معايير النظافة واللحوم البلدية الطازجة كأنه يُقدم لعائلتنا الخاصة.</p>
               </div>
             </div>
 

@@ -28,11 +28,11 @@ export const FeaturedMenuPreview: React.FC<FeaturedMenuPreviewProps> = ({ onOpen
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-brand-cream mb-4 tracking-tight">
-            الأكلات <span className="gold-gradient-text">المميزة</span>
+            أشهى أكلات <span className="gold-gradient-text">مطعم الكيرة</span>
           </h2>
 
           <p className="text-base sm:text-lg text-brand-cream/80">
-            مختارات من أشهى أطباق المضغوط والمبكبكة التي يفضلها زوارنا وعشاق الأكل العربي الأصيل.
+            مختارات من أشهى مشويات الفحم وطواجن الفخار البلدي وصواني العزومات التي يعشقها زوارنا الكرام.
           </p>
         </div>
 
@@ -44,15 +44,15 @@ export const FeaturedMenuPreview: React.FC<FeaturedMenuPreviewProps> = ({ onOpen
             </div>
             <div>
               <span className="font-bold text-brand-brightGold text-sm sm:text-base block">
-                هدية مضغوط الليبي مع كل وجبة!
+                كرم وضيافة الكيرة مع كل وجبة!
               </span>
               <span className="text-xs sm:text-sm text-brand-cream/90">
-                جميع الوجبات يخرج معها مجاناً علب دقوس حار أصلي وتومية كريمية فاخرة.
+                جميع المشويات والطواجن يخرج معها مجاناً طحينة سمسم فاخرة وسلطة خضراء وعيش بلدي ساخن.
               </span>
             </div>
           </div>
           <div className="bg-brand-deep/80 text-brand-cream px-3 py-1.5 rounded-lg border border-brand-gold/20 text-xs font-bold whitespace-nowrap">
-            100% كرم الضيافة العربي
+            100% لحم بلدي طازج
           </div>
         </div>
 
@@ -70,7 +70,7 @@ export const FeaturedMenuPreview: React.FC<FeaturedMenuPreviewProps> = ({ onOpen
             className="inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold text-brand-black font-black text-sm sm:text-base rounded-2xl shadow-gold-lg hover:shadow-gold-glow hover:scale-105 active:scale-95 transition-all duration-300 shine-effect"
           >
             <UtensilsCrossed className="w-5 h-5" />
-            <span>تصفح المنيو الكامل</span>
+            <span>تصفح المنيو الكامل والأسعار</span>
             <ArrowLeft className="w-4 h-4" />
           </button>
         </div>
