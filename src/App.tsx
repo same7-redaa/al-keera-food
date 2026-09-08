@@ -81,7 +81,6 @@ export const App: React.FC = () => {
   }, []);
 
   const handleNavigate = (page: 'home' | 'menu' | 'cart', sectionId?: string) => {
-    setIsLoading(true);
     setCurrentPage(page);
 
     // Update URL hash smoothly
@@ -96,12 +95,7 @@ export const App: React.FC = () => {
       } else {
         scrollToSectionOrTop(sectionId);
       }
-
-      // Smoothly hide splash screen after page and scroll position are fully aligned
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 100);
-    }, 380);
+    }, 10);
   };
 
   return (

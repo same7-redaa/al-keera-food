@@ -163,7 +163,11 @@
   }
 
   /* Authentic Background Pattern Texture Overlay with Subtle Transparency */
-  section, footer, .section-divider-wrapper, .page-bg-pattern {
+  section, footer, .section-divider-wrapper {
+    position: relative;
+  }
+
+  .page-bg-pattern {
     position: relative;
   }
 
