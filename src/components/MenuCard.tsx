@@ -86,20 +86,20 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
           {/* Portion Selector (ربع / نصف / وجبة) */}
           {item.portions && item.portions.length > 1 && (
             <div className="mb-2.5">
-              <div className="grid grid-cols-2 gap-1 bg-[#FAF8F5] p-1 rounded-lg border border-[#A48F64]/15">
+              <div className="grid grid-cols-2 gap-1 bg-[#FAF8F5] p-1 rounded-lg border border-[#A48F64]/20">
                 {item.portions.map((portion) => (
                   <button
                     key={portion.label}
                     type="button"
                     onClick={() => setSelectedPortion(portion)}
-                    className={`py-1 px-1.5 rounded-md text-[9px] sm:text-[11px] font-bold transition-all text-center flex items-center justify-between ${
+                    className={`py-1 px-1.5 rounded-md text-[8.5px] sm:text-[10px] font-bold transition-all text-center flex items-center justify-between border ${
                       selectedPortion?.label === portion.label
-                        ? 'bg-[#A48F64] text-white shadow-xs'
-                        : 'text-[#241E17] hover:text-[#A48F64] hover:bg-white'
+                        ? 'bg-[#A48F64] text-white border-[#8A764D] shadow-xs'
+                        : 'bg-white text-[#241E17] hover:text-[#A48F64] border-[#A48F64]/30 hover:border-[#A48F64]'
                     }`}
                   >
                     <span className="truncate">{portion.label}</span>
-                    <span className="text-[9px] sm:text-[10px] opacity-90 mr-0.5">{portion.price}ج</span>
+                    <span className="text-[8px] sm:text-[9.5px] font-black opacity-90 mr-0.5 whitespace-nowrap">{portion.price}ج</span>
                   </button>
                 ))}
               </div>
