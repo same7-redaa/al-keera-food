@@ -59,6 +59,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   const prevSlide = () => setActiveSlide((prev) => (prev - 1 + total) % total);
 
   const currentDish = HERO_DISHES[activeSlide];
+  
+  // Position active dish at 90 degrees (facing the text on the right)
   const wheelRotation = -activeSlide * angleStep;
 
   return (
@@ -67,16 +69,16 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
       {/* Background Atmosphere Lighting */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-10 right-1/4 w-[500px] h-[500px] bg-[#A48F64]/10 rounded-full blur-[140px]"></div>
-        <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-[#C5AF84]/12 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-[#C5AF84]/15 rounded-full blur-[130px]"></div>
         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#A48F64_1px,transparent_1px)] [background-size:24px_24px]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         
-        {/* Split Grid: Content on Right + Roulette Wheel on Left */}
+        {/* Split Grid: Content on Right + Big Roulette Orbit Wheel on Left */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           
-          {/* Right Column: High-Impact Typography & CTAs (6 or 7 cols) */}
+          {/* Right Column: Typography & CTAs (6 cols) */}
           <div className="lg:col-span-6 xl:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-right">
             
             {/* Top Heritage Badge */}
@@ -164,7 +166,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
           </div>
 
-          {/* Left Column: Rotating Roulette Wheel of Circular Dishes (5 or 6 cols) */}
+          {/* Left Column: Big Grand Roulette Wheel with Photos Distributed along the Outer Circumference (6 cols) */}
           <div
             className="lg:col-span-6 xl:col-span-5 relative flex flex-col items-center justify-center select-none py-6"
             onMouseEnter={() => setIsPaused(true)}
@@ -172,29 +174,30 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           >
             
             {/* Ambient Lighting Halo */}
-            <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-[#A48F64]/25 via-[#C5AF84]/15 to-transparent blur-3xl pointer-events-none"></div>
+            <div className="absolute w-80 h-80 sm:w-[480px] sm:h-[480px] rounded-full bg-gradient-to-tr from-[#A48F64]/25 via-[#C5AF84]/15 to-transparent blur-3xl pointer-events-none"></div>
 
-            {/* Roulette Wheel Stage Container */}
-            <div className="relative w-[310px] h-[310px] sm:w-[390px] sm:h-[390px] lg:w-[440px] lg:h-[440px] flex items-center justify-center">
+            {/* Big Grand Roulette Wheel Stage Container */}
+            <div className="relative w-[330px] h-[330px] sm:w-[450px] sm:h-[450px] lg:w-[500px] lg:h-[500px] flex items-center justify-center">
               
-              {/* Outer Decorative Track Rings */}
-              <div className="absolute inset-0 rounded-full border-2 border-dashed border-[#A48F64]/30 pointer-events-none animate-[spin_60s_linear_infinite]"></div>
-              <div className="absolute inset-6 sm:inset-8 rounded-full border border-[#A48F64]/20 pointer-events-none"></div>
+              {/* Outer Big Orbit Track Line (The Big Circle) */}
+              <div className="absolute inset-4 sm:inset-6 rounded-full border-2 border-dashed border-[#A48F64]/40 pointer-events-none animate-[spin_80s_linear_infinite]"></div>
+              <div className="absolute inset-12 sm:inset-16 rounded-full border border-[#A48F64]/20 pointer-events-none"></div>
 
-              {/* The Spinning Roulette Wheel Track */}
+              {/* The Spinning Roulette Track carrying ALL 5 Circular Dishes along the outer orbit */}
               <div
                 style={{
                   transform: `rotate(${wheelRotation}deg)`,
-                  transition: 'transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                  transition: 'transform 0.9s cubic-bezier(0.34, 1.4, 0.64, 1)',
                 }}
                 className="absolute inset-0 flex items-center justify-center will-change-transform"
               >
                 {HERO_DISHES.map((dish, idx) => {
                   const angle = idx * angleStep;
                   const rad = (angle * Math.PI) / 180;
-                  // Radius ~ 37% of the wheel width
-                  const xPercent = Math.sin(rad) * 37;
-                  const yPercent = -Math.cos(rad) * 37;
+                  
+                  // Radius placed exactly on the outer dashed circle (Radius ~ 43% of stage)
+                  const xPercent = Math.sin(rad) * 43;
+                  const yPercent = -Math.cos(rad) * 43;
                   const isActive = activeSlide === idx;
 
                   return (
@@ -207,16 +210,16 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                       }}
                       className="absolute z-20 cursor-pointer group focus:outline-none"
                     >
-                      {/* Dish Card: Counter-rotated so image stays right side up */}
+                      {/* Dish Card: Counter-rotated so the food photo always stays upright! */}
                       <div
                         style={{
                           transform: `rotate(${-wheelRotation}deg)`,
-                          transition: 'transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                          transition: 'transform 0.9s cubic-bezier(0.34, 1.4, 0.64, 1)',
                         }}
-                        className={`relative w-20 h-20 sm:w-26 sm:h-26 lg:w-30 lg:h-30 rounded-full overflow-hidden bg-white transition-all duration-500 ${
+                        className={`relative w-22 h-22 sm:w-28 sm:h-28 lg:w-34 lg:h-34 rounded-full overflow-hidden bg-white transition-all duration-500 ${
                           isActive
-                            ? 'scale-120 sm:scale-125 z-40 ring-4 ring-[#A48F64] shadow-gold-glow border-2 border-white'
-                            : 'scale-90 sm:scale-95 opacity-80 hover:opacity-100 hover:scale-105 ring-2 ring-[#A48F64]/40 shadow-lg'
+                            ? 'scale-120 sm:scale-125 z-40 ring-4 sm:ring-[5px] ring-[#A48F64] shadow-gold-glow border-2 border-white'
+                            : 'scale-90 sm:scale-95 opacity-85 hover:opacity-100 hover:scale-105 ring-2 ring-[#A48F64]/40 shadow-xl'
                         }`}
                       >
                         <img
@@ -226,7 +229,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                           draggable={false}
                         />
 
-                        {/* Subtle inner shadow overlay */}
+                        {/* Subtle inner shadow ring */}
                         <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-black/10"></div>
                       </div>
                     </button>
@@ -234,20 +237,20 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                 })}
               </div>
 
-              {/* Central Luxury Gold Emblem Hub */}
-              <div className="relative z-30 w-22 h-22 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-white/95 backdrop-blur-md border-2 sm:border-3 border-[#A48F64] shadow-xl flex flex-col items-center justify-center p-2 text-center pointer-events-none">
-                <span className="text-[10px] sm:text-xs font-bold text-[#A48F64] mb-0.5">مطعم</span>
-                <span className="text-sm sm:text-base lg:text-lg font-black text-[#241E17] leading-tight">الكيرة</span>
-                <div className="w-6 h-0.5 bg-[#A48F64] my-0.5 rounded-full"></div>
+              {/* Central Luxury Gold Hub Emblem */}
+              <div className="relative z-30 w-24 h-24 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full bg-white/95 backdrop-blur-md border-2 sm:border-3 border-[#A48F64] shadow-2xl flex flex-col items-center justify-center p-2 text-center pointer-events-none">
+                <span className="text-[10px] sm:text-xs font-bold text-[#A48F64]">مطعم</span>
+                <span className="text-base sm:text-lg lg:text-xl font-black text-[#241E17] leading-tight">الكيرة</span>
+                <div className="w-8 h-0.5 bg-[#A48F64] my-1 rounded-full"></div>
                 <span className="text-[9px] sm:text-[10px] font-bold text-[#6D6457]">منذ 1998</span>
               </div>
 
             </div>
 
-            {/* Active Dish Floating Name & Controls Banner below the Roulette */}
+            {/* Active Dish Floating Name & Roulette Spin Controls Banner */}
             <div className="mt-4 flex flex-col items-center gap-2 max-w-sm text-center">
               
-              {/* Active Dish Tag & Title */}
+              {/* Active Dish Tag & Title Banner */}
               <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-[#A48F64]/30 shadow-md animate-fadeIn">
                 <span className="bg-[#A48F64] text-white text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-md">
                   {currentDish.tag}
@@ -257,7 +260,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                 </span>
               </div>
 
-              {/* Roulette Interactive Spin Buttons */}
+              {/* Interactive Roulette Spin Controls */}
               <div className="flex items-center gap-3">
                 <button
                   onClick={prevSlide}
@@ -270,9 +273,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                 <button
                   onClick={nextSlide}
                   aria-label="تدوير الروليت"
-                  className="px-3 py-1 bg-[#FAF8F5] border border-[#A48F64]/30 rounded-full text-xs font-bold text-[#8A764D] hover:bg-[#A48F64] hover:text-white transition-all flex items-center gap-1.5 shadow-xs cursor-pointer active:scale-95"
+                  className="px-3.5 py-1.5 bg-[#FAF8F5] border border-[#A48F64]/30 rounded-full text-xs font-bold text-[#8A764D] hover:bg-[#A48F64] hover:text-white transition-all flex items-center gap-1.5 shadow-xs cursor-pointer active:scale-95"
                 >
-                  <RotateCw className="w-3 h-3 animate-spin" style={{ animationDuration: '8s' }} />
+                  <RotateCw className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '8s' }} />
                   <span>تدوير الأطباق</span>
                 </button>
 
