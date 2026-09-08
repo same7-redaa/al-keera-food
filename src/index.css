@@ -16,6 +16,9 @@
     background-color: #FAF8F5;
     color: #241E17;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   /* Custom Luxury Scrollbar */

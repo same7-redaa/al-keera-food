@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
               <span className="block text-4xl sm:text-6xl lg:text-7xl font-black text-[#241E17] leading-tight">
                 حدوتة <span className="gold-gradient-text drop-shadow-sm">الكيرة</span>
               </span>
-              <span className="block text-xl sm:text-3xl lg:text-4xl font-bold text-[#6B6255]">
+              <span className="block text-xl sm:text-3xl lg:text-4xl font-bold text-[#6D6457] antialiased [text-rendering:geometricPrecision] [isolation:isolate]">
                 أصل المشويات والطواجن الفخار
               </span>
             </h1>
