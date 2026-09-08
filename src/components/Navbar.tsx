@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { useCart } from '../context/CartContext';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { ShoppingBag, Menu as MenuIcon, X, Phone, MessageCircle, Facebook, Instagram } from 'lucide-react';
+import { ShoppingBag, Menu as MenuIcon, X, Phone, MessageCircle, Facebook, Instagram, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
   currentPage: 'home' | 'menu' | 'cart';
@@ -159,8 +159,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
               <ShoppingBag className="w-4 h-4" />
               <span>السلة</span>
               {totalItems > 0 && (
-                <span className="bg-brand-redBadge text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center animate-bounce">
-                  {totalItems}
+                <span className="w-5 h-5 rounded-full bg-white/20 border border-white/40 flex items-center justify-center text-amber-200 shadow-xs">
+                  <Sparkles className="w-3 h-3 fill-amber-200" />
                 </span>
               )}
             </button>

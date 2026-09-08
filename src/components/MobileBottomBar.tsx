@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { ShoppingBag, MessageCircle, Phone } from 'lucide-react';
+import { ShoppingBag, MessageCircle, Phone, Sparkles } from 'lucide-react';
 
 export const MobileBottomBar: React.FC = () => {
   const { totalItems, subtotal, toggleCart } = useCart();
@@ -19,8 +19,8 @@ export const MobileBottomBar: React.FC = () => {
             <div className="relative">
               <ShoppingBag className="w-5 h-5" />
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">
-                  {totalItems}
+                <span className="absolute -top-1.5 -right-1.5 bg-amber-400 text-[#16120E] w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs">
+                  <Sparkles className="w-2.5 h-2.5 fill-current" />
                 </span>
               )}
             </div>
