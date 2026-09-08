@@ -17,12 +17,20 @@ const HERO_DISHES = [
   },
 ];
 
-const TICKER_ITEMS = [
-  { image: '/hero-dish.png', title: 'مضغوط الدجاج الملكي', tag: 'الأكثر طلباً ⭐' },
-  { image: '/hero-dish-2.png', title: 'مضغوط اللحم البلدي', tag: 'طازج يومياً 👑' },
-  { image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=300&auto=format&fit=crop', title: 'مبكبكة ليبية ساخنة', tag: 'أصلية 🔥' },
-  { image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=300&auto=format&fit=crop', title: 'مضغوط تندوري متبل', tag: 'توابل خاصة ✨' },
-  { image: '/hero-dish.png', title: 'دقوس وتومية مجاناً', tag: 'هدية كل وجبة 🎁' },
+const DISH_STREAM = [
+  '👑 مضغوط الدجاج الملكي الفاخر',
+  '🍖 مضغوط اللحم البلدي الطازج',
+  '🔥 مبكبكة ليبية ساخنة حارة',
+  '✨ مضغوط تندوري أصيل بالتوابل',
+  '👑 خبرة 19 عاماً من الطعم الأصيل',
+];
+
+const TRUST_STREAM = [
+  '🚚 توصيل سريع ساخن في جميع أنحاء المحلة',
+  '🥩 لحم بلدي طازج يومياً 100%',
+  '🎁 دقوس حار وتومية مجاناً مع كل وجبة',
+  '⭐ الجودة والأمانة ثقافة وهوية',
+  '📍 الشعبية - بجوار مستشفى الربيع',
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
@@ -37,7 +45,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-24 sm:pt-28 pb-6 sm:pb-12 overflow-hidden">
       {/* Background with layered dark green & warm food lighting */}
       <div className="absolute inset-0 z-0">
         <img
@@ -150,32 +158,33 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
 
       </div>
 
-      {/* Mobile Continuous Infinite Running Marquee Ticker (شريط تمرير صغير لا يتوقف) */}
-      <div className="lg:hidden w-full mt-8 pt-4 pb-2 border-y border-brand-gold/20 bg-brand-primary/40 backdrop-blur-md overflow-hidden relative z-10">
-        <div className="animate-marquee-infinite flex items-center gap-3">
-          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
-            <div
-              key={idx}
-              className="flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-brand-card/90 border border-brand-gold/30 shadow-sm flex-shrink-0"
-            >
-              <div className="w-10 h-10 rounded-xl overflow-hidden bg-brand-deep border border-brand-gold/30 flex-shrink-0 flex items-center justify-center">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex flex-col text-right whitespace-nowrap">
-                <span className="text-xs font-black text-brand-cream leading-tight">
-                  {item.title}
-                </span>
-                <span className="text-[10px] text-brand-brightGold font-medium">
-                  {item.tag}
-                </span>
-              </div>
-            </div>
-          ))}
+      {/* Mobile Continuous Intersecting "X" Marquee Ribbons (شريطان متقاطعان ع شكل X دون حاويات) */}
+      <div className="lg:hidden w-full relative py-6 my-2 overflow-hidden z-10 select-none">
+        
+        {/* Ribbon 1: Angled -rotate-2 (Emerald/Dark Green with Gold Hairlines) */}
+        <div className="w-[120%] -mr-[10%] transform -rotate-2 bg-[#002A23]/95 backdrop-blur-md border-y border-brand-gold/40 py-2.5 shadow-lg mb-[-12px] z-10 relative">
+          <div className="animate-marquee-infinite flex items-center gap-8 whitespace-nowrap text-xs font-black text-brand-cream">
+            {[...DISH_STREAM, ...DISH_STREAM, ...DISH_STREAM].map((text, idx) => (
+              <span key={idx} className="flex items-center gap-3">
+                <span className="text-brand-brightGold">{text}</span>
+                <span className="text-brand-gold/40 text-xs">✦</span>
+              </span>
+            ))}
+          </div>
         </div>
+
+        {/* Ribbon 2: Angled rotate-2 crossing over in an X (Radiant Gold Ribbon) */}
+        <div className="w-[120%] -mr-[10%] transform rotate-2 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold py-2 shadow-2xl z-20 relative border-y border-brand-black/20">
+          <div className="animate-marquee-reverse flex items-center gap-8 whitespace-nowrap text-xs font-black text-brand-black">
+            {[...TRUST_STREAM, ...TRUST_STREAM, ...TRUST_STREAM].map((text, idx) => (
+              <span key={idx} className="flex items-center gap-3">
+                <span>{text}</span>
+                <span className="text-brand-black/30 text-xs">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
