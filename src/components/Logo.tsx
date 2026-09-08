@@ -10,22 +10,22 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = true, sh
   const sizeClasses = {
     sm: {
       img: 'h-9 sm:h-10',
-      slogan: 'text-[11px] sm:text-xs',
+      slogan: 'text-xs sm:text-xs',
       container: 'gap-2'
     },
     md: {
       img: 'h-11 sm:h-13',
-      slogan: 'text-xs sm:text-sm',
+      slogan: 'text-sm sm:text-sm md:text-base',
       container: 'gap-2.5'
     },
     lg: {
       img: 'h-16 sm:h-18',
-      slogan: 'text-sm sm:text-base',
+      slogan: 'text-base sm:text-lg',
       container: 'gap-3'
     },
     xl: {
       img: 'h-22 sm:h-24',
-      slogan: 'text-base sm:text-lg',
+      slogan: 'text-lg sm:text-xl',
       container: 'gap-3.5'
     }
   };
