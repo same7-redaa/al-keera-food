@@ -13,13 +13,14 @@ export default {
           primaryDark: '#8A764D',   // Deep Accent
           secondary: '#F5EFE6',     // Warm Off-White Accent
           gold: '#A48F64',          // Signature #A48F64
+          goldDark: '#8A764D',      // Deep Accent #8A764D for high contrast text & badges
           brightGold: '#8A764D',    // Deep Gold Accent for high contrast
           goldLight: '#C5AF84',     // Light Gold
           deep: '#FAF8F5',          // Main Luxury Off-White Page Background
           card: '#FFFFFF',          // Pure White Card
           cardLight: '#FCFAF7',     // Off-White Card Layer
           cream: '#241E17',         // Primary Rich Dark Text
-          creamMuted: '#6B6255',    // Secondary Muted Text
+          creamMuted: '#5C5245',    // Secondary Muted Text
           offWhite: '#FAF8F5',      // Background Off-White
           white: '#FFFFFF',
           black: '#1A1510',

@@ -10,16 +10,16 @@ export const SocialProofGallery: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-brand-gold/30 text-brand-goldDark text-xs sm:text-sm font-bold mb-4 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/40 text-[#8A764D] text-xs sm:text-sm font-black mb-4 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
             <span>معرض الصور والولائم</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-brand-cream mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-4 tracking-tight">
             شوف <span className="gold-gradient-text">طواجننا ومشوياتنا على الطبيعة</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-brand-cream/70">
+          <p className="text-base sm:text-lg text-[#5C5245]">
             أطباقنا الحقيقية بتصوير طبيعي يوضح تسبيكة طواجن الفخار ولمعان الشواء على الفحم.
           </p>
         </div>
@@ -29,7 +29,7 @@ export const SocialProofGallery: React.FC = () => {
           {RESTAURANT_INFO.gallery.map((item, index) => (
             <div
               key={index}
-              className="group relative h-72 sm:h-80 rounded-3xl overflow-hidden bg-white border border-brand-gold/25 shadow-md hover:shadow-xl transition-all duration-300"
+              className="group relative h-72 sm:h-80 rounded-3xl overflow-hidden bg-white border border-[#A48F64]/30 shadow-md hover:shadow-xl transition-all duration-300"
             >
               <img
                 src={item.image}
@@ -40,7 +40,7 @@ export const SocialProofGallery: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
 
               {/* Top Category Badge */}
-              <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md border border-brand-gold/30 px-3 py-1 rounded-full text-xs font-bold text-brand-goldDark shadow-sm">
+              <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md border border-[#A48F64]/40 px-3 py-1 rounded-full text-xs font-black text-[#8A764D] shadow-sm">
                 {item.category}
               </div>
 
@@ -49,7 +49,7 @@ export const SocialProofGallery: React.FC = () => {
                 <h3 className="text-xl font-bold text-white mb-1">
                   {item.title}
                 </h3>
-                <div className="flex items-center gap-4 text-xs text-white/80 pt-2 border-t border-white/20">
+                <div className="flex items-center gap-4 text-xs text-white/90 pt-2 border-t border-white/20">
                   <span className="flex items-center gap-1 text-[#C5AF84] font-bold">
                     <Heart className="w-3.5 h-3.5 fill-[#C5AF84]" />
                     الأعلى تقييماً
@@ -62,17 +62,17 @@ export const SocialProofGallery: React.FC = () => {
         </div>
 
         {/* Social Follow Call to Action */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-brand-gold/30 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right shadow-md">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-[#A48F64]/30 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right shadow-md">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-[#1877F2]/10 border border-[#1877F2]/30 flex items-center justify-center text-[#1877F2] flex-shrink-0">
               <Facebook className="w-7 h-7" />
             </div>
             <div>
-              <h3 className="text-lg sm:text-xl font-bold text-brand-cream">
+              <h3 className="text-xl sm:text-2xl font-black text-[#241E17] mb-1">
                 انضم لعائلة الكيرة على فيسبوك
               </h3>
-              <p className="text-xs sm:text-sm text-brand-cream/70">
-                أكثر من 102 ألف متابع وعاشق لمشويات وطواجن الكيرة.
+              <p className="text-xs sm:text-sm text-[#5C5245] font-medium">
+                أكثر من 102 ألف متابع وعاشق لمشويات وطواجن الكيرة بالمحلة.
               </p>
             </div>
           </div>
@@ -81,7 +81,7 @@ export const SocialProofGallery: React.FC = () => {
             href={RESTAURANT_INFO.socialLinks.facebook}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-3 px-8 bg-[#1877F2] hover:bg-[#166fe5] text-white font-bold text-sm rounded-2xl transition-all duration-300 shadow-md flex items-center gap-2 whitespace-nowrap active:scale-95"
+            className="py-3 px-8 bg-[#1877F2] hover:bg-[#166fe5] text-white font-black text-sm rounded-2xl transition-all duration-300 shadow-md flex items-center gap-2 whitespace-nowrap active:scale-95"
           >
             <Facebook className="w-4 h-4" />
             <span>صفحتنا على فيسبوك (+102K)</span>

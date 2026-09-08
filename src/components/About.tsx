@@ -55,7 +55,7 @@ export const About: React.FC = () => {
           <div className="lg:col-span-6 flex flex-col items-start reveal delay-100">
             
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-bold mb-4 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/40 text-[#8A764D] text-xs sm:text-sm font-black mb-4 shadow-sm">
               <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
               <span>{aboutStory.badge}</span>
             </div>
@@ -66,7 +66,7 @@ export const About: React.FC = () => {
             </h2>
 
             {/* Story Paragraphs */}
-            <div className="space-y-4 text-sm sm:text-base text-[#6B6255] leading-relaxed mb-8">
+            <div className="space-y-4 text-sm sm:text-base text-[#5C5245] leading-relaxed mb-8 font-normal">
               {aboutStory.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}

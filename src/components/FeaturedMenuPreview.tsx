@@ -12,17 +12,17 @@ export const FeaturedMenuPreview: React.FC<FeaturedMenuPreviewProps> = ({ onOpen
   const featuredDishes = MENU_ITEMS.filter((item) => item.isPopular || item.badge === 'bestseller' || item.badge === 'signature').slice(0, 6);
 
   return (
-    <section id="featured-menu" className="py-12 sm:py-16 lg:py-20 relative bg-brand-deep overflow-hidden scroll-mt-24">
+    <section id="featured-menu" className="py-12 sm:py-16 lg:py-20 relative bg-[#FAF8F5] overflow-hidden scroll-mt-24">
       
       {/* Decorative background glow */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-brand-secondary/30 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-10 left-0 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#A48F64]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-10 left-0 w-96 h-96 bg-[#C5AF84]/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 reveal">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-bold mb-4 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/40 text-[#8A764D] text-xs sm:text-sm font-black mb-4 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
             <span>أطباق مختارة ومميزة</span>
           </div>
@@ -31,7 +31,7 @@ export const FeaturedMenuPreview: React.FC<FeaturedMenuPreviewProps> = ({ onOpen
             أشهى أكلات <span className="gold-gradient-text">مطعم الكيرة</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#6B6255]">
+          <p className="text-base sm:text-lg text-[#5C5245]">
             مختارات من أشهى مشويات الفحم وطواجن الفخار البلدي وصواني العزومات المحضرة بعناية فائقة.
           </p>
         </div>
