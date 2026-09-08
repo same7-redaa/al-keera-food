@@ -36,10 +36,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
 
+    <!-- Instant 0ms Critical Dark Splash Style (Zero White Flash) -->
+    <style>
+      html, body {
+        background-color: #16120E !important;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #16120E;
+        background-image: url('/bg-pattern.png');
+        background-size: 500px auto;
+        background-repeat: repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 999999;
+      }
+      #initial-loader img {
+        width: 180px;
+        height: auto;
+        max-width: 80vw;
+        object-contain: contain;
+      }
+    </style>
+
     <title>مطعم الكيرة</title>
   </head>
-  <body class="bg-brand-deep text-brand-offWhite font-arabic selection:bg-brand-gold selection:text-brand-black overflow-x-hidden antialiased">
-    <div id="root"></div>
+  <body style="background-color: #16120E; margin: 0;" class="font-arabic overflow-x-hidden antialiased">
+    <div id="root">
+      <!-- Instant Pre-Rendered Splash Screen before JS/React executes -->
+      <div id="initial-loader">
+        <img src="/logo.png" alt="مطعم الكيرة" fetchpriority="high" decoding="sync" />
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
