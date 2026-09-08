@@ -162,7 +162,7 @@
     will-change: transform;
   }
 
-  /* Authentic Background Pattern Texture Overlay at 30% Opacity */
+  /* Authentic Background Pattern Texture Overlay with Subtle Transparency */
   section, footer {
     position: relative;
   }
@@ -175,7 +175,7 @@
     background-repeat: repeat;
     background-size: 600px auto;
     background-position: center;
-    opacity: 0.30;
+    opacity: 0.10;
     pointer-events: none;
     z-index: 0;
   }
