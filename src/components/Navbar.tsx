@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { useCart } from '../context/CartContext';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { ShoppingBag, Menu as MenuIcon, X, UtensilsCrossed, Phone, MessageCircle, Facebook, Instagram } from 'lucide-react';
+import { ShoppingBag, Menu as MenuIcon, X, Phone, MessageCircle, Facebook, Instagram } from 'lucide-react';
 
 interface NavbarProps {
   currentPage: 'home' | 'menu' | 'cart';
@@ -35,6 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
     const sections = [
       { id: 'hero' },
+      { id: 'featured-menu' },
       { id: 'offers' },
       { id: 'about' },
       { id: 'testimonials' },
@@ -81,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
   const navLinks = [
     { label: 'الرئيسية', page: 'home' as const, sectionId: 'hero' },
-    { label: 'المنيو والأسعار', page: 'menu' as const, sectionId: undefined, isSpecial: true },
+    { label: 'المنيو', page: 'home' as const, sectionId: 'featured-menu' },
     { label: 'العروض', page: 'home' as const, sectionId: 'offers' },
     { label: 'عن الكيرة', page: 'home' as const, sectionId: 'about' },
     { label: 'الآراء', page: 'home' as const, sectionId: 'testimonials' },
@@ -121,23 +122,18 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           <nav className="hidden lg:flex items-center gap-1 bg-white/95 backdrop-blur-md border border-[#A48F64]/30 rounded-full px-2.5 py-1 shadow-sm transition-all duration-300">
             {navLinks.map((link) => {
               const isLinkActive =
-                link.page === 'menu'
-                  ? currentPage === 'menu'
-                  : currentPage === 'home' && link.sectionId === activeSection;
+                currentPage === 'home' && link.sectionId === activeSection;
 
               return (
                 <button
                   key={link.label}
                   onClick={() => handleLinkClick(link)}
-                  className={`px-3 py-1.5 text-xs xl:text-sm font-bold rounded-full transition-all duration-200 flex items-center gap-1.5 ${
-                    link.isSpecial && currentPage === 'menu'
-                      ? 'bg-[#A48F64] text-white shadow-md'
-                      : isLinkActive
+                  className={`px-3.5 py-1.5 text-xs xl:text-sm font-bold rounded-full transition-all duration-200 flex items-center justify-center ${
+                    isLinkActive
                       ? 'bg-[#A48F64] text-white shadow-md'
                       : 'text-[#241E17] hover:text-[#A48F64] hover:bg-[#F5EFE6]'
                   }`}
                 >
-                  {link.isSpecial && <UtensilsCrossed className="w-3.5 h-3.5" />}
                   <span>{link.label}</span>
                 </button>
               );
@@ -187,9 +183,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           <div className="flex flex-col gap-2 mt-2">
             {navLinks.map((link) => {
               const isLinkActive =
-                link.page === 'menu'
-                  ? currentPage === 'menu'
-                  : currentPage === 'home' && link.sectionId === activeSection;
+                currentPage === 'home' && link.sectionId === activeSection;
 
               return (
                 <button
@@ -201,10 +195,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                       : 'text-[#241E17] hover:bg-[#F5EFE6] bg-white border border-[#A48F64]/20'
                   }`}
                 >
-                  <span className="flex items-center gap-2">
-                    {link.isSpecial && <UtensilsCrossed className="w-4 h-4" />}
-                    <span>{link.label}</span>
-                  </span>
+                  <span>{link.label}</span>
                   <span className={`text-xs ${isLinkActive ? 'text-white' : 'text-[#A48F64]'}`}>←</span>
                 </button>
               );
