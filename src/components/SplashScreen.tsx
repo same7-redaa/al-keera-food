@@ -25,30 +25,40 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ isLoading }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] bg-[#FAF8F5] flex flex-col items-center justify-center transition-opacity duration-500 select-none page-bg-pattern ${
+      className={`fixed inset-0 z-[100] bg-[#16120E] flex flex-col items-center justify-center transition-opacity duration-500 ease-out select-none page-bg-pattern ${
         isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
-      {/* Background subtle radial atmosphere */}
-      <div className="absolute inset-0 bg-radial-gradient from-white via-[#FAF8F5] to-[#FAF8F5] pointer-events-none"></div>
+      {/* Background Atmosphere Lighting */}
+      <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-[#A48F64]/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-[#C5AF84]/10 rounded-full blur-[100px] pointer-events-none"></div>
       
-      {/* Center Logo & Animation (No glowing halo) */}
-      <div className="relative z-10 flex flex-col items-center gap-6">
+      {/* Center Brand Identity (Authentic El Keera) */}
+      <div className="relative z-10 flex flex-col items-center text-center gap-4 px-4">
+        {/* Authentic Restaurant Logo */}
         <div className="relative">
           <img
             src="/logo.png"
             alt="مطعم الكيرة - المحلة الكبرى"
             loading="eager"
             decoding="sync"
-            className="w-52 sm:w-64 h-auto object-contain animate-float"
+            className="w-40 sm:w-48 h-auto object-contain"
           />
         </div>
 
-        {/* Minimal Luxury Loading Indicator */}
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#A48F64] animate-bounce [animation-delay:-0.3s]"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-[#8A764D] animate-bounce [animation-delay:-0.15s]"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-[#A48F64] animate-bounce"></span>
+        {/* Brand Slogan */}
+        <div className="flex flex-col items-center gap-1">
+          <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white">
+            <span className="gold-gradient-text">مطعم الكيرة</span>
+          </h2>
+          <p className="text-xs text-[#C5AF84] font-medium tracking-wide">
+            أصل المشويات والطواجن الفخار • المحلة الكبرى
+          </p>
+        </div>
+
+        {/* Minimal Luxury Gold Loading Progress Bar */}
+        <div className="w-36 sm:w-44 h-1 bg-[#241E17] rounded-full overflow-hidden border border-[#A48F64]/30 mt-2">
+          <div className="h-full bg-gradient-to-r from-[#8A764D] via-[#C5AF84] to-[#8A764D] animate-pulse w-full"></div>
         </div>
       </div>
     </div>
