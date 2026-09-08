@@ -169,21 +169,21 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           >
             
             {/* Ambient Lighting Halo */}
-            <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-[#A48F64]/20 via-[#C5AF84]/10 to-transparent blur-3xl pointer-events-none"></div>
+            <div className="absolute w-80 h-80 sm:w-[520px] sm:h-[520px] rounded-full bg-gradient-to-tr from-[#A48F64]/20 via-[#C5AF84]/10 to-transparent blur-3xl pointer-events-none"></div>
 
-            {/* Roulette Wheel Stage Container (Compact Circle Track) */}
-            <div className="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] lg:w-[420px] lg:h-[420px] flex items-center justify-center">
+            {/* Roulette Wheel Stage Container */}
+            <div className="relative w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] lg:w-[560px] lg:h-[560px] flex items-center justify-center">
               
               {/* Outer Orbit Track Line */}
-              <div className="absolute inset-3 sm:inset-4 rounded-full border-2 border-dashed border-[#A48F64]/30 pointer-events-none animate-[spin_80s_linear_infinite]"></div>
-              <div className="absolute inset-12 sm:inset-16 rounded-full border border-[#A48F64]/15 pointer-events-none"></div>
+              <div className="absolute inset-4 sm:inset-6 rounded-full border-2 border-dashed border-[#A48F64]/30 pointer-events-none animate-[spin_80s_linear_infinite]"></div>
+              <div className="absolute inset-16 sm:inset-24 rounded-full border border-[#A48F64]/15 pointer-events-none"></div>
 
               {/* Minimal center spark */}
-              <div className="absolute z-10 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#FAF8F5] border border-[#A48F64]/25 shadow-xs flex items-center justify-center pointer-events-none">
-                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A48F64]" />
+              <div className="absolute z-10 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-[#FAF8F5] border border-[#A48F64]/25 shadow-xs flex items-center justify-center pointer-events-none">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#A48F64]" />
               </div>
 
-              {/* The Spinning Roulette Track carrying ALL 5 Large Circular Dishes */}
+              {/* The Spinning Roulette Track carrying ALL 5 Giant Circular Dishes */}
               <div
                 style={{
                   transform: `rotate(${wheelRotation}deg)`,
@@ -210,16 +210,16 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                       }}
                       className="absolute z-30 cursor-pointer group focus:outline-none"
                     >
-                      {/* Large Circular Dish Card: Counter-rotated so the food photo always stays upright */}
+                      {/* Giant Circular Dish Card: Counter-rotated so the food photo always stays upright */}
                       <div
                         style={{
                           transform: `rotate(${-wheelRotation}deg)`,
                           transition: 'transform 0.9s cubic-bezier(0.34, 1.4, 0.64, 1)',
                         }}
-                        className={`relative w-22 h-22 sm:w-28 sm:h-28 md:w-34 md:h-34 lg:w-38 lg:h-38 rounded-full overflow-hidden bg-white transition-all duration-500 ${
+                        className={`relative w-32 h-32 xs:w-36 xs:h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 rounded-full overflow-hidden bg-white transition-all duration-500 ${
                           isActive
-                            ? 'scale-115 sm:scale-120 z-50 ring-3 sm:ring-[5px] ring-[#A48F64] shadow-2xl border-2 sm:border-3 border-white'
-                            : 'scale-90 sm:scale-95 opacity-85 hover:opacity-100 hover:scale-105 ring-2 ring-[#A48F64]/30 shadow-lg border border-white'
+                            ? 'scale-110 sm:scale-115 z-50 ring-4 sm:ring-[6px] ring-[#A48F64] shadow-2xl border-3 sm:border-4 border-white'
+                            : 'scale-90 sm:scale-95 opacity-85 hover:opacity-100 hover:scale-105 ring-2 sm:ring-3 ring-[#A48F64]/30 shadow-xl border-2 border-white'
                         }`}
                       >
                         <img
