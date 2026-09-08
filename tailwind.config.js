@@ -8,19 +8,24 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: '#003D32',
-          deep: '#002A23',
-          secondary: '#0A513F',
-          card: '#03342B',
-          cardLight: '#07483B',
-          gold: '#D8D923',
-          brightGold: '#F1E62A',
-          cream: '#F2E8D5',
-          offWhite: '#F8F5EC',
-          black: '#080B09',
-          darkMuted: '#12221D',
-          amberGlow: '#E5A93C',
-          redBadge: '#E02B2B',
+          primary: '#A48F64',       // Signature Accent (Golden Bronze)
+          primaryLight: '#B8A378',  // Soft Accent
+          primaryDark: '#8A764D',   // Deep Accent
+          secondary: '#F5EFE6',     // Warm Off-White Accent
+          gold: '#A48F64',          // Signature #A48F64
+          brightGold: '#8A764D',    // Deep Gold Accent for high contrast
+          goldLight: '#C5AF84',     // Light Gold
+          deep: '#FAF8F5',          // Main Luxury Off-White Page Background
+          card: '#FFFFFF',          // Pure White Card
+          cardLight: '#FCFAF7',     // Off-White Card Layer
+          cream: '#241E17',         // Primary Rich Dark Text
+          creamMuted: '#6B6255',    // Secondary Muted Text
+          offWhite: '#FAF8F5',      // Background Off-White
+          white: '#FFFFFF',
+          black: '#1A1510',
+          darkMuted: '#2D261E',
+          amberGlow: '#A48F64',
+          redBadge: '#D32F2F',
         }
       },
       fontFamily: {
@@ -28,14 +33,14 @@ export default {
         arabic: ['"flat-jooza"', '"Cairo"', '"Tajawal"', 'sans-serif'],
       },
       boxShadow: {
-        'gold-glow': '0 0 25px rgba(216, 217, 35, 0.25)',
-        'gold-lg': '0 10px 30px -5px rgba(216, 217, 35, 0.3)',
-        'luxury': '0 20px 40px -15px rgba(0, 0, 0, 0.7)',
-        'card-hover': '0 15px 35px -5px rgba(0, 42, 35, 0.9), 0 0 15px rgba(216, 217, 35, 0.15)',
+        'gold-glow': '0 0 25px rgba(164, 143, 100, 0.3)',
+        'gold-lg': '0 10px 30px -5px rgba(164, 143, 100, 0.35)',
+        'luxury': '0 15px 35px -10px rgba(164, 143, 100, 0.15), 0 0 1px 1px rgba(164, 143, 100, 0.1)',
+        'card-hover': '0 20px 40px -10px rgba(164, 143, 100, 0.22), 0 0 15px rgba(164, 143, 100, 0.1)',
       },
       backgroundImage: {
         'radial-gradient': 'radial-gradient(circle at center, var(--tw-gradient-stops))',
-        'luxury-pattern': 'radial-gradient(rgba(216, 217, 35, 0.05) 1px, transparent 1px)',
+        'luxury-pattern': 'radial-gradient(rgba(164, 143, 100, 0.1) 1px, transparent 1px)',
       },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',

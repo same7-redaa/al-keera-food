@@ -47,17 +47,12 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-24 sm:pt-28 pb-6 sm:pb-12 overflow-hidden">
-      {/* Background with layered dark green & warm food lighting */}
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-24 sm:pt-28 pb-6 sm:pb-12 overflow-hidden bg-[#FAF8F5]">
+      {/* Background with warm luxury off-white lighting & soft atmosphere */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1920&auto=format&fit=crop"
-          alt="مطعم الكيرة - مشويات وطواجن فخار"
-          className="w-full h-full object-cover object-center filter brightness-[0.20] contrast-125"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/85 to-transparent"></div>
-        <div className="absolute inset-0 bg-radial-gradient from-brand-primary/40 via-transparent to-brand-deep/90"></div>
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#D8D923_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#A48F64]/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#C5AF84]/15 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#A48F64_1px,transparent_1px)] [background-size:24px_24px]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto">
@@ -67,31 +62,31 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-right">
             
             {/* Vintage Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/90 border border-brand-gold/40 text-brand-brightGold text-xs sm:text-sm font-bold shadow-gold-glow mb-5 backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-bold shadow-sm mb-5">
+              <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
               <span>منذ 1998 • أكثر من 26 عاماً من الأصالة والريادة</span>
             </div>
 
             {/* Main Headline with two lines and distinct hierarchy */}
             <h1 className="mb-6 tracking-tight flex flex-col gap-2.5 sm:gap-3.5">
-              <span className="block text-4xl sm:text-6xl lg:text-7xl font-black text-brand-cream leading-tight">
-                حدوتة <span className="gold-gradient-text drop-shadow-[0_4px_20px_rgba(216,217,35,0.35)]">الكيرة</span>
+              <span className="block text-4xl sm:text-6xl lg:text-7xl font-black text-[#241E17] leading-tight">
+                حدوتة <span className="gold-gradient-text drop-shadow-sm">الكيرة</span>
               </span>
-              <span className="block text-xl sm:text-3xl lg:text-4xl font-bold text-brand-cream/85">
+              <span className="block text-xl sm:text-3xl lg:text-4xl font-bold text-[#6B6255]">
                 أصل المشويات والطواجن الفخار
               </span>
             </h1>
 
             {/* Concise Subtitle */}
-            <p className="text-base sm:text-xl text-brand-cream/85 max-w-xl leading-relaxed mb-8 font-normal">
-              لحوم بلدية طازجة 100% متبلة على أصولها ومشوية على الفحم، وطواجن فخار متسبكة بالسمن البلدي.. <span className="text-brand-brightGold font-medium">حدوتة حلوة منا فينا!</span>
+            <p className="text-base sm:text-xl text-[#4A4035] max-w-xl leading-relaxed mb-8 font-normal">
+              لحوم بلدية طازجة 100% متبلة على أصولها ومشوية على الفحم، وطواجن فخار متسبكة بالسمن البلدي.. <span className="text-[#A48F64] font-bold">حدوتة حلوة منا فينا!</span>
             </p>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 w-full sm:w-auto">
               <button
                 onClick={onExploreMenu}
-                className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold text-brand-black font-black text-sm sm:text-base rounded-2xl shadow-gold-lg hover:shadow-gold-glow hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2.5 shine-effect"
+                className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#A48F64] via-[#B8A378] to-[#A48F64] text-white font-black text-sm sm:text-base rounded-2xl shadow-gold-lg hover:shadow-gold-glow hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2.5 shine-effect"
               >
                 <UtensilsCrossed className="w-4 h-4" />
                 <span>المنيو والأسعار</span>
@@ -101,9 +96,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                 href={RESTAURANT_INFO.socialLinks.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-4 bg-brand-primary/90 hover:bg-brand-secondary border border-brand-gold/40 text-brand-cream hover:text-brand-brightGold font-bold text-sm sm:text-base rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm"
+                className="w-full sm:w-auto px-6 py-4 bg-white hover:bg-[#F5EFE6] border border-[#A48F64]/40 text-[#241E17] hover:text-[#A48F64] font-bold text-sm sm:text-base rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
               >
-                <MessageCircle className="w-4 h-4 text-emerald-400" />
+                <MessageCircle className="w-4 h-4 text-emerald-600" />
                 <span>اطلب عبر واتساب</span>
               </a>
             </div>
@@ -117,7 +112,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
             <div className="relative w-full max-w-[430px] flex flex-col items-center">
               
               {/* Radial Golden & Amber Backlight Glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-to-tr from-brand-gold/35 via-amber-500/25 to-brand-primary/20 rounded-full blur-[70px] pointer-events-none"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-to-tr from-[#A48F64]/25 via-[#C5AF84]/20 to-transparent rounded-full blur-[70px] pointer-events-none"></div>
 
               {/* Dish Visual Container with Automatic Crossfade Transition */}
               <div className="relative w-full aspect-square flex items-center justify-center select-none">
@@ -133,19 +128,19 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                           : 'opacity-0 scale-90 z-0 pointer-events-none'
                       }`}
                     >
-                      {/* Blurred dish background replica (بلور خلف الصورة) */}
+                      {/* Blurred dish background replica */}
                       <img
                         src={dish.src}
                         alt=""
                         aria-hidden="true"
-                        className="absolute w-full h-full object-contain filter blur-2xl opacity-40 scale-105 pointer-events-none"
+                        className="absolute w-full h-full object-contain filter blur-2xl opacity-30 scale-105 pointer-events-none"
                       />
 
                       {/* Crisp Foreground Dish */}
                       <img
                         src={dish.src}
                         alt="طبق مشويات وطواجن الكيرة"
-                        className="relative w-full h-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)] animate-float"
+                        className="relative w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(164,143,100,0.35)] animate-float"
                       />
                     </div>
                   );
@@ -163,8 +158,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
       {/* Mobile Continuous Intersecting "X" Marquee Ribbons */}
       <div className="lg:hidden w-full relative py-8 my-2 overflow-hidden z-10 select-none">
         
-        {/* Ribbon 1: Angled -rotate-2 (Dark Luxury Green with Gold Accents) */}
-        <div dir="ltr" className="w-[140%] -ml-[20%] transform -rotate-2 bg-[#002A23] backdrop-blur-md border-y border-brand-gold/40 py-2.5 shadow-lg mb-[-12px] z-10 relative overflow-hidden flex">
+        {/* Ribbon 1: Angled -rotate-2 (#A48F64 Ribbon with Pure White Text & Crisp Images) */}
+        <div dir="ltr" className="w-[140%] -ml-[20%] transform -rotate-2 bg-[#A48F64] py-2.5 shadow-lg mb-[-12px] z-10 relative overflow-hidden flex border-y border-[#8A764D]">
           <div className="animate-marquee-seamless-left flex items-center">
             {/* Track A */}
             <div className="flex items-center gap-7 pr-7 flex-shrink-0">
@@ -174,10 +169,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                     src={item.img}
                     alt=""
                     aria-hidden="true"
-                    className="w-6 h-6 rounded-full object-cover border border-brand-gold/60 shadow-sm flex-shrink-0"
+                    className="w-6 h-6 rounded-full object-cover border border-white/60 shadow-sm flex-shrink-0"
                   />
-                  <span className="text-brand-brightGold text-xs font-black">{item.text}</span>
-                  <span className="text-brand-gold/40 text-[10px]">✦</span>
+                  <span className="text-white text-xs font-black">{item.text}</span>
+                  <span className="text-white/50 text-[10px]">✦</span>
                 </span>
               ))}
             </div>
@@ -188,18 +183,18 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                   <img
                     src={item.img}
                     alt=""
-                    className="w-6 h-6 rounded-full object-cover border border-brand-gold/60 shadow-sm flex-shrink-0"
+                    className="w-6 h-6 rounded-full object-cover border border-white/60 shadow-sm flex-shrink-0"
                   />
-                  <span className="text-brand-brightGold text-xs font-black">{item.text}</span>
-                  <span className="text-brand-gold/40 text-[10px]">✦</span>
+                  <span className="text-white text-xs font-black">{item.text}</span>
+                  <span className="text-white/50 text-[10px]">✦</span>
                 </span>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Ribbon 2: Angled rotate-2 crossing over in an X (Golden Ribbon with Deep Green Text & Clear Images) */}
-        <div dir="ltr" className="w-[140%] -ml-[20%] transform rotate-2 bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold py-2.5 shadow-2xl z-20 relative border-y border-brand-black/25 overflow-hidden flex">
+        {/* Ribbon 2: Angled rotate-2 crossing over in an X (Pure White Ribbon with #A48F64 Gold Text & Clear Images) */}
+        <div dir="ltr" className="w-[140%] -ml-[20%] transform rotate-2 bg-white py-2.5 shadow-2xl z-20 relative border-y border-[#A48F64]/40 overflow-hidden flex">
           <div className="animate-marquee-seamless-right flex items-center">
             {/* Track A */}
             <div className="flex items-center gap-7 pr-7 flex-shrink-0">
@@ -209,10 +204,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                     src={item.img}
                     alt=""
                     aria-hidden="true"
-                    className="w-6 h-6 rounded-full object-cover border border-brand-black/40 shadow-sm flex-shrink-0"
+                    className="w-6 h-6 rounded-full object-cover border border-[#A48F64]/40 shadow-sm flex-shrink-0"
                   />
-                  <span className="text-brand-black text-xs font-black">{item.text}</span>
-                  <span className="text-brand-black/35 text-[10px]">✦</span>
+                  <span className="text-[#A48F64] text-xs font-black">{item.text}</span>
+                  <span className="text-[#A48F64]/40 text-[10px]">✦</span>
                 </span>
               ))}
             </div>
@@ -223,10 +218,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                   <img
                     src={item.img}
                     alt=""
-                    className="w-6 h-6 rounded-full object-cover border border-brand-black/40 shadow-sm flex-shrink-0"
+                    className="w-6 h-6 rounded-full object-cover border border-[#A48F64]/40 shadow-sm flex-shrink-0"
                   />
-                  <span className="text-brand-black text-xs font-black">{item.text}</span>
-                  <span className="text-brand-black/35 text-[10px]">✦</span>
+                  <span className="text-[#A48F64] text-xs font-black">{item.text}</span>
+                  <span className="text-[#A48F64]/40 text-[10px]">✦</span>
                 </span>
               ))}
             </div>

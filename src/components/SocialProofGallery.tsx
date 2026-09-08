@@ -4,14 +4,14 @@ import { Sparkles, Facebook, Heart } from 'lucide-react';
 
 export const SocialProofGallery: React.FC = () => {
   return (
-    <section id="gallery" className="py-20 sm:py-28 relative bg-brand-deep overflow-hidden">
+    <section id="gallery" className="py-20 sm:py-28 relative bg-[#FAF8F5] overflow-hidden">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/80 border border-brand-gold/30 text-brand-brightGold text-xs sm:text-sm font-bold mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-brand-gold/30 text-brand-goldDark text-xs sm:text-sm font-bold mb-4 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
             <span>معرض الصور والولائم</span>
           </div>
 
@@ -19,7 +19,7 @@ export const SocialProofGallery: React.FC = () => {
             شوف <span className="gold-gradient-text">طواجننا ومشوياتنا على الطبيعة</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-brand-cream/80">
+          <p className="text-base sm:text-lg text-brand-cream/70">
             أطباقنا الحقيقية بتصوير طبيعي يوضح تسبيكة طواجن الفخار ولمعان الشواء على الفحم.
           </p>
         </div>
@@ -29,7 +29,7 @@ export const SocialProofGallery: React.FC = () => {
           {RESTAURANT_INFO.gallery.map((item, index) => (
             <div
               key={index}
-              className="group relative h-72 sm:h-80 rounded-3xl overflow-hidden glass-card border border-brand-gold/20 shadow-lg"
+              className="group relative h-72 sm:h-80 rounded-3xl overflow-hidden bg-white border border-brand-gold/25 shadow-md hover:shadow-xl transition-all duration-300"
             >
               <img
                 src={item.image}
@@ -37,21 +37,21 @@ export const SocialProofGallery: React.FC = () => {
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/95 via-brand-deep/30 to-transparent opacity-70 group-hover:opacity-95 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
 
               {/* Top Category Badge */}
-              <div className="absolute top-4 right-4 bg-brand-deep/80 backdrop-blur-md border border-brand-gold/30 px-3 py-1 rounded-full text-xs font-bold text-brand-brightGold">
+              <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md border border-brand-gold/30 px-3 py-1 rounded-full text-xs font-bold text-brand-goldDark shadow-sm">
                 {item.category}
               </div>
 
               {/* Bottom Details on hover */}
-              <div className="absolute bottom-0 inset-x-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <h3 className="text-xl font-bold text-brand-cream mb-1">
+              <div className="absolute bottom-0 inset-x-0 p-6 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="text-xl font-bold text-white mb-1">
                   {item.title}
                 </h3>
-                <div className="flex items-center gap-4 text-xs text-brand-cream/70 pt-2 border-t border-brand-gold/20">
-                  <span className="flex items-center gap-1 text-brand-brightGold">
-                    <Heart className="w-3.5 h-3.5 fill-brand-brightGold" />
+                <div className="flex items-center gap-4 text-xs text-white/80 pt-2 border-t border-white/20">
+                  <span className="flex items-center gap-1 text-[#C5AF84] font-bold">
+                    <Heart className="w-3.5 h-3.5 fill-[#C5AF84]" />
                     الأعلى تقييماً
                   </span>
                   <span>طازج ومحضر يومياً</span>
@@ -62,9 +62,9 @@ export const SocialProofGallery: React.FC = () => {
         </div>
 
         {/* Social Follow Call to Action */}
-        <div className="glass-card rounded-3xl p-6 sm:p-8 border border-brand-gold/30 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right shadow-xl">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-brand-gold/30 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right shadow-md">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-[#1877F2]/20 border border-[#1877F2]/40 flex items-center justify-center text-[#1877F2] flex-shrink-0">
+            <div className="w-14 h-14 rounded-2xl bg-[#1877F2]/10 border border-[#1877F2]/30 flex items-center justify-center text-[#1877F2] flex-shrink-0">
               <Facebook className="w-7 h-7" />
             </div>
             <div>

@@ -106,7 +106,7 @@ export const App: React.FC = () => {
 
   return (
     <CartProvider>
-      <div className="min-h-screen bg-brand-deep text-brand-offWhite font-arabic selection:bg-brand-gold selection:text-brand-black flex flex-col relative overflow-x-hidden">
+      <div className="min-h-screen bg-brand-deep text-brand-cream font-arabic selection:bg-brand-gold selection:text-white flex flex-col relative overflow-x-hidden">
         {/* Splash Screen */}
         <SplashScreen isLoading={isLoading} />
 

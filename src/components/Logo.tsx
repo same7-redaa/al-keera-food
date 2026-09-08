@@ -40,11 +40,11 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md' }) => {
           alt="مطعم الكيرة - المحلة الكبرى"
           loading="eager"
           decoding="async"
-          className={`${current.img} w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]`}
+          className={`${current.img} w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(164,143,100,0.2)]`}
         />
         
         {/* Subtle Mahalla Badge next to logo */}
-        <span className="hidden sm:inline-block absolute -top-1 -left-3 bg-brand-gold/20 text-brand-brightGold border border-brand-gold/40 rounded-full font-bold text-[9px] px-1.5 py-0.5 backdrop-blur-sm shadow-sm">
+        <span className="hidden sm:inline-block absolute -top-1 -left-3 bg-[#A48F64]/10 text-brand-goldDark border border-brand-gold/30 rounded-full font-bold text-[9px] px-1.5 py-0.5 backdrop-blur-sm shadow-sm">
           المحلة
         </span>
       </div>

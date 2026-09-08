@@ -6,10 +6,10 @@ export const About: React.FC = () => {
   const { aboutStory } = RESTAURANT_INFO;
 
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] flex items-center relative bg-brand-deep overflow-hidden scroll-mt-24">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] flex items-center relative bg-[#FAF8F5] overflow-hidden scroll-mt-24">
       
       {/* Background Lights */}
-      <div className="absolute top-1/3 -right-20 w-80 h-80 bg-brand-secondary/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/3 -right-20 w-80 h-80 bg-[#A48F64]/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -19,20 +19,20 @@ export const About: React.FC = () => {
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               
               {/* Main Image */}
-              <div className="relative rounded-3xl overflow-hidden glass-card p-3 border border-brand-gold/30 shadow-2xl">
-                <div className="h-80 sm:h-96 rounded-2xl overflow-hidden">
+              <div className="relative rounded-3xl overflow-hidden bg-white p-3 border border-[#A48F64]/30 shadow-xl">
+                <div className="h-80 sm:h-96 rounded-2xl overflow-hidden bg-[#F5EFE6]">
                   <img
                     src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop"
                     alt="تحضير مشويات وطواجن الكيرة"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/80 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 </div>
               </div>
 
               {/* Secondary Overlapping Image */}
-              <div className="absolute -bottom-8 -left-6 sm:-left-8 w-44 sm:w-56 rounded-2xl overflow-hidden glass-card p-2 border border-brand-gold/40 shadow-2xl hidden sm:block">
-                <div className="h-36 sm:h-44 rounded-xl overflow-hidden">
+              <div className="absolute -bottom-8 -left-6 sm:-left-8 w-44 sm:w-56 rounded-2xl overflow-hidden bg-white p-2 border border-[#A48F64]/40 shadow-2xl hidden sm:block">
+                <div className="h-36 sm:h-44 rounded-xl overflow-hidden bg-[#F5EFE6]">
                   <img
                     src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop"
                     alt="طاجن ورق عنب بالكوارع الفاخر"
@@ -42,7 +42,7 @@ export const About: React.FC = () => {
               </div>
 
               {/* Experience Stamp */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-br from-brand-gold to-brand-brightGold text-brand-black p-4 rounded-3xl shadow-xl border-2 border-brand-cream/30 flex flex-col items-center text-center animate-float">
+              <div className="absolute -top-6 -right-6 bg-gradient-to-br from-[#A48F64] to-[#B8A378] text-white p-4 rounded-3xl shadow-xl border-2 border-white flex flex-col items-center text-center animate-float">
                 <Award className="w-7 h-7 mb-1" />
                 <span className="text-2xl font-black leading-none">+26</span>
                 <span className="text-[10px] font-bold mt-0.5">عاماً من الخبرة</span>
@@ -55,18 +55,18 @@ export const About: React.FC = () => {
           <div className="lg:col-span-6 flex flex-col items-start reveal delay-100">
             
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-primary/80 border border-brand-gold/30 text-brand-brightGold text-xs sm:text-sm font-bold mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs sm:text-sm font-bold mb-4 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
               <span>{aboutStory.badge}</span>
             </div>
 
             {/* Title */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-cream leading-snug mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#241E17] leading-snug mb-4">
               {aboutStory.title}
             </h2>
 
             {/* Story Paragraphs */}
-            <div className="space-y-4 text-sm sm:text-base text-brand-cream/85 leading-relaxed mb-8">
+            <div className="space-y-4 text-sm sm:text-base text-[#6B6255] leading-relaxed mb-8">
               {aboutStory.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -76,8 +76,8 @@ export const About: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full mb-8">
               {aboutStory.features.map((feature, i) => (
                 <div key={i} className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-brand-brightGold flex-shrink-0 mt-0.5" />
-                  <span className="text-xs sm:text-sm text-brand-cream/90 font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-[#A48F64] flex-shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm text-[#241E17] font-medium">
                     {feature}
                   </span>
                 </div>
@@ -85,13 +85,13 @@ export const About: React.FC = () => {
             </div>
 
             {/* Commitment Box */}
-            <div className="p-4 rounded-2xl bg-brand-card border border-brand-gold/20 w-full flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-brightGold flex-shrink-0">
+            <div className="p-4 rounded-2xl bg-white border border-[#A48F64]/25 w-full flex items-center gap-4 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-[#F5EFE6] flex items-center justify-center text-[#A48F64] flex-shrink-0">
                 <Shield className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-brand-cream">وعد الجودة والأمانة</h4>
-                <p className="text-xs text-brand-cream/70">كل صينية وطاجن يخرج من مطبخنا نعده بأعلى معايير النظافة واللحوم البلدية الطازجة كأنه يُقدم لعائلتنا الخاصة.</p>
+                <h4 className="text-sm font-bold text-[#241E17]">وعد الجودة والأمانة</h4>
+                <p className="text-xs text-[#6B6255]">كل صينية وطاجن يخرج من مطبخنا نعده بأعلى معايير النظافة واللحوم البلدية الطازجة كأنه يُقدم لعائلتنا الخاصة.</p>
               </div>
             </div>
 
