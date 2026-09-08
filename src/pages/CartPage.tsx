@@ -1,7 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { ShoppingBag, Trash2, Plus, Minus, MessageCircle, Truck, Store, MapPin, User, Phone, FileText, Sparkles, UtensilsCrossed } from 'lucide-react';
+import {
+  ShoppingBag,
+  Trash2,
+  Plus,
+  Minus,
+  MessageCircle,
+  Truck,
+  Store,
+  MapPin,
+  User,
+  Phone,
+  FileText,
+  Sparkles,
+  UtensilsCrossed,
+  Check,
+  ArrowLeft,
+  ArrowRight,
+} from 'lucide-react';
 
 interface CartPageProps {
   onNavigateToMenu: () => void;
@@ -30,9 +47,34 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
     sendWhatsAppOrder,
   } = useCart();
 
+  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [formError, setFormError] = useState<string | null>(null);
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, []);
+
+  const handleGoToStep2 = () => {
+    setFormError(null);
+    setStep(2);
+  };
+
+  const handleGoToStep3 = () => {
+    if (!customerName.trim()) {
+      setFormError('يرجى كتابة اسم العميل الكريم للمتابعة');
+      return;
+    }
+    if (!customerPhone.trim()) {
+      setFormError('يرجى كتابة رقم الهاتف للتواصل');
+      return;
+    }
+    if (orderType === 'delivery' && !customerAddress.trim()) {
+      setFormError('يرجى كتابة عنوان التوصيل داخل المحلة');
+      return;
+    }
+    setFormError(null);
+    setStep(3);
+  };
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] pt-24 sm:pt-28 pb-20 relative overflow-hidden page-bg-pattern">
@@ -50,7 +92,7 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
           </h1>
 
           <p className="text-xs sm:text-sm text-[#6B6255]">
-            راجع وجباتك المختارة من مشويات وطواجن الكيرة، حدد بيانات التوصيل، وأرسل طلبك مباشرة إلى واتساب المطعم.
+            راجع وجباتك المختارة من مشويات وطواجن الكيرة، حدد بيانات التوصيل خطوة بخطوة، وأرسل طلبك مباشرة إلى واتساب المطعم.
           </p>
         </div>
 
@@ -166,122 +208,364 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
 
             </div>
 
-            {/* Right Column: Order Details, Delivery & Checkout */}
-            <div className="lg:col-span-5 space-y-6">
+            {/* Right Column: Step-by-Step Checkout Wizard */}
+            <div className="lg:col-span-5 space-y-4">
               
-              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#A48F64]/30 shadow-md space-y-5">
+              <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#A48F64]/30 shadow-md">
                 
-                <h3 className="text-base font-bold text-[#241E17] border-b border-[#A48F64]/15 pb-3">
-                  بيانات الاستلام والتوصيل
-                </h3>
-
-                {/* Delivery Type */}
-                <div>
-                  <span className="text-xs font-bold text-[#241E17] block mb-2">طريقة الاستلام:</span>
-                  <div className="grid grid-cols-2 gap-2 bg-[#FAF8F5] p-1.5 rounded-2xl border border-[#A48F64]/20">
+                {/* Stepper Progress Bar */}
+                <div className="relative mb-6 pb-4 border-b border-[#A48F64]/15">
+                  <div className="flex items-center justify-between relative z-10">
+                    
+                    {/* Step 1 Indicator */}
                     <button
                       type="button"
-                      onClick={() => setOrderType('delivery')}
-                      className={`py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
-                        orderType === 'delivery'
-                          ? 'bg-[#A48F64] text-white shadow-md'
-                          : 'text-[#241E17] hover:text-[#A48F64]'
-                      }`}
+                      onClick={() => setStep(1)}
+                      className="flex flex-col items-center gap-1.5 focus:outline-none"
                     >
-                      <Truck className="w-4 h-4" />
-                      <span>توصيل دليفري (+15 ج)</span>
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs transition-all ${
+                          step === 1
+                            ? 'bg-[#A48F64] text-white shadow-md ring-4 ring-[#A48F64]/20'
+                            : step > 1
+                            ? 'bg-[#A48F64] text-white'
+                            : 'bg-[#FAF8F5] text-[#6B6255] border border-[#A48F64]/30'
+                        }`}
+                      >
+                        {step > 1 ? <Check className="w-4 h-4" /> : '1'}
+                      </div>
+                      <span className={`text-[11px] font-bold ${step === 1 ? 'text-[#A48F64]' : 'text-[#6B6255]'}`}>
+                        طريقة الاستلام
+                      </span>
                     </button>
 
+                    {/* Connecting Line 1-2 */}
+                    <div className="flex-1 h-0.5 mx-2 bg-[#A48F64]/20 -mt-5">
+                      <div
+                        className="h-full bg-[#A48F64] transition-all duration-300"
+                        style={{ width: step >= 2 ? '100%' : '0%' }}
+                      ></div>
+                    </div>
+
+                    {/* Step 2 Indicator */}
                     <button
                       type="button"
-                      onClick={() => setOrderType('pickup')}
-                      className={`py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
-                        orderType === 'pickup'
-                          ? 'bg-[#A48F64] text-white shadow-md'
-                          : 'text-[#241E17] hover:text-[#A48F64]'
-                      }`}
+                      onClick={() => {
+                        if (step > 2) setStep(2);
+                        else handleGoToStep2();
+                      }}
+                      className="flex flex-col items-center gap-1.5 focus:outline-none"
                     >
-                      <Store className="w-4 h-4" />
-                      <span>استلام من الفرع</span>
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs transition-all ${
+                          step === 2
+                            ? 'bg-[#A48F64] text-white shadow-md ring-4 ring-[#A48F64]/20'
+                            : step > 2
+                            ? 'bg-[#A48F64] text-white'
+                            : 'bg-[#FAF8F5] text-[#6B6255] border border-[#A48F64]/30'
+                        }`}
+                      >
+                        {step > 2 ? <Check className="w-4 h-4" /> : '2'}
+                      </div>
+                      <span className={`text-[11px] font-bold ${step === 2 ? 'text-[#A48F64]' : 'text-[#6B6255]'}`}>
+                        بيانات العميل
+                      </span>
                     </button>
-                  </div>
-                </div>
 
-                {/* Inputs Form */}
-                <div className="space-y-3">
-                  <div className="relative">
-                    <User className="w-4 h-4 text-[#6B6255] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                    <input
-                      type="text"
-                      value={customerName}
-                      onChange={(e) => setCustomerName(e.target.value)}
-                      placeholder="اسم العميل الكريم"
-                      className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-2.5 pr-10 pl-3 text-xs sm:text-sm text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/40"
-                    />
-                  </div>
-
-                  <div className="relative">
-                    <Phone className="w-4 h-4 text-[#6B6255] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                    <input
-                      type="tel"
-                      value={customerPhone}
-                      onChange={(e) => setCustomerPhone(e.target.value)}
-                      placeholder="رقم الهاتف للتواصل"
-                      className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-2.5 pr-10 pl-3 text-xs sm:text-sm text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/40"
-                    />
-                  </div>
-
-                  {orderType === 'delivery' && (
-                    <div className="relative">
-                      <MapPin className="w-4 h-4 text-[#6B6255] absolute right-3.5 top-3 pointer-events-none" />
-                      <textarea
-                        rows={2}
-                        value={customerAddress}
-                        onChange={(e) => setCustomerAddress(e.target.value)}
-                        placeholder="العنوان بالتفصيل داخل المحلة (المنطقة / الشارع / علامة مميزة)"
-                        className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-2.5 pr-10 pl-3 text-xs sm:text-sm text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/40 resize-none"
-                      ></textarea>
+                    {/* Connecting Line 2-3 */}
+                    <div className="flex-1 h-0.5 mx-2 bg-[#A48F64]/20 -mt-5">
+                      <div
+                        className="h-full bg-[#A48F64] transition-all duration-300"
+                        style={{ width: step === 3 ? '100%' : '0%' }}
+                      ></div>
                     </div>
-                  )}
 
-                  <div className="relative">
-                    <FileText className="w-4 h-4 text-[#6B6255] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                    <input
-                      type="text"
-                      value={orderNotes}
-                      onChange={(e) => setOrderNotes(e.target.value)}
-                      placeholder="أي ملاحظات خاصة؟ (درجة التسوية، إضافات، الخ)"
-                      className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-2.5 pr-10 pl-3 text-xs sm:text-sm text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/40"
-                    />
+                    {/* Step 3 Indicator */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (customerName.trim() && customerPhone.trim()) setStep(3);
+                      }}
+                      className="flex flex-col items-center gap-1.5 focus:outline-none"
+                    >
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs transition-all ${
+                          step === 3
+                            ? 'bg-[#A48F64] text-white shadow-md ring-4 ring-[#A48F64]/20'
+                            : 'bg-[#FAF8F5] text-[#6B6255] border border-[#A48F64]/30'
+                        }`}
+                      >
+                        3
+                      </div>
+                      <span className={`text-[11px] font-bold ${step === 3 ? 'text-[#A48F64]' : 'text-[#6B6255]'}`}>
+                        المراجعة والطلب
+                      </span>
+                    </button>
+
                   </div>
                 </div>
 
-                {/* Price Breakdown */}
-                <div className="pt-4 border-t border-[#A48F64]/20 space-y-2 text-xs sm:text-sm text-[#6B6255]">
-                  <div className="flex justify-between">
-                    <span>المجموع الفرعي:</span>
-                    <span className="font-bold text-[#241E17]">{subtotal} جنيه</span>
+                {/* Validation Error Message */}
+                {formError && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl font-bold">
+                    {formError}
                   </div>
-                  {orderType === 'delivery' && (
-                    <div className="flex justify-between">
-                      <span>خدمة التوصيل (المحلة):</span>
-                      <span className="font-bold text-[#241E17]">{deliveryFee} جنيه</span>
+                )}
+
+                {/* STEP 1: Delivery Method Selection */}
+                {step === 1 && (
+                  <div className="space-y-4">
+                    <div className="text-right">
+                      <h3 className="text-base font-black text-[#241E17]">الخطوة 1: اختر طريقة الاستلام</h3>
+                      <p className="text-xs text-[#6B6255] mt-0.5">حدد رغبتك في استلام الوجبات دليفري أو من المطعم</p>
                     </div>
-                  )}
-                  <div className="flex justify-between text-base sm:text-lg font-black text-[#A48F64] pt-3 border-t border-[#A48F64]/20">
-                    <span>الإجمالي الكلي:</span>
-                    <span>{totalPrice} جنيه مصري</span>
-                  </div>
-                </div>
 
-                {/* Send Order via WhatsApp */}
-                <button
-                  onClick={sendWhatsAppOrder}
-                  className="w-full py-4 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-base rounded-2xl transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 flex items-center justify-center gap-3 active:scale-95"
-                >
-                  <MessageCircle className="w-5 h-5 fill-white" />
-                  <span>إرسال الطلب عبر واتساب ({RESTAURANT_INFO.whatsappDisplay})</span>
-                </button>
+                    <div className="space-y-3 pt-2">
+                      {/* Option 1: Delivery */}
+                      <button
+                        type="button"
+                        onClick={() => setOrderType('delivery')}
+                        className={`w-full p-4 rounded-2xl border text-right transition-all flex items-center gap-4 ${
+                          orderType === 'delivery'
+                            ? 'bg-[#FAF8F5] border-[#A48F64] shadow-sm ring-1 ring-[#A48F64]'
+                            : 'bg-white border-[#A48F64]/20 hover:border-[#A48F64]/50'
+                        }`}
+                      >
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                          orderType === 'delivery' ? 'bg-[#A48F64] text-white' : 'bg-[#FAF8F5] text-[#A48F64]'
+                        }`}>
+                          <Truck className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-black text-[#241E17]">توصيل دليفري للمنزل</span>
+                            <span className="text-xs font-bold text-[#A48F64] bg-[#FAF8F5] px-2 py-0.5 rounded-md border border-[#A48F64]/20">+15 جنيه</span>
+                          </div>
+                          <p className="text-xs text-[#6B6255] mt-1">توصيل سريع وساخن حتى باب بيتك داخل مدينة المحلة الكبرى</p>
+                        </div>
+                      </button>
+
+                      {/* Option 2: Pickup */}
+                      <button
+                        type="button"
+                        onClick={() => setOrderType('pickup')}
+                        className={`w-full p-4 rounded-2xl border text-right transition-all flex items-center gap-4 ${
+                          orderType === 'pickup'
+                            ? 'bg-[#FAF8F5] border-[#A48F64] shadow-sm ring-1 ring-[#A48F64]'
+                            : 'bg-white border-[#A48F64]/20 hover:border-[#A48F64]/50'
+                        }`}
+                      >
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                          orderType === 'pickup' ? 'bg-[#A48F64] text-white' : 'bg-[#FAF8F5] text-[#A48F64]'
+                        }`}>
+                          <Store className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-black text-[#241E17]">استلام من فرع المطعم</span>
+                            <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">مجاناً</span>
+                          </div>
+                          <p className="text-xs text-[#6B6255] mt-1">جاهز وساخن للاستلام الفوري من مطعم الكيرة - المحلة الكبرى</p>
+                        </div>
+                      </button>
+                    </div>
+
+                    {/* Next Button */}
+                    <div className="pt-3">
+                      <button
+                        type="button"
+                        onClick={handleGoToStep2}
+                        className="w-full py-3.5 px-6 bg-gradient-to-r from-[#A48F64] via-[#B8A378] to-[#A48F64] hover:shadow-gold-glow text-white font-black text-sm rounded-2xl transition-all shadow-md flex items-center justify-center gap-2 active:scale-95"
+                      >
+                        <span>التالي: إدخال بيانات العميل</span>
+                        <ArrowLeft className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* STEP 2: Customer Information & Address */}
+                {step === 2 && (
+                  <div className="space-y-4">
+                    <div className="text-right">
+                      <h3 className="text-base font-black text-[#241E17]">الخطوة 2: بيانات العميل والتواصل</h3>
+                      <p className="text-xs text-[#6B6255] mt-0.5">أدخل بياناتك لتجهيز وتسليم الطلب بأسرع وقت</p>
+                    </div>
+
+                    <div className="space-y-3 pt-1">
+                      <div>
+                        <label className="text-xs font-bold text-[#241E17] block mb-1">اسم العميل *</label>
+                        <div className="relative">
+                          <User className="w-4 h-4 text-[#6B6255] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                          <input
+                            type="text"
+                            value={customerName}
+                            onChange={(e) => setCustomerName(e.target.value)}
+                            placeholder="اسمك الكريم"
+                            className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-2.5 pr-10 pl-3 text-xs sm:text-sm text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/40"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="text-xs font-bold text-[#241E17] block mb-1">رقم الهاتف للتواصل *</label>
+                        <div className="relative">
+                          <Phone className="w-4 h-4 text-[#6B6255] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                          <input
+                            type="tel"
+                            value={customerPhone}
+                            onChange={(e) => setCustomerPhone(e.target.value)}
+                            placeholder="رقم الهاتف (متاح عليه واتساب)"
+                            className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-2.5 pr-10 pl-3 text-xs sm:text-sm text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/40"
+                          />
+                        </div>
+                      </div>
+
+                      {orderType === 'delivery' && (
+                        <div>
+                          <label className="text-xs font-bold text-[#241E17] block mb-1">عنوان التوصيل بالمحلة *</label>
+                          <div className="relative">
+                            <MapPin className="w-4 h-4 text-[#6B6255] absolute right-3.5 top-3 pointer-events-none" />
+                            <textarea
+                              rows={2}
+                              value={customerAddress}
+                              onChange={(e) => setCustomerAddress(e.target.value)}
+                              placeholder="المنطقة / اسم الشارع / رقم العمارة / علامة مميزة"
+                              className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-2.5 pr-10 pl-3 text-xs sm:text-sm text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/40 resize-none"
+                            ></textarea>
+                          </div>
+                        </div>
+                      )}
+
+                      <div>
+                        <label className="text-xs font-bold text-[#241E17] block mb-1">ملاحظات خاصة على الطلب (اختياري)</label>
+                        <div className="relative">
+                          <FileText className="w-4 h-4 text-[#6B6255] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                          <input
+                            type="text"
+                            value={orderNotes}
+                            onChange={(e) => setOrderNotes(e.target.value)}
+                            placeholder="درجة التسوية، إضافات، توقيت معين..."
+                            className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-2.5 pr-10 pl-3 text-xs sm:text-sm text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/40"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Step 2 Buttons */}
+                    <div className="pt-3 flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setStep(1)}
+                        className="py-3 px-4 bg-[#FAF8F5] hover:bg-[#F5EFE6] text-[#241E17] font-bold text-xs rounded-xl border border-[#A48F64]/30 transition-all flex items-center gap-1.5"
+                      >
+                        <ArrowRight className="w-3.5 h-3.5" />
+                        <span>السابق</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleGoToStep3}
+                        className="flex-1 py-3.5 px-6 bg-gradient-to-r from-[#A48F64] via-[#B8A378] to-[#A48F64] hover:shadow-gold-glow text-white font-black text-sm rounded-2xl transition-all shadow-md flex items-center justify-center gap-2 active:scale-95"
+                      >
+                        <span>التالي: مراجعة الطلب</span>
+                        <ArrowLeft className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* STEP 3: Review & Send Order */}
+                {step === 3 && (
+                  <div className="space-y-4">
+                    <div className="text-right">
+                      <h3 className="text-base font-black text-[#241E17]">الخطوة 3: مراجعة الطلب وتأكيد الإرسال</h3>
+                      <p className="text-xs text-[#6B6255] mt-0.5">تأكد من صحة بياناتك وسيتم تحويل طلبك مباشرة للواتساب</p>
+                    </div>
+
+                    {/* Customer & Delivery Summary Card */}
+                    <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border border-[#A48F64]/20 space-y-2 text-xs">
+                      <div className="flex justify-between items-center pb-2 border-b border-[#A48F64]/15">
+                        <span className="text-[#6B6255]">طريقة الاستلام:</span>
+                        <span className="font-bold text-[#241E17] flex items-center gap-1">
+                          {orderType === 'delivery' ? (
+                            <>
+                              <Truck className="w-3.5 h-3.5 text-[#A48F64]" />
+                              توصيل دليفري للمنزل
+                            </>
+                          ) : (
+                            <>
+                              <Store className="w-3.5 h-3.5 text-[#A48F64]" />
+                              استلام من الفرع
+                            </>
+                          )}
+                        </span>
+                      </div>
+
+                      <div className="flex justify-between items-center">
+                        <span className="text-[#6B6255]">اسم العميل:</span>
+                        <span className="font-bold text-[#241E17]">{customerName || '-'}</span>
+                      </div>
+
+                      <div className="flex justify-between items-center">
+                        <span className="text-[#6B6255]">رقم الهاتف:</span>
+                        <span className="font-bold text-[#241E17]" dir="ltr">{customerPhone || '-'}</span>
+                      </div>
+
+                      {orderType === 'delivery' && (
+                        <div className="flex justify-between items-start pt-1 border-t border-[#A48F64]/10">
+                          <span className="text-[#6B6255]">العنوان:</span>
+                          <span className="font-bold text-[#241E17] text-left max-w-[60%]">{customerAddress || '-'}</span>
+                        </div>
+                      )}
+
+                      {orderNotes && (
+                        <div className="flex justify-between items-start pt-1 border-t border-[#A48F64]/10">
+                          <span className="text-[#6B6255]">الملاحظات:</span>
+                          <span className="font-bold text-[#241E17] text-left max-w-[60%]">{orderNotes}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Price Breakdown */}
+                    <div className="pt-2 border-t border-[#A48F64]/20 space-y-2 text-xs sm:text-sm text-[#6B6255]">
+                      <div className="flex justify-between">
+                        <span>المجموع الفرعي ({totalItems} وجبات):</span>
+                        <span className="font-bold text-[#241E17]">{subtotal} جنيه</span>
+                      </div>
+                      {orderType === 'delivery' && (
+                        <div className="flex justify-between">
+                          <span>خدمة التوصيل (المحلة):</span>
+                          <span className="font-bold text-[#241E17]">{deliveryFee} جنيه</span>
+                        </div>
+                      )}
+                      <div className="flex justify-between text-base sm:text-lg font-black text-[#A48F64] pt-2 border-t border-[#A48F64]/20">
+                        <span>الإجمالي الكلي:</span>
+                        <span>{totalPrice} جنيه مصري</span>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons: Back to Edit & Send WhatsApp */}
+                    <div className="pt-2 space-y-2">
+                      <button
+                        onClick={sendWhatsAppOrder}
+                        className="w-full py-4 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-base rounded-2xl transition-all duration-300 shadow-lg hover:shadow-emerald-600/30 flex items-center justify-center gap-3 active:scale-95"
+                      >
+                        <MessageCircle className="w-5 h-5 fill-white" />
+                        <span>إرسال الطلب عبر واتساب ({RESTAURANT_INFO.whatsappDisplay})</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setStep(2)}
+                        className="w-full py-2.5 text-xs text-[#8A764D] hover:text-[#241E17] font-bold text-center transition-colors"
+                      >
+                        تعديل بيانات العميل أو طريقة الاستلام
+                      </button>
+                    </div>
+
+                  </div>
+                )}
 
               </div>
 
