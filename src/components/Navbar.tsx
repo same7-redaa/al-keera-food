@@ -36,6 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     const sections = [
       { id: 'hero' },
       { id: 'featured-menu' },
+      { id: 'why-us' },
       { id: 'offers' },
       { id: 'about' },
       { id: 'testimonials' },
@@ -83,6 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const navLinks = [
     { label: 'الرئيسية', page: 'home' as const, sectionId: 'hero' },
     { label: 'المنيو', page: 'home' as const, sectionId: 'featured-menu' },
+    { label: 'ليه تختارنا', page: 'home' as const, sectionId: 'why-us' },
     { label: 'العروض', page: 'home' as const, sectionId: 'offers' },
     { label: 'عن الكيرة', page: 'home' as const, sectionId: 'about' },
     { label: 'الآراء', page: 'home' as const, sectionId: 'testimonials' },
