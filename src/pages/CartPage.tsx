@@ -55,20 +55,20 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
         </div>
 
         {cart.length === 0 ? (
-          /* Empty Cart State */
-          <div className="bg-white rounded-3xl p-10 sm:p-16 text-center max-w-lg mx-auto border border-[#A48F64]/30 shadow-lg flex flex-col items-center">
-            <div className="w-20 h-20 rounded-full bg-[#FAF8F5] border border-[#A48F64]/30 flex items-center justify-center text-[#A48F64]/40 mb-6">
-              <ShoppingBag className="w-10 h-10" />
+          /* Empty Cart State (Without container box) */
+          <div className="py-8 sm:py-14 text-center max-w-lg mx-auto flex flex-col items-center">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/70 border border-[#A48F64]/30 flex items-center justify-center text-[#A48F64] mb-5 sm:mb-6 shadow-xs">
+              <ShoppingBag className="w-10 h-10 sm:w-12 sm:h-12" />
             </div>
-            <h3 className="text-xl font-bold text-[#241E17] mb-2">السلة فارغة حالياً</h3>
-            <p className="text-xs sm:text-sm text-[#6B6255] max-w-sm mb-8 leading-relaxed">
+            <h3 className="text-xl sm:text-2xl font-black text-[#241E17] mb-2">السلة فارغة حالياً</h3>
+            <p className="text-xs sm:text-sm text-[#6B6255] max-w-sm mb-7 leading-relaxed">
               لم تقم بإضافة أي وجبات بعد. تصفح المنيو واختر وجبتك المفضلة من المشويات على الفحم وطواجن الفخار البلدي!
             </p>
             <button
               onClick={onNavigateToMenu}
-              className="py-3.5 px-8 bg-gradient-to-r from-[#A48F64] via-[#B8A378] to-[#A48F64] text-white font-black text-sm rounded-xl shadow-gold-lg hover:shadow-gold-glow hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+              className="py-3.5 sm:py-4 px-8 bg-gradient-to-r from-[#A48F64] via-[#B8A378] to-[#A48F64] text-white font-black text-sm sm:text-base rounded-2xl shadow-gold-lg hover:shadow-gold-glow hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
             >
-              <UtensilsCrossed className="w-4 h-4 text-white" />
+              <UtensilsCrossed className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               <span>تصفح منيو الكيرة الآن</span>
             </button>
           </div>
