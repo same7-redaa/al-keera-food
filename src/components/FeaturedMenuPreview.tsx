@@ -31,8 +31,8 @@ export const FeaturedMenuPreview: React.FC<FeaturedMenuPreviewProps> = ({ onOpen
           </p>
         </div>
 
-        {/* Grid of Featured Dishes: 4 on desktop, 2 on mobile */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 mb-12 reveal delay-100">
+        {/* Grid of Featured Dishes: 4 on desktop, 1 on mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4 lg:gap-5 mb-12 max-w-sm sm:max-w-none mx-auto reveal delay-100">
           {featuredDishes.map((item) => (
             <MenuCard key={item.id} item={item} />
           ))}
