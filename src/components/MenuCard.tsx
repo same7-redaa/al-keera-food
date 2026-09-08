@@ -27,10 +27,10 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
   };
 
   return (
-    <div className="group relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-[#A48F64]/25 hover:border-[#A48F64]/60 transition-all duration-300 flex flex-col justify-between shadow-xs hover:shadow-lg hover:-translate-y-1">
+    <div className="w-full group relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-[#A48F64]/25 hover:border-[#A48F64]/60 transition-all duration-300 flex flex-col justify-between shadow-xs hover:shadow-lg hover:-translate-y-1">
       
       {/* Top Image & Badges (Compact Height) */}
-      <div className="relative h-32 sm:h-40 md:h-44 overflow-hidden bg-[#F5EFE6]">
+      <div className="relative h-36 sm:h-40 md:h-44 overflow-hidden bg-[#F5EFE6]">
         <img
           src={item.image}
           alt={item.name}

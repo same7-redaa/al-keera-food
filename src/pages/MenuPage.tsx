@@ -107,9 +107,9 @@ export const MenuPage: React.FC = () => {
 
         </div>
 
-        {/* Dishes Grid: 4 cols on desktop, 1 col on mobile (compact cards) */}
+        {/* Dishes Grid: 4 cols on desktop, 1 col on mobile (Full Width) */}
         {filteredItems.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4 lg:gap-5 max-w-sm sm:max-w-none mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4 lg:gap-5 w-full">
             {filteredItems.map((item) => (
               <MenuCard key={item.id} item={item} />
             ))}
