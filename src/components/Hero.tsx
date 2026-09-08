@@ -225,6 +225,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu }) => {
                         <img
                           src={dish.image}
                           alt={dish.title}
+                          loading="eager"
+                          decoding="async"
                           className="w-full h-full object-cover select-none group-hover:scale-110 transition-transform duration-500"
                           draggable={false}
                         />
