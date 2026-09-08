@@ -168,7 +168,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return;
     }
 
-    let message = `🍽️ *طلب جديد من موقع مطعم الكيرة - المحلة الكبرى*\n`;
+    let message = `🍽️ *طلب جديد من موقع مطعم الكيرة*\n`;
     message += `----------------------------------------\n`;
     
     if (customerName.trim()) {
@@ -178,7 +178,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       message += `📞 *رقم الهاتف:* ${customerPhone.trim()}\n`;
     }
     
-    message += `🛵 *نوع الاستلام:* ${orderType === 'delivery' ? 'توصيل دليفري إلى المنزل' : 'استلام من الفرع (المشحمة / 6 أكتوبر)'}\n`;
+    message += `🛵 *نوع الاستلام:* ${orderType === 'delivery' ? 'توصيل دليفري إلى المنزل' : 'استلام من الفرع'}\n`;
     
     if (orderType === 'delivery' && customerAddress.trim()) {
       message += `📍 *عنوان التوصيل:* ${customerAddress.trim()}\n`;
@@ -189,8 +189,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const portionText = item.selectedPortion ? ` [${item.selectedPortion.label}]` : '';
       message += `${index + 1}. *${item.name}${portionText}* × ${item.quantity} = ${item.unitPrice * item.quantity} ج\n`;
     });
-
-    message += `\n🎁 *خدمة الضيافة:* يخرج مع الوجبات طحينة وسلطة وعيش بلدي ساخن.\n`;
 
     if (orderNotes.trim()) {
       message += `\n📝 *ملاحظات وإضافات خاصة:* ${orderNotes.trim()}\n`;

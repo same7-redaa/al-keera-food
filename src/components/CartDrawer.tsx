@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { X, Trash2, Plus, Minus, ShoppingBag, MessageCircle, Truck, Store, MapPin, User, Phone, FileText, Gift } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, MessageCircle, Truck, Store, MapPin, User, Phone, FileText } from 'lucide-react';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -98,12 +98,6 @@ export const CartDrawer: React.FC = () => {
               </div>
             ) : (
               <>
-                {/* Free gifts notice */}
-                <div className="p-3 bg-brand-primary/50 border border-brand-gold/30 rounded-2xl flex items-center gap-2.5 text-xs text-brand-brightGold">
-                  <Gift className="w-4 h-4 flex-shrink-0" />
-                  <span>يخرج مع الوجبات طحينة وسلطة وعيش بلدي ساخن مجاناً!</span>
-                </div>
-
                 {/* Items List */}
                 <div className="space-y-3">
                   {cart.map((item) => (

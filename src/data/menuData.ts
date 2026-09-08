@@ -189,7 +189,7 @@ export const MENU_ITEMS: MenuItem[] = [
     ],
     image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop',
     badge: 'signature',
-    badgeText: 'الوليمة الأضخم في المحلة',
+    badgeText: 'الوليمة الملكية الفاخرة',
     rating: 5.0,
     freshDailyTag: true,
     isPopular: true,
@@ -320,7 +320,7 @@ export const MENU_ITEMS: MenuItem[] = [
 export const MAIN_OFFER: OfferItem = {
   id: 'offer-elkeera-royal',
   title: 'عرض حدوتة الكيرة الملكي',
-  subtitle: 'الوليمة العائلية المتكاملة الأكثر توفيراً في المحلة الكبرى',
+  subtitle: 'الوليمة العائلية المتكاملة الأكثر توفيراً',
   description: 'سفرة كاملة تجمع بين روعة المشويات على الفحم وأصالة طاجن ورق العنب بالكوارع مع الحمام المحشي والأرز الفاخر.',
   originalPrice: 1350,
   discountedPrice: 1190,
@@ -330,7 +330,6 @@ export const MAIN_OFFER: OfferItem = {
     'طاجن ورق عنب بالكوارع المسبك بالسمن البلدي',
     'زوج حمام بلدي محشي أرز بالخلطة ومحمر',
     'سرفيس كبير أرز بسمتي بالخلطة والمكسرات المحمصة',
-    'طحينة سمسم + سلطة خضراء + عيش بلدي ساخن مجاناً',
   ],
   image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=900&auto=format&fit=crop',
 };

@@ -52,7 +52,7 @@ export const SocialProofGallery: React.FC = () => {
                 <div className="flex items-center gap-4 text-xs text-brand-cream/70 pt-2 border-t border-brand-gold/20">
                   <span className="flex items-center gap-1 text-brand-brightGold">
                     <Heart className="w-3.5 h-3.5 fill-brand-brightGold" />
-                    الأعلى تقييماً بالمحلة
+                    الأعلى تقييماً
                   </span>
                   <span>طازج ومحضر يومياً</span>
                 </div>
@@ -72,7 +72,7 @@ export const SocialProofGallery: React.FC = () => {
                 انضم لعائلة الكيرة على فيسبوك
               </h3>
               <p className="text-xs sm:text-sm text-brand-cream/70">
-                أكثر من 102 ألف متابع وعاشق لمشويات وطواجن الكيرة في المحلة الكبرى.
+                أكثر من 102 ألف متابع وعاشق لمشويات وطواجن الكيرة.
               </p>
             </div>
           </div>

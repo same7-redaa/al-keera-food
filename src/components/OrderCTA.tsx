@@ -14,7 +14,7 @@ export const OrderCTA: React.FC = () => {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/80 border border-brand-gold/30 text-brand-brightGold text-xs sm:text-sm font-bold mb-4 shadow-sm">
           <Truck className="w-4 h-4" />
-          <span>توصيل سريع ساخن في جميع أنحاء المحلة</span>
+          <span>توصيل سريع ساخن حتى بابك</span>
         </div>
 
         {/* Heading */}

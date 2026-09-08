@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { RESTAURANT_INFO } from '../data/restaurantInfo';
-import { ShoppingBag, Trash2, Plus, Minus, MessageCircle, Truck, Store, MapPin, User, Phone, FileText, Gift, Sparkles, UtensilsCrossed } from 'lucide-react';
+import { ShoppingBag, Trash2, Plus, Minus, MessageCircle, Truck, Store, MapPin, User, Phone, FileText, Sparkles, UtensilsCrossed } from 'lucide-react';
 
 interface CartPageProps {
   onNavigateToMenu: () => void;
@@ -97,12 +97,6 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigateToMenu }) => {
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>تفريغ السلة</span>
                 </button>
-              </div>
-
-              {/* Complimentary Gift Notice */}
-              <div className="p-3.5 bg-brand-primary/60 border border-brand-gold/30 rounded-2xl flex items-center gap-3 text-xs text-brand-brightGold shadow-sm">
-                <Gift className="w-4 h-4 flex-shrink-0" />
-                <span>جميع المشويات والطواجن يخرج معها مجاناً طحينة وسلطات وعيش بلدي ساخن!</span>
               </div>
 
               {/* Items Card List */}

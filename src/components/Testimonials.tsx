@@ -11,7 +11,7 @@ export const Testimonials: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/80 border border-brand-gold/30 text-brand-brightGold text-xs sm:text-sm font-bold mb-4">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>آراء أهل المحلة الكرام</span>
+            <span>آراء وتقييمات زوارنا الكرام</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-brand-cream mb-4 tracking-tight">

@@ -23,7 +23,7 @@ const DISH_STREAM = [
   { img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=200&auto=format&fit=crop', text: 'صينية الكيرة الملكية الفاخرة' },
   { img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=200&auto=format&fit=crop', text: 'حمام بلدي محشي وممبار' },
   { img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=200&auto=format&fit=crop', text: 'طاجن عكاوي بالبصل القاورما' },
-  { img: '/logo.png', text: 'خبرة أكثر من 26 عاماً بالمحلة' },
+  { img: '/logo.png', text: 'خبرة أكثر من 26 عاماً من التميز' },
 ];
 
 const TRUST_STREAM = [

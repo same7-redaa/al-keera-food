@@ -44,7 +44,7 @@ export const FeaturedDish: React.FC = () => {
                         ? 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop'
                         : 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop'
                     }
-                    alt="طواجن ومشويات الكيرة بالمحلة"
+                    alt="طواجن ومشويات مطعم الكيرة"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-transparent to-transparent"></div>
@@ -71,7 +71,7 @@ export const FeaturedDish: React.FC = () => {
                   <Heart className="w-5 h-5 fill-brand-brightGold" />
                 </div>
                 <div>
-                  <div className="text-xs text-brand-cream/60">الأعلى طلباً بالمحلة</div>
+                  <div className="text-xs text-brand-cream/60">الأعلى طلباً وتقييماً</div>
                   <div className="text-sm font-bold text-brand-cream">+50,000 طاجن وسرفيس مشوي</div>
                 </div>
               </div>
@@ -95,7 +95,7 @@ export const FeaturedDish: React.FC = () => {
 
             {/* Description */}
             <p className="text-base sm:text-lg text-brand-cream/85 leading-relaxed mb-6 font-normal">
-              طواجن فخار متسبكة على نار هادية بالسمن البلدي الفلاحي، أو مشويات على الفحم متبلة بخلطة زمان الخاصة التي يعشقها أهل المحلة الكبرى منذ أكثر من 26 عاماً.
+              طواجن فخار متسبكة على نار هادية بالسمن البلدي الفلاحي، ومشويات على الفحم متبلة بخلطة زمان الخاصة بوصفة أصيلة متوارثة منذ أكثر من 26 عاماً.
             </p>
 
             {/* Variant Switcher */}
@@ -142,11 +142,11 @@ export const FeaturedDish: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
-                <span>طحينة وسلطات وعيش ساخن</span>
+                <span>طواجن فخار معتقة</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-brand-brightGold flex-shrink-0" />
-                <span>توصيل سريع ساخن في المحلة</span>
+                <span>توصيل سريع ساخن حتى بابك</span>
               </div>
             </div>
 

@@ -25,7 +25,7 @@ export const Offers: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-10 reveal">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/20 border border-brand-gold/40 text-brand-brightGold text-xs sm:text-sm font-black mb-3 shadow-gold-glow animate-pulse">
             <Flame className="w-4 h-4 fill-brand-brightGold" />
-            <span>عروض وتوفير المحلة</span>
+            <span>عروض وتوفير حصري</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-cream mb-3 tracking-tight">

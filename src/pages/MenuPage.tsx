@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { CATEGORIES, MENU_ITEMS } from '../data/menuData';
 import { CategoryType, MenuItem } from '../types/menu';
 import { MenuCard } from '../components/MenuCard';
-import { Sparkles, Search, Flame, Soup, Salad, CupSoda, Gift, Crown, UtensilsCrossed } from 'lucide-react';
+import { Sparkles, Search, Flame, Soup, Salad, CupSoda, Crown, UtensilsCrossed } from 'lucide-react';
 
 export const MenuPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryType>('all');
@@ -64,26 +64,6 @@ export const MenuPage: React.FC = () => {
           <p className="text-base sm:text-lg text-brand-cream/80">
             تصفح جميع المشويات على الفحم، طواجن الفخار البلدي، صواني العزومات، المحاشي والمقبلات واطلب مباشرة عبر واتساب.
           </p>
-        </div>
-
-        {/* Free Gifts Banner */}
-        <div className="mb-10 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary border border-brand-gold/40 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-brightGold flex-shrink-0">
-              <Gift className="w-6 h-6 text-brand-brightGold" />
-            </div>
-            <div>
-              <span className="font-bold text-brand-brightGold text-sm sm:text-base block">
-                كرم وضيافة الكيرة مع كل وجبة رئيسية!
-              </span>
-              <span className="text-xs sm:text-sm text-brand-cream/90">
-                جميع المشويات والطواجن يخرج معها مجاناً طحينة سمسم فاخرة وسلطة خضراء وعيش بلدي ساخن.
-              </span>
-            </div>
-          </div>
-          <div className="bg-brand-deep/80 text-brand-cream px-3.5 py-1.5 rounded-lg border border-brand-gold/20 text-xs font-bold whitespace-nowrap">
-            100% لحم بلدي طازج
-          </div>
         </div>
 
         {/* Category Tabs & Search */}
