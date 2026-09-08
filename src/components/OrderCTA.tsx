@@ -16,8 +16,8 @@ export const OrderCTA: React.FC = () => {
           جعان؟ <span className="gold-gradient-text">خليك على الأصيل.</span>
         </h2>
 
-        <p className="text-sm sm:text-base text-brand-cream/70 max-w-xl mx-auto mb-6 leading-relaxed">
-          اختار وجبتك المفضلة من المنيو واحنا نوصلهولك ساخن لحد باب بيتك بأسرع وقت.
+        <p className="text-sm sm:text-base text-[#5C5245] max-w-xl mx-auto mb-6 leading-relaxed">
+          اختار وجبتك المفضلة من المنيو وطلبك يوصلك في أسرع وقت حتى باب بيتك.
         </p>
 
         {/* Buttons & Direct Phone */}
