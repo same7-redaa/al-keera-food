@@ -31,7 +31,7 @@ export const About: React.FC = () => {
               </div>
 
               {/* Secondary Overlapping Image */}
-              <div className="absolute -bottom-8 -left-6 sm:-left-8 w-44 sm:w-56 rounded-2xl overflow-hidden bg-white p-2 border border-[#A48F64]/40 shadow-2xl hidden sm:block">
+              <div className="absolute -bottom-6 left-3 sm:-bottom-8 sm:-left-4 w-40 sm:w-52 rounded-2xl overflow-hidden bg-white p-2 border border-[#A48F64]/40 shadow-2xl hidden sm:block z-10">
                 <div className="h-36 sm:h-44 rounded-xl overflow-hidden bg-[#F5EFE6]">
                   <img
                     src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop"
@@ -42,10 +42,10 @@ export const About: React.FC = () => {
               </div>
 
               {/* Experience Stamp */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-br from-[#A48F64] to-[#B8A378] text-white p-4 rounded-3xl shadow-xl border-2 border-white flex flex-col items-center text-center animate-float">
-                <Award className="w-7 h-7 mb-1" />
-                <span className="text-2xl font-black leading-none">+26</span>
-                <span className="text-[10px] font-bold mt-0.5">عاماً من الخبرة</span>
+              <div className="absolute -top-4 right-3 sm:-top-6 sm:-right-2 lg:-right-4 bg-gradient-to-br from-[#A48F64] to-[#B8A378] text-white p-3 sm:p-4 rounded-2xl sm:rounded-3xl shadow-xl border-2 border-white flex flex-col items-center text-center animate-float z-20">
+                <Award className="w-5 h-5 sm:w-7 sm:h-7 mb-0.5 sm:mb-1" />
+                <span className="text-xl sm:text-2xl font-black leading-none">+26</span>
+                <span className="text-[9px] sm:text-[10px] font-bold mt-0.5">عاماً من الخبرة</span>
               </div>
 
             </div>
