@@ -4,7 +4,7 @@ import { Sparkles, Facebook, Heart } from 'lucide-react';
 
 export const SocialProofGallery: React.FC = () => {
   return (
-    <section id="gallery" className="py-20 sm:py-28 relative bg-[#FAF8F5] overflow-hidden">
+    <section id="gallery" className="py-20 sm:py-28 relative bg-[#FAF8F5] overflow-hidden scroll-mt-24">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

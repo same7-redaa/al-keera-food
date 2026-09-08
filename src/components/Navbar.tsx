@@ -33,10 +33,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     if (currentPage !== 'home') return;
 
     const sections = [
-      { id: 'hero', offset: 0 },
-      { id: 'offers', offset: 0 },
-      { id: 'about', offset: 0 },
-      { id: 'location', offset: 0 },
+      { id: 'hero' },
+      { id: 'offers' },
+      { id: 'about' },
+      { id: 'testimonials' },
+      { id: 'gallery' },
+      { id: 'location' },
     ];
 
     const handleScrollSpy = () => {
@@ -78,9 +80,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
   const navLinks = [
     { label: 'الرئيسية', page: 'home' as const, sectionId: 'hero' },
-    { label: 'المنيو الكامل', page: 'menu' as const, sectionId: undefined, isSpecial: true },
-    { label: 'العروض الخاصة', page: 'home' as const, sectionId: 'offers' },
+    { label: 'المنيو والأسعار', page: 'menu' as const, sectionId: undefined, isSpecial: true },
+    { label: 'العروض', page: 'home' as const, sectionId: 'offers' },
     { label: 'عن الكيرة', page: 'home' as const, sectionId: 'about' },
+    { label: 'الآراء', page: 'home' as const, sectionId: 'testimonials' },
+    { label: 'معرض الصور', page: 'home' as const, sectionId: 'gallery' },
     { label: 'فروعنا', page: 'home' as const, sectionId: 'location' },
   ];
 
@@ -113,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           </button>
 
           {/* Center: Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2 bg-white/90 backdrop-blur-md border border-[#A48F64]/30 rounded-full px-4 py-1.5 shadow-sm transition-all duration-300">
+          <nav className="hidden lg:flex items-center gap-1 bg-white/95 backdrop-blur-md border border-[#A48F64]/30 rounded-full px-2.5 py-1 shadow-sm transition-all duration-300">
             {navLinks.map((link) => {
               const isLinkActive =
                 link.page === 'menu'
@@ -124,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 <button
                   key={link.label}
                   onClick={() => handleLinkClick(link)}
-                  className={`px-3.5 py-1.5 text-xs lg:text-sm font-bold rounded-full transition-all duration-200 flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 text-xs xl:text-sm font-bold rounded-full transition-all duration-200 flex items-center gap-1.5 ${
                     link.isSpecial && currentPage === 'menu'
                       ? 'bg-[#A48F64] text-white shadow-md'
                       : isLinkActive
@@ -146,10 +150,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 setMobileMenuOpen(false);
                 onNavigate('cart');
               }}
-              className={`relative flex items-center gap-2 px-4 py-2 rounded-full font-black text-xs sm:text-sm transition-all duration-300 hover:scale-105 active:scale-95 shadow-md ${
+              className={`relative flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full font-black text-xs sm:text-sm transition-all duration-300 hover:scale-105 active:scale-95 shadow-md ${
                 currentPage === 'cart'
                   ? 'bg-[#8A764D] text-white shadow-gold-glow'
-                  : 'bg-gradient-to-r from-[#A48F64] to-[#B8A378] text-white hover:shadow-gold-glow'
+                  : 'bg-[#A48F64] text-white hover:bg-[#8A764D]'
               }`}
               aria-label="السلة"
             >
@@ -165,7 +169,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#241E17] hover:text-[#A48F64] rounded-xl bg-white border border-[#A48F64]/30 shadow-sm transition-colors"
+              className="lg:hidden p-2 text-[#241E17] hover:text-[#A48F64] rounded-xl bg-white border border-[#A48F64]/30 shadow-sm transition-colors"
               aria-label="القائمة"
             >
               {mobileMenuOpen ? <X className="w-6 h-6 text-[#A48F64]" /> : <MenuIcon className="w-6 h-6" />}
@@ -176,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
       {/* Fullscreen Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-[#FAF8F5] pt-24 pb-8 px-6 flex flex-col justify-between overflow-y-auto animate-fadeIn select-none">
+        <div className="lg:hidden fixed inset-0 z-40 bg-[#FAF8F5] pt-24 pb-8 px-6 flex flex-col justify-between overflow-y-auto animate-fadeIn select-none">
           
           {/* Menu Links */}
           <div className="flex flex-col gap-3">

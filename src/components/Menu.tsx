@@ -38,32 +38,32 @@ export const Menu: React.FC = () => {
   }, [activeCategory, searchQuery]);
 
   return (
-    <section id="menu" className="py-20 sm:py-28 relative bg-brand-deep overflow-hidden">
+    <section id="menu" className="py-20 sm:py-28 relative bg-[#FAF8F5] overflow-hidden">
       
       {/* Decorative background glow */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-brand-secondary/30 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-10 left-0 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#A48F64]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-10 left-0 w-96 h-96 bg-[#C5AF84]/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/80 border border-brand-gold/30 text-brand-brightGold text-xs font-bold mb-3 shadow-sm">
-            <Sparkles className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#A48F64]/30 text-[#8A764D] text-xs font-bold mb-3 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#A48F64]" />
             <span>قائمة طعام فاخرة بوصفات سرية</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-brand-cream mb-3 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-black text-[#241E17] mb-3 tracking-tight">
             منيو <span className="gold-gradient-text">مطعم الكيرة</span>
           </h2>
 
-          <p className="text-xs sm:text-base text-brand-cream/80 max-w-2xl mx-auto">
+          <p className="text-xs sm:text-base text-[#6B6255] max-w-2xl mx-auto">
             اختياراتنا الأصيلة من المشويات على الفحم وطواجن الفخار البلدي وصواني العزومات المحضرة بكل حب وإتقان.
           </p>
         </div>
 
         {/* Slim Category Bar & Compact Search */}
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 mb-8 bg-brand-card/60 backdrop-blur-md p-1.5 sm:p-2 rounded-2xl border border-brand-gold/20 shadow-lg">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 mb-8 bg-white/95 backdrop-blur-md p-1.5 sm:p-2 rounded-2xl border border-[#A48F64]/25 shadow-sm">
           
           {/* Category Tabs (Ultra Slim & Compact) */}
           <div className="flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
@@ -75,8 +75,8 @@ export const Menu: React.FC = () => {
                   onClick={() => setActiveCategory(cat.id as CategoryType)}
                   className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all duration-200 border ${
                     isActive
-                      ? 'bg-gradient-to-r from-brand-gold via-brand-brightGold to-brand-gold text-brand-black border-brand-brightGold shadow-sm font-black'
-                      : 'bg-brand-deep/80 text-brand-cream/80 hover:text-brand-brightGold hover:bg-brand-primary/60 border-brand-gold/15'
+                      ? 'bg-[#A48F64] text-white border-[#A48F64] shadow-sm font-black'
+                      : 'bg-[#FAF8F5] text-[#241E17] hover:text-[#A48F64] hover:bg-[#F5EFE6] border-[#A48F64]/20'
                   }`}
                 >
                   {getCategoryIcon(cat.icon)}
@@ -88,18 +88,18 @@ export const Menu: React.FC = () => {
 
           {/* Compact Search Bar */}
           <div className="relative min-w-[200px] sm:min-w-[240px] flex-shrink-0">
-            <Search className="w-3.5 h-3.5 text-brand-cream/50 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-3.5 h-3.5 text-[#6B6255] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="بحث في المنيو..."
-              className="w-full bg-brand-deep/90 border border-brand-gold/20 focus:border-brand-gold rounded-xl py-1.5 pr-8 pl-3 text-xs text-brand-cream placeholder:text-brand-cream/40 focus:outline-none focus:ring-1 focus:ring-brand-gold/50 transition-all"
+              className="w-full bg-[#FAF8F5] border border-[#A48F64]/25 focus:border-[#A48F64] rounded-xl py-1.5 pr-8 pl-3 text-xs text-[#241E17] placeholder:text-[#6B6255]/50 focus:outline-none focus:ring-1 focus:ring-[#A48F64]/50 transition-all"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] text-brand-cream/60 hover:text-brand-brightGold"
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] text-[#6B6255] hover:text-[#A48F64]"
               >
                 مسح
               </button>
@@ -116,15 +116,15 @@ export const Menu: React.FC = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 glass-card rounded-3xl p-8 max-w-md mx-auto">
-            <p className="text-lg font-bold text-brand-cream mb-2">لا توجد أطباق مطابقة للبحث</p>
-            <p className="text-sm text-brand-cream/60 mb-4">جرب البحث بكلمات أخرى أو اختر فئة مختلفة من القائمة.</p>
+          <div className="text-center py-16 bg-white border border-[#A48F64]/30 rounded-3xl p-8 max-w-md mx-auto shadow-sm">
+            <p className="text-lg font-bold text-[#241E17] mb-2">لا توجد أطباق مطابقة للبحث</p>
+            <p className="text-sm text-[#6B6255] mb-4">جرب البحث بكلمات أخرى أو اختر فئة مختلفة من القائمة.</p>
             <button
               onClick={() => {
                 setActiveCategory('all');
                 setSearchQuery('');
               }}
-              className="px-5 py-2 bg-brand-gold text-brand-black rounded-xl text-xs font-bold"
+              className="px-5 py-2 bg-[#A48F64] text-white rounded-xl text-xs font-bold hover:bg-[#8A764D] transition-colors"
             >
               عرض كل الأطباق
             </button>
