@@ -161,4 +161,22 @@
     animation: marquee-seamless-right 26s linear infinite;
     will-change: transform;
   }
+
+  /* Authentic Background Pattern Texture Overlay at 30% Opacity */
+  section, footer {
+    position: relative;
+  }
+
+  section::before, footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/bg-pattern.png');
+    background-repeat: repeat;
+    background-size: 600px auto;
+    background-position: center;
+    opacity: 0.30;
+    pointer-events: none;
+    z-index: 0;
+  }
 }
