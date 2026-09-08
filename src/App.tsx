@@ -31,7 +31,7 @@ export const App: React.FC = () => {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1100);
+    }, 750);
 
     return () => clearTimeout(timer);
   }, []);

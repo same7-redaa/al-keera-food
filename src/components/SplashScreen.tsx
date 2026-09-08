@@ -18,7 +18,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ isLoading }) => {
       const timer = setTimeout(() => {
         setShouldRender(false);
         document.body.style.overflow = '';
-      }, 500);
+      }, 350);
       return () => {
         clearTimeout(timer);
         document.body.style.overflow = '';
@@ -31,7 +31,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ isLoading }) => {
   return (
     <div
       style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, width: '100vw', height: '100vh', zIndex: 99999 }}
-      className={`bg-[#16120E] flex flex-col items-center justify-center transition-opacity duration-500 ease-out select-none ${
+      className={`bg-[#16120E] flex flex-col items-center justify-center transition-opacity duration-350 ease-out select-none will-change-opacity ${
         isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
       }`}
     >
