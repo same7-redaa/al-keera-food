@@ -20,9 +20,9 @@ export const FeaturedDish: React.FC = () => {
   };
 
   return (
-    <section id="featured" className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] flex items-center relative bg-white overflow-hidden scroll-mt-24">
+    <section id="featured" className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] flex items-center relative bg-[#16120E] text-white overflow-hidden scroll-mt-24">
       {/* Visual background atmospheric lights */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#A48F64]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#A48F64]/15 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-[#C5AF84]/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -33,8 +33,8 @@ export const FeaturedDish: React.FC = () => {
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               
               {/* Dish Frame */}
-              <div className="relative rounded-3xl overflow-hidden bg-white p-3 sm:p-4 border-2 border-[#A48F64]/30 shadow-xl group">
-                <div className="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden bg-[#F5EFE6]">
+              <div className="relative rounded-3xl overflow-hidden bg-[#241E17]/95 p-3 sm:p-4 border-2 border-[#A48F64]/40 shadow-2xl group">
+                <div className="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden bg-[#1A1612]">
                   <img
                     src={
                       selectedVariant === 'tajine'
@@ -44,32 +44,32 @@ export const FeaturedDish: React.FC = () => {
                     alt="طواجن ومشويات مطعم الكيرة"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#16120E]/80 via-transparent to-transparent"></div>
 
                   {/* Floating signature badge */}
-                  <div className="absolute top-4 right-4 bg-[#A48F64] text-white font-black text-xs px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                  <div className="absolute top-4 right-4 bg-gradient-to-r from-[#A48F64] to-[#8A764D] text-white font-black text-xs px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 border border-[#C5AF84]/30">
                     <Sparkles className="w-4 h-4 text-white" />
                     <span>خلطة الكيرة السرية منذ 1998</span>
                   </div>
 
                   {/* Price Tag in Image */}
-                  <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-[#A48F64]/30 shadow-md">
-                    <span className="text-xs text-[#6B6255] block">السعر</span>
-                    <span className="text-2xl font-black text-[#A48F64]">
-                      {currentItem.basePrice} <span className="text-xs text-[#241E17] font-medium">جنيه</span>
+                  <div className="absolute bottom-4 left-4 bg-[#16120E]/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-[#A48F64]/40 shadow-lg">
+                    <span className="text-xs text-[#C5AF84] block font-medium">السعر</span>
+                    <span className="text-2xl font-black text-white">
+                      {currentItem.basePrice} <span className="text-xs text-stone-300 font-medium">جنيه</span>
                     </span>
                   </div>
                 </div>
               </div>
 
               {/* Floating review snippet */}
-              <div className="absolute -bottom-5 right-2 sm:right-6 bg-white border border-[#A48F64]/30 rounded-2xl p-3 shadow-xl backdrop-blur-md flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#F5EFE6] flex items-center justify-center text-[#A48F64]">
-                  <Heart className="w-5 h-5 fill-[#A48F64]" />
+              <div className="absolute -bottom-5 right-2 sm:right-6 bg-[#241E17]/95 border border-[#A48F64]/40 rounded-2xl p-3 shadow-2xl backdrop-blur-md flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#352B20] flex items-center justify-center text-[#C5AF84]">
+                  <Heart className="w-5 h-5 fill-[#C5AF84]" />
                 </div>
                 <div>
-                  <div className="text-xs text-[#6B6255]">الأعلى طلباً وتقييماً</div>
-                  <div className="text-sm font-bold text-[#241E17]">+50,000 طاجن وسرفيس مشوي</div>
+                  <div className="text-xs text-[#C5AF84] font-medium">الأعلى طلباً وتقييماً</div>
+                  <div className="text-sm font-bold text-white">+50,000 طاجن وسرفيس مشوي</div>
                 </div>
               </div>
 
@@ -80,26 +80,26 @@ export const FeaturedDish: React.FC = () => {
           <div className="lg:col-span-6 order-1 lg:order-2 flex flex-col items-start reveal delay-100">
             
             {/* Title */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#241E17] leading-snug mb-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-snug mb-3">
               طواجن ومشويات <span className="gold-gradient-text">الكيرة الأصيلة</span>
             </h2>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-[#6B6255] leading-relaxed mb-6 font-normal">
+            <p className="text-base sm:text-lg text-[#D4C8B8] leading-relaxed mb-6 font-normal">
               طواجن فخار متسبكة على نار هادية بالسمن البلدي الفلاحي، ومشويات على الفحم متبلة بخلطة زمان الخاصة بوصفة أصيلة متوارثة منذ أكثر من 26 عاماً.
             </p>
 
             {/* Variant Switcher */}
-            <div className="w-full bg-white p-3 rounded-2xl border border-[#A48F64]/25 mb-6 shadow-sm">
-              <span className="text-xs text-[#6B6255] block mb-2 font-medium">اختر طبقك المفضل:</span>
+            <div className="w-full bg-[#241E17]/90 backdrop-blur-md p-3 rounded-2xl border border-[#A48F64]/30 mb-6 shadow-lg">
+              <span className="text-xs text-[#C5AF84] block mb-2 font-bold">اختر طبقك المفضل:</span>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => setSelectedVariant('tajine')}
                   className={`py-3 px-4 rounded-xl font-bold text-sm transition-all flex flex-col items-center gap-1 ${
                     selectedVariant === 'tajine'
-                      ? 'bg-[#A48F64] text-white shadow-md'
-                      : 'bg-[#FAF8F5] text-[#241E17] hover:text-[#A48F64] border border-[#A48F64]/20'
+                      ? 'bg-gradient-to-r from-[#A48F64] to-[#8A764D] text-white shadow-lg border border-[#C5AF84]/50'
+                      : 'bg-[#16120E] text-stone-300 hover:text-white hover:bg-[#2A231A] border border-[#A48F64]/25'
                   }`}
                 >
                   <span>طاجن ورق عنب بالكوارع</span>
@@ -111,8 +111,8 @@ export const FeaturedDish: React.FC = () => {
                   onClick={() => setSelectedVariant('grill')}
                   className={`py-3 px-4 rounded-xl font-bold text-sm transition-all flex flex-col items-center gap-1 ${
                     selectedVariant === 'grill'
-                      ? 'bg-[#A48F64] text-white shadow-md'
-                      : 'bg-[#FAF8F5] text-[#241E17] hover:text-[#A48F64] border border-[#A48F64]/20'
+                      ? 'bg-gradient-to-r from-[#A48F64] to-[#8A764D] text-white shadow-lg border border-[#C5AF84]/50'
+                      : 'bg-[#16120E] text-stone-300 hover:text-white hover:bg-[#2A231A] border border-[#A48F64]/25'
                   }`}
                 >
                   <span>مشكل كباب وكفتة</span>
@@ -122,21 +122,21 @@ export const FeaturedDish: React.FC = () => {
             </div>
 
             {/* Feature Highlights */}
-            <div className="grid grid-cols-2 gap-3 w-full mb-8 text-xs sm:text-sm text-[#4A4035]">
+            <div className="grid grid-cols-2 gap-3 w-full mb-8 text-xs sm:text-sm text-stone-200">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#A48F64] flex-shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#C5AF84] flex-shrink-0" />
                 <span>لحم بلدي طازج يومياً 100%</span>
               </div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#A48F64] flex-shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#C5AF84] flex-shrink-0" />
                 <span>سمن بلدي فلاحي صافي</span>
               </div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#A48F64] flex-shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#C5AF84] flex-shrink-0" />
                 <span>طواجن فخار معتقة</span>
               </div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#A48F64] flex-shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#C5AF84] flex-shrink-0" />
                 <span>توصيل سريع ساخن حتى بابك</span>
               </div>
             </div>

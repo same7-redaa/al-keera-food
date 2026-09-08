@@ -20,16 +20,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigateToMenu }) => {
       {/* 1. Hero (#FAF8F5) */}
       <Hero onExploreMenu={onNavigateToMenu} />
 
-      {/* Wave Transition: #FAF8F5 -> #FFFFFF */}
+      {/* Wave Transition: #FAF8F5 -> #16120E */}
       <div className="bg-[#FAF8F5] section-divider-wrapper">
-        <SectionDivider type="wave" fillColor="#FFFFFF" />
+        <SectionDivider type="wave" fillColor="#16120E" />
       </div>
 
-      {/* 2. Featured Dish (#FFFFFF) */}
+      {/* 2. Featured Dish (#16120E - Dark Luxury) */}
       <FeaturedDish />
 
-      {/* Slant Transition: #FFFFFF -> #F6F2EA */}
-      <div className="bg-white section-divider-wrapper">
+      {/* Slant Transition: #16120E -> #F6F2EA */}
+      <div className="bg-[#16120E] section-divider-wrapper">
         <SectionDivider type="slant" fillColor="#F6F2EA" />
       </div>
 
